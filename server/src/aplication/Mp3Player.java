@@ -4,9 +4,6 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
-/**
- * Created by andreas on 1/10/2016.
- */
 public class Mp3Player {
 
     private Thread thread;
@@ -21,7 +18,6 @@ public class Mp3Player {
         Media media = new Media("file:///F:/mp3/mp3z/Xzibit-X.mp3");
         mediaPlayer = new MediaPlayer(media);
         mediaPlayer.setVolume(0);
-
     }
 
     class Path{
@@ -67,7 +63,7 @@ public class Mp3Player {
 
             public void run(){
                 try {
-                    thread.sleep(350);
+                    Thread.sleep(350);
                     System.out.println("playThread is running");
                     Media media = new Media(path.path);
                     mediaPlayer = new MediaPlayer(media);
@@ -94,7 +90,7 @@ public class Mp3Player {
 
                 while(true){
                     try {
-                        thread.sleep(1);
+                        Thread.sleep(1);
                         if(event == 1){
                             System.out.println("Path = " + path.path);
                             mediaPlayer.stop();

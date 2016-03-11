@@ -1,18 +1,15 @@
-package aplication;
+package network.serial;
 
+import com.sun.xml.internal.bind.v2.TODO;
 import gnu.io.CommPortIdentifier;
 
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
-/**
- * Created by andreas on 1/5/2016.
- */
+
 public class FindPort {
-    /**
-     * Created by andreas on 1/5/2016.
-     */
+
     List availablePorts = new ArrayList();
 
     public FindPort(){
@@ -22,7 +19,6 @@ public class FindPort {
     private void makeList() {
 
         Enumeration ports = CommPortIdentifier.getPortIdentifiers();
-
         if(ports == null){
             System.out.println("No connected devices trough seriall line");
         }
@@ -32,8 +28,6 @@ public class FindPort {
             System.out.println("AvailablePorts port: " + currentOpenPort);
             availablePorts.add(currentOpenPort);
         }
-
-
     }
     public List availablePorts() {
         return availablePorts;

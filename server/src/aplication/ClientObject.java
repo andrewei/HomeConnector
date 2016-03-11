@@ -2,14 +2,9 @@ package aplication;
 
 import network.tcpip.NetworkController;
 
-/**
- * Created by andreas on 1/19/2016.
- */
 public class ClientObject {
     private static NetworkController networkController = new NetworkController();
     private String name;
-
-
     private String ip;
     private int delay;
     private boolean active;
@@ -51,7 +46,7 @@ public class ClientObject {
 
     public void setActive(boolean active) {
         this.active = active;
-        if(active == false)
+        if(!active)
             networkController.stopSong(this.ip);
         //TODO if true, start playing along with rest of speakers
     }

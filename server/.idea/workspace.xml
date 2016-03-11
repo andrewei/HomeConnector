@@ -1,77 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4460edc9-d681-404f-ab00-e4ebbe4c40da" name="Default" comment="refactored both on the server and the client side">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SceneBuilder/First scetch.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/client/sample/Action.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/client/sample/Controller.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/client/sample/Main.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/client/sample/Mp3Player$1playThread.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/client/sample/Mp3Player$Path.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/client/sample/Mp3Player.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/client/sample/Network$1networkTread.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/client/sample/Network.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/client/sample/NetworkController$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/client/sample/NetworkController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/client/sample/sample.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/server/ClientObject.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/server/Clock.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/server/FindPort.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/server/LocalDatabase.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/server/MainController$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/server/MainController$1mp3UpdateyThread.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/server/MainController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/server/Mp3Player$1playThread$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/server/Mp3Player$1playThread$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/server/Mp3Player$1playThread.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/server/Mp3Player$Path.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/server/Mp3Player.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/server/MyMain.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/server/Network$1playThread.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/server/Network.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/server/NetworkController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/server/SerialConnector$SerialReader.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/server/SerialConnector$SerialWriter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/server/SerialConnector.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/server/images/input.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/server/images/lightBulb.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/server/images/powerButton.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/server/images/volume down.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/server/images/volumeUp.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/server/main.fxml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/server/smartWerg.jar" afterPath="$PROJECT_DIR$/out/artifacts/server/smartWerg.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/out/production/client/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/../client/out/production/client/META-INF/MANIFEST.MF" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/out/production/client/sample/sample.fxml" afterPath="$PROJECT_DIR$/../client/out/production/client/sample/sample.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/src/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/../client/src/META-INF/MANIFEST.MF" />
+    <list default="true" id="4460edc9-d681-404f-ab00-e4ebbe4c40da" name="Default" comment="refactored server side and added automatic serial detect/connect. This has to be improved later added TODO on this.">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/server/images/gimp files/powerButton.xcf" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/client/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/out/production/client/META-INF/MANIFEST.MF" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/out/production/server/META-INF/MANIFEST.MF" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/src/sample/Action.java" afterPath="$PROJECT_DIR$/../client/src/client/Action.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/src/sample/Controller.java" afterPath="$PROJECT_DIR$/../client/src/client/Controller.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/src/sample/Main.java" afterPath="$PROJECT_DIR$/../client/src/client/Client.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/src/sample/Mp3Player.java" afterPath="$PROJECT_DIR$/../client/src/client/Mp3Player.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/src/sample/Network.java" afterPath="$PROJECT_DIR$/../client/src/client/Network.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/src/sample/NetworkController.java" afterPath="$PROJECT_DIR$/../client/src/client/NetworkController.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/src/sample/sample.fxml" afterPath="$PROJECT_DIR$/../client/src/client/sample.fxml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ClientObject.java" afterPath="$PROJECT_DIR$/src/aplication/ClientObject.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Clock.java" afterPath="$PROJECT_DIR$/src/aplication/Clock.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/FindPort.java" afterPath="$PROJECT_DIR$/src/aplication/FindPort.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/LocalDatabase.java" afterPath="$PROJECT_DIR$/src/aplication/LocalDatabase.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/MainController.java" afterPath="$PROJECT_DIR$/src/aplication/MainController.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Mp3Player.java" afterPath="$PROJECT_DIR$/src/aplication/Mp3Player.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/MyMain.java" afterPath="$PROJECT_DIR$/src/aplication/Server.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Network.java" afterPath="$PROJECT_DIR$/src/network/tcpip/Network.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NetworkController.java" afterPath="$PROJECT_DIR$/src/network/tcpip/NetworkController.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/SerialConnector.java" afterPath="$PROJECT_DIR$/src/network/serial/SerialConnector.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/images/gimp files/powerButton.xcf" afterPath="$PROJECT_DIR$/src/resources/images/gimp files/powerButton.xcf" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/images/input.png" afterPath="$PROJECT_DIR$/src/resources/images/input.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/images/lightBulb.png" afterPath="$PROJECT_DIR$/src/resources/images/lightBulb.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/images/powerButton.png" afterPath="$PROJECT_DIR$/src/resources/images/powerButton.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/images/volume down.png" afterPath="$PROJECT_DIR$/src/resources/images/volume down.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/images/volumeUp.png" afterPath="$PROJECT_DIR$/src/resources/images/volumeUp.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main.fxml" afterPath="$PROJECT_DIR$/src/resources/main.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/aplication/ClientObject.java" afterPath="$PROJECT_DIR$/src/aplication/ClientObject.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/aplication/Clock.java" afterPath="$PROJECT_DIR$/src/aplication/Clock.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/aplication/MainController.java" afterPath="$PROJECT_DIR$/src/aplication/MainController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/aplication/Mp3Player.java" afterPath="$PROJECT_DIR$/src/aplication/Mp3Player.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/aplication/FindPort.java" afterPath="$PROJECT_DIR$/src/network/serial/FindPort.java" />
     </list>
     <ignored path="smartWerg.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -94,24 +31,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/resources/main.fxml">
+      <file leaf-file-name="MainController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/aplication/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.7936509">
-              <caret line="11" column="3" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
+            <state vertical-scroll-proportion="0.3321492">
+              <caret line="158" column="12" selection-start-line="158" selection-start-column="12" selection-end-line="158" selection-end-column="12" />
               <folding />
             </state>
           </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder">
-            <state />
+        </entry>
+      </file>
+      <file leaf-file-name="SerialConnector.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/network/serial/SerialConnector.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="27" column="45" selection-start-line="27" selection-start-column="45" selection-end-line="27" selection-end-column="45" />
+              <folding />
+            </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NetworkController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../client/src/client/NetworkController.java">
+      <file leaf-file-name="FindPort.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/network/serial/FindPort.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+              <caret line="28" column="12" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -121,79 +65,19 @@
         <entry file="file://$PROJECT_DIR$/src/aplication/ClientObject.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+              <caret line="48" column="12" selection-start-line="48" selection-start-column="12" selection-end-line="48" selection-end-column="12" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Mp3Player.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Mp3Player.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/aplication/Mp3Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33277026">
-              <caret line="73" column="48" selection-start-line="73" selection-start-column="48" selection-end-line="73" selection-end-column="48" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sample.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../client/out/production/client/sample/sample.fxml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.1904762">
-              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sample.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../client/src/client/sample.fxml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.5873016">
-              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Action.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../client/src/client/Action.java">
-          <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+              <caret line="91" column="25" selection-start-line="91" selection-start-column="25" selection-end-line="91" selection-end-column="25" />
               <folding />
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LocalDatabase.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/aplication/LocalDatabase.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="volume down.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/resources/images/volume down.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="volumeUp.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/resources/images/volumeUp.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
           </provider>
         </entry>
       </file>
@@ -245,6 +129,12 @@
         <option value="$PROJECT_DIR$/../client/out/production/client/sample/sample.fxml" />
         <option value="$PROJECT_DIR$/../client/src/client/sample.fxml" />
         <option value="$PROJECT_DIR$/src/resources/main.fxml" />
+        <option value="$PROJECT_DIR$/src/aplication/Clock.java" />
+        <option value="$PROJECT_DIR$/src/aplication/FindPort.java" />
+        <option value="$PROJECT_DIR$/src/aplication/MainController.java" />
+        <option value="$PROJECT_DIR$/src/network/serial/FindPort.java" />
+        <option value="$PROJECT_DIR$/src/aplication/ClientObject.java" />
+        <option value="$PROJECT_DIR$/src/aplication/Mp3Player.java" />
       </list>
     </option>
   </component>
@@ -312,80 +202,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="homeConnector" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="homeConnector" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="aplication" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="homeConnector" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="homeConnector" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="homeConnector" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1008,8 +824,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.Client (1)" />
-        <item index="1" class="java.lang.String" itemvalue="Application.MyMain" />
+        <item index="0" class="java.lang.String" itemvalue="Application.MyMain" />
+        <item index="1" class="java.lang.String" itemvalue="Application.Client (1)" />
         <item index="2" class="java.lang.String" itemvalue="Application.Client" />
         <item index="3" class="java.lang.String" itemvalue="Application.FindPort" />
         <item index="4" class="java.lang.String" itemvalue="Application.ListAvailablePorts" />
@@ -1058,20 +874,36 @@
       <workItem from="1457647868405" duration="481000" />
       <workItem from="1457648367161" duration="948000" />
       <workItem from="1457649338643" duration="18000" />
-      <workItem from="1457649372795" duration="2807000" />
+      <workItem from="1457649372795" duration="6137000" />
     </task>
+    <task id="LOCAL-00001" summary="refactored both on the server and the client side">
+      <created>1457652607635</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1457652607635</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27516000" />
+    <option name="totallyTimeSpent" value="30846000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32827735" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32827735" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1095,32 +927,6 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39915523" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
-    <layout-to-restore>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32946146" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39915523" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32946146" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27666315" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.08802083" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32946146" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.49736008" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -1135,7 +941,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="refactored both on the server and the client side" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactored both on the server and the client side" />
+    <MESSAGE value="refactored server side and added automatic serial detect/connect. This has to be improved later added TODO on this." />
+    <option name="LAST_COMMIT_MESSAGE" value="refactored server side and added automatic serial detect/connect. This has to be improved later added TODO on this." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1166,13 +973,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/aplication/FindPort.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="9" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/aplication/Server.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1253,7 +1053,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/aplication/FindPort.java">
+    <entry file="file://$PROJECT_DIR$/src/network/serial/FindPort.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="24" column="3" selection-start-line="24" selection-start-column="3" selection-end-line="24" selection-end-column="3" />
@@ -1281,7 +1081,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/aplication/FindPort.java">
+    <entry file="file://$PROJECT_DIR$/src/network/serial/FindPort.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="24" column="3" selection-start-line="24" selection-start-column="3" selection-end-line="24" selection-end-column="3" />
@@ -1335,13 +1135,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_51/src.zip!/java/lang/Thread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="744" column="0" selection-start-line="744" selection-start-column="0" selection-end-line="744" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_51/javafx-src.zip!/com/sun/javafx/application/PlatformImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1363,27 +1156,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/aplication/Clock.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="9" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/aplication/MainController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.027901785">
-          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-          <folding>
-            <element signature="e#1598#1599#0" expanded="false" />
-            <element signature="e#1629#1630#0" expanded="false" />
-            <element signature="e#5105#5106#0" expanded="false" />
-            <element signature="e#5175#5176#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_51/javafx-src.zip!/com/sun/javafx/application/LauncherImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.027901785">
@@ -1391,95 +1163,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_51/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.027901785">
-          <caret line="2437" column="0" selection-start-line="2437" selection-start-column="0" selection-end-line="2437" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#127909#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#3420#3421#0" expanded="false" />
-            <element signature="e#3460#3461#0" expanded="false" />
-            <element signature="e#6136#6137#0" expanded="false" />
-            <element signature="e#6196#6197#0" expanded="false" />
-            <element signature="e#45176#45177#0" expanded="false" />
-            <element signature="e#45237#45238#0" expanded="false" />
-            <element signature="e#57464#57465#0" expanded="false" />
-            <element signature="e#57536#57537#0" expanded="false" />
-            <element signature="e#60338#60339#0" expanded="false" />
-            <element signature="e#60374#60375#0" expanded="false" />
-            <element signature="e#60433#60434#0" expanded="false" />
-            <element signature="e#60475#60476#0" expanded="false" />
-            <element signature="e#60989#60990#0" expanded="false" />
-            <element signature="e#61025#61026#0" expanded="false" />
-            <element signature="e#65638#65639#0" expanded="false" />
-            <element signature="e#65673#65674#0" expanded="false" />
-            <element signature="e#66695#66696#0" expanded="false" />
-            <element signature="e#66741#66742#0" expanded="false" />
-            <element signature="e#66798#66799#0" expanded="false" />
-            <element signature="e#66843#66844#0" expanded="false" />
-            <element signature="e#68308#68309#0" expanded="false" />
-            <element signature="e#68354#68355#0" expanded="false" />
-            <element signature="e#68798#68799#0" expanded="false" />
-            <element signature="e#68844#68845#0" expanded="false" />
-            <element signature="e#69249#69250#0" expanded="false" />
-            <element signature="e#69295#69296#0" expanded="false" />
-            <element signature="e#69695#69696#0" expanded="false" />
-            <element signature="e#69741#69742#0" expanded="false" />
-            <element signature="e#78526#78527#0" expanded="false" />
-            <element signature="e#78601#78602#0" expanded="false" />
-            <element signature="e#78704#78705#0" expanded="false" />
-            <element signature="e#78735#78736#0" expanded="false" />
-            <element signature="e#78887#78888#0" expanded="false" />
-            <element signature="e#78923#78924#0" expanded="false" />
-            <element signature="e#79125#79126#0" expanded="false" />
-            <element signature="e#79172#79173#0" expanded="false" />
-            <element signature="e#80089#80090#0" expanded="false" />
-            <element signature="e#80142#80143#0" expanded="false" />
-            <element signature="e#81469#81470#0" expanded="false" />
-            <element signature="e#81500#81501#0" expanded="false" />
-            <element signature="e#81664#81665#0" expanded="false" />
-            <element signature="e#81704#81705#0" expanded="false" />
-            <element signature="e#81840#81841#0" expanded="false" />
-            <element signature="e#81872#81873#0" expanded="false" />
-            <element signature="e#82050#82051#0" expanded="false" />
-            <element signature="e#82092#82093#0" expanded="false" />
-            <element signature="e#82217#82218#0" expanded="false" />
-            <element signature="e#82249#82250#0" expanded="false" />
-            <element signature="e#82379#82380#0" expanded="false" />
-            <element signature="e#82409#82410#0" expanded="false" />
-            <element signature="e#82808#82809#0" expanded="false" />
-            <element signature="e#82840#82841#0" expanded="false" />
-            <element signature="e#83757#83758#0" expanded="false" />
-            <element signature="e#83793#83794#0" expanded="false" />
-            <element signature="e#84717#84718#0" expanded="false" />
-            <element signature="e#84754#84755#0" expanded="false" />
-            <element signature="e#84927#84928#0" expanded="false" />
-            <element signature="e#84979#84980#0" expanded="false" />
-            <element signature="e#85147#85148#0" expanded="false" />
-            <element signature="e#85187#85188#0" expanded="false" />
-            <element signature="e#85576#85577#0" expanded="false" />
-            <element signature="e#85606#85607#0" expanded="false" />
-            <element signature="e#96630#96631#0" expanded="false" />
-            <element signature="e#96698#96699#0" expanded="false" />
-            <element signature="e#106199#106200#0" expanded="false" />
-            <element signature="e#106271#106272#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/network/tcpip/Network.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.027901785">
           <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/aplication/FindPort.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4419643">
-          <caret line="27" column="9" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
           <folding />
         </state>
       </provider>
@@ -1493,22 +1180,6 @@
             <element signature="e#564#565#0" expanded="false" />
             <element signature="e#592#593#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/aplication/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/network/serial/SerialConnector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1538,19 +1209,6 @@
     <entry file="file://$PROJECT_DIR$/src/resources/images/volume down.png">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/images/volumeUp.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/aplication/LocalDatabase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../client/out/production/client/sample/sample.fxml">
@@ -1583,9 +1241,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../client/src/client/NetworkController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16759777">
+          <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/main.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.7936509">
+        <state vertical-scroll-proportion="0.21052632">
           <caret line="11" column="3" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
           <folding />
         </state>
@@ -1594,10 +1260,77 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../client/src/client/NetworkController.java">
+    <entry file="file://$PROJECT_DIR$/src/resources/images/volumeUp.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/aplication/Clock.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#227#228#0" expanded="true" />
+            <element signature="e#279#280#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/aplication/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.083798885">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/aplication/LocalDatabase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16920474">
+          <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_51/src.zip!/java/lang/Thread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="744" column="0" selection-start-line="744" selection-start-column="0" selection-end-line="744" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out/production/server/resources/main.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.9682539">
+          <caret line="10" column="21" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_51/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="2582" column="0" selection-start-line="2582" selection-start-column="0" selection-end-line="2582" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/network/serial/SerialConnector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="45" selection-start-line="27" selection-start-column="45" selection-end-line="27" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/network/serial/FindPort.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="12" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
           <folding />
         </state>
       </provider>
@@ -1605,15 +1338,23 @@
     <entry file="file://$PROJECT_DIR$/src/aplication/ClientObject.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+          <caret line="48" column="12" selection-start-line="48" selection-start-column="12" selection-end-line="48" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/aplication/Mp3Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33277026">
-          <caret line="73" column="48" selection-start-line="73" selection-start-column="48" selection-end-line="73" selection-end-column="48" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="91" column="25" selection-start-line="91" selection-start-column="25" selection-end-line="91" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/aplication/MainController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3321492">
+          <caret line="158" column="12" selection-start-line="158" selection-start-column="12" selection-end-line="158" selection-end-column="12" />
           <folding />
         </state>
       </provider>

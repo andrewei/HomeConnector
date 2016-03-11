@@ -13,6 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import network.serial.FindPort;
 import network.serial.SerialConnector;
 import network.tcpip.NetworkController;
 
@@ -20,15 +21,25 @@ import java.io.File;
 import java.net.URL;
 import java.util.*;
 
-/**
- * Created by andreas on 1/5/2016.
- */
 public class MainController implements Initializable{
+
+    public ListProperty<File> listProperty = new SimpleListProperty<>();
+    public SerialConnector serialConnector;
 
     private Stage myStage;
     private ColorAdjust colorAdjust;
     private static NetworkController networkController = new NetworkController();
     private Thread thread;
+    private Timer clock;
+    private List<File> listOfFiles;
+    private static Mp3Player player;
+
+    @FXML
+    public Text str_date;
+    @FXML
+    public Text str_hour;
+    @FXML
+    public Text str_minute;
 
     @FXML
     private ImageView btn_pwr;
@@ -38,12 +49,6 @@ public class MainController implements Initializable{
     private ImageView btn_vdown;
     @FXML
     private ImageView btn_source;
-    @FXML
-    public Text str_date;
-    @FXML
-    public Text str_hour;
-    @FXML
-    public Text str_minute;
     @FXML
     private ListView list_music;
     @FXML
@@ -60,16 +65,6 @@ public class MainController implements Initializable{
     private TextField tf_currentSong;
     @FXML
     private SplitPane rootObj;
-    private Timer clock;
-
-    public void setStage(Stage stage) {
-        myStage = stage;
-    }
-    protected ListProperty<File> listProperty = new SimpleListProperty<>();
-
-    public SerialConnector serialConnector;
-    List<File> listOfFiles;
-    static Mp3Player player;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -77,7 +72,6 @@ public class MainController implements Initializable{
         clock = new Timer();
         clock.schedule(new Clock(this), 0, 1000);
         initMp3Player();
-
         //setSound initial startvalue
         slide_vol.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
@@ -98,6 +92,10 @@ public class MainController implements Initializable{
         getMp3DataThread();
     }
 
+    public void setStage(Stage stage) {
+        myStage = stage;
+    }
+
     public void btn_stop(MouseEvent event){
         player.stop();
         networkController.stopSong();
@@ -113,7 +111,6 @@ public class MainController implements Initializable{
         int randInt = random.nextInt(listProperty.getSize());
         File file = listProperty.get(randInt);
         playSong(file);
-
     }
 
     public void initMp3Player() {
@@ -157,10 +154,12 @@ public class MainController implements Initializable{
     public void initSerial() {
         try {
             FindPort findPort = new FindPort();
-            findPort.availablePorts();
-            //Til senere, sjekk om Com 4 er i listen, hvis ikke avslutt.
-            serialConnector = new SerialConnector(this);
-            serialConnector.connect("COM6");
+            List availablePorts = findPort.availablePorts();
+            //TODO test if this code works with remote and doorbell, fix exeption, add test
+            for(int i = 0; i < availablePorts.size(); i++){
+                serialConnector = new SerialConnector(this);
+                serialConnector.connect("" + availablePorts.get(i));
+            }
         } catch (Exception e) {
             //e.printStackTrace();
             System.out.println("could not open serial connection");
