@@ -5,6 +5,7 @@ import javafx.beans.property.SimpleListProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -17,6 +18,7 @@ import network.serial.FindPort;
 import network.serial.SerialConnector;
 import network.tcpip.NetworkController;
 
+import java.awt.event.ActionEvent;
 import java.io.File;
 import java.net.URL;
 import java.util.*;
@@ -30,7 +32,8 @@ public class MainController implements Initializable{
     private ColorAdjust colorAdjust;
     private static NetworkController networkController = new NetworkController();
     private Thread thread;
-    private Timer clock;
+    private Timer clockTimerObject;
+    private Clock clock;
     private List<File> listOfFiles;
     private static Mp3Player player;
 
@@ -65,12 +68,20 @@ public class MainController implements Initializable{
     private TextField tf_currentSong;
     @FXML
     private SplitPane rootObj;
+    @FXML
+    private TextField alarmHour;
+    @FXML
+    private TextField alarmMinute;
+    @FXML
+    private ToggleButton alarmToggle;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initSerial();
-        clock = new Timer();
-        clock.schedule(new Clock(this), 0, 1000);
+        clockTimerObject = new Timer();
+        clockTimerObject.schedule(clock = new Clock(this), 0, 1000);
+        clock.setAlarm(16,0,true);
+
         initMp3Player();
         //setSound initial startvalue
         slide_vol.valueProperty().addListener(new ChangeListener<Number>() {
@@ -91,6 +102,12 @@ public class MainController implements Initializable{
         //gets info from mp3Player, like where in the song are you now
         getMp3DataThread();
     }
+
+    public void setAlarm(MouseEvent event){
+        System.out.println("SetAlarm is running and it is " + alarmToggle.isSelected());
+        clock.setAlarm(Integer.parseInt(alarmHour.getText()), Integer.parseInt(alarmMinute.getText()), alarmToggle.isSelected());
+    }
+
 
     public void setStage(Stage stage) {
         myStage = stage;
@@ -216,7 +233,7 @@ public class MainController implements Initializable{
                     }
                 }
                 catch (Exception e){
-                    System.out.println("Error in sending json object, fix error msg latewr");
+                    System.out.println("Error in sending json object, fix error msg later");
                 }
             }
         }

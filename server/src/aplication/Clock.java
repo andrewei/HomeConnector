@@ -6,9 +6,14 @@ import java.util.TimerTask;
 
 public class Clock extends TimerTask{
     MainController mainController;
-
+    private boolean isAlarmSet;
+    private int alarmHour;
+    private int alarmMinute;
     public Clock(MainController mainController) {
         this.mainController = mainController;
+        this.isAlarmSet = false;
+        this.alarmHour = 0;
+        this.alarmMinute = 0;
     }
 
     @Override
@@ -29,5 +34,22 @@ public class Clock extends TimerTask{
         } else{
             mainController.str_minute.setText("" + minute);
         }
+        checkAlarm(hour,minute);
+
     }
+    public void checkAlarm(int nowHour, int nowMinute){
+        if (this.alarmHour == nowHour && this.alarmMinute == nowMinute && isAlarmSet){
+            System.out.printf("ALARM");
+            mainController.playSong("file:///F:/mp3/doorbell/1.mp3");
+            isAlarmSet = false;
+        }
+    }
+
+    public void setAlarm(int hour, int minute, boolean setAlarm){
+        this.alarmHour = hour;
+        this.alarmMinute = minute;
+        this.isAlarmSet = setAlarm;
+    }
+
+
 }
