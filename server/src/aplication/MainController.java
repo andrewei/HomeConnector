@@ -5,20 +5,19 @@ import javafx.beans.property.SimpleListProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import network.serial.FindPort;
 import network.serial.SerialConnector;
 import network.tcpip.NetworkController;
-
-import java.awt.event.ActionEvent;
 import java.io.File;
 import java.net.URL;
 import java.util.*;
@@ -74,6 +73,32 @@ public class MainController implements Initializable{
     private TextField alarmMinute;
     @FXML
     private ToggleButton alarmToggle;
+    @FXML
+    private Parent root;
+
+    public void alarmChsose(MouseEvent event){
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Resource File");
+        File file = fileChooser.showOpenDialog(myStage);
+        if (file != null) {
+            System.out.println("File: " + file.getName());
+            clock.setAlarmsong(file);
+        }
+    }
+    public void doorbellChsose(MouseEvent event){
+        if(serialConnector != null){
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Open Resource File");
+            File file = fileChooser.showOpenDialog(myStage);
+            if (file != null) {
+                System.out.println("File: " + file.getName());
+                serialConnector.setDoorBellSong(file);
+            }
+        }
+        else{
+            System.out.println("Serial connector is null, is the doorbell connected?");
+        }
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -107,6 +132,7 @@ public class MainController implements Initializable{
         System.out.println("SetAlarm is running and it is " + alarmToggle.isSelected());
         clock.setAlarm(Integer.parseInt(alarmHour.getText()), Integer.parseInt(alarmMinute.getText()), alarmToggle.isSelected());
     }
+
 
 
     public void setStage(Stage stage) {

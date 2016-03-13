@@ -2,14 +2,17 @@ package aplication;
 
 import network.tcpip.NetworkController;
 
+import java.net.InetAddress;
+
 public class ClientObject {
-    private static NetworkController networkController = new NetworkController();
+    private NetworkController networkController;
     private String name;
     private String ip;
     private int delay;
     private boolean active;
 
-    public ClientObject(String name, String ip, int delay, boolean active){
+    public ClientObject(String name, String ip, int delay, boolean active, NetworkController networkController){
+        this.networkController = networkController;
         this.name = name;
         this.ip = ip;
         this.delay = delay;

@@ -4,6 +4,8 @@ import aplication.ClientObject;
 import network.tcpip.Network;
 import org.json.simple.JSONObject;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 
 /**
@@ -13,11 +15,16 @@ public class NetworkController {
 
     ArrayList<ClientObject> clientObjects;
 
-    public NetworkController(){
+    public NetworkController()  {
         clientObjects = new ArrayList<ClientObject>();
-        clientObjects.add(new ClientObject("Server",     "127.0.0.1",      230, true));
-        clientObjects.add(new ClientObject("Stasjonear", "192.168.10.146", 190, true));
-        clientObjects.add(new ClientObject("PC LINE",    "192.168.10.171",   1, true));
+        try {
+            clientObjects.add(new ClientObject("Server", InetAddress.getByName("localhost").getHostAddress(), 230, true, this));
+            //clientObjects.add(new ClientObject("Stasjonear", "192.168.10.146", 190, true, this ));
+            //clientObjects.add(new ClientObject("PC LINE",    "192.168.10.171",   1, true, this));
+        }
+        catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
     }
 
     private static Network network = new Network();

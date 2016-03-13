@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.image.*?>
@@ -184,6 +186,7 @@
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="661.0" prefWidth="1024.0">
                            <children>
                               <Text layoutX="47.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Here comes info about the doorbell. Change sounds +++" wrappingWidth="990.666015625" />
+                              <Button layoutX="47.0" layoutY="107.0" mnemonicParsing="false" onMouseClicked="#doorbellChsose" text="Choose doorbell song " />
                            </children></AnchorPane>
                      </content>
                   </Tab>
@@ -245,6 +248,7 @@
                                     <Font size="53.0" />
                                  </font>
                               </ToggleButton>
+                              <Button fx:id="alarmChsose" layoutX="125.0" layoutY="376.0" mnemonicParsing="false" onMouseClicked="#alarmChsose" text="Choose Alarm" />
                            </children></AnchorPane>
                      </content>
                   </Tab>

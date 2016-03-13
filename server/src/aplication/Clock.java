@@ -1,15 +1,19 @@
 package aplication;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.TimerTask;
 
 public class Clock extends TimerTask{
-    MainController mainController;
+
+    private MainController mainController;
     private boolean isAlarmSet;
     private int alarmHour;
     private int alarmMinute;
+    private File alarmSong;
     public Clock(MainController mainController) {
+        this.alarmSong = null;
         this.mainController = mainController;
         this.isAlarmSet = false;
         this.alarmHour = 0;
@@ -18,6 +22,7 @@ public class Clock extends TimerTask{
 
     @Override
     public void run() {
+
         mainController.str_date.setText(String.valueOf(LocalDate.now()));
         Calendar rightNow = Calendar.getInstance();
         int hour = rightNow.get(Calendar.HOUR_OF_DAY);
@@ -37,10 +42,20 @@ public class Clock extends TimerTask{
         checkAlarm(hour,minute);
 
     }
+
+    public void setAlarmsong(File alarmSong){
+        this.alarmSong = alarmSong;
+    }
+
     public void checkAlarm(int nowHour, int nowMinute){
         if (this.alarmHour == nowHour && this.alarmMinute == nowMinute && isAlarmSet){
             System.out.printf("ALARM");
-            mainController.playSong("file:///F:/mp3/doorbell/1.mp3");
+            if(alarmSong == null){
+                mainController.playSong("file:///F:/mp3/doorbell/1.mp3");
+            }
+            else {
+                mainController.playSong(alarmSong);
+            }
             isAlarmSet = false;
         }
     }

@@ -5,6 +5,7 @@ import gnu.io.CommPort;
 import gnu.io.CommPortIdentifier;
 import gnu.io.SerialPort;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -13,6 +14,8 @@ import java.io.OutputStream;
  * Created by andreas on 1/5/2016.
  */
 public class SerialConnector {
+
+    private static File doorBellSong;
 
     private static int write;
     private static MainController mainController;
@@ -27,6 +30,11 @@ public class SerialConnector {
         super();
         this.mainController = mainController;
         write = 0;
+        this.doorBellSong = null;
+    }
+
+    public void setDoorBellSong(File doorBellSong){
+        this.doorBellSong = doorBellSong;
     }
 
 
@@ -72,7 +80,12 @@ public class SerialConnector {
                     String line = (new String(buffer,0,len));
                     if(line.equals("1")){
                         System.out.println("doorBellClicked");
-                        mainController.playSong("file:///F:/mp3/doorbell/1.mp3");
+                        if(doorBellSong == null){
+                            mainController.playSong("file:///F:/mp3/doorbell/1.mp3");
+                        }
+                        else {
+                            mainController.playSong(doorBellSong);
+                        }
                     }
                 }
             }
