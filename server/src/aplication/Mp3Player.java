@@ -1,5 +1,6 @@
 package aplication;
 
+import controller.MainController;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;

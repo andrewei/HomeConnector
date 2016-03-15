@@ -1,5 +1,8 @@
-package aplication;
+package controller;
 
+import aplication.Clock;
+import aplication.LocalDatabase;
+import aplication.Mp3Player;
 import config.ConfigPath;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
@@ -17,15 +20,17 @@ import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import controller.tab.Tab1Controller;
 import network.serial.FindPort;
 import network.serial.SerialConnector;
 import network.tcpip.NetworkController;
+import controller.tab.Tab2Controller;
+
 import java.io.File;
 import java.net.URL;
 import java.util.*;
 
-public class MainController implements Initializable{
-
+public class MainController implements Initializable {
     public ConfigPath getConfigPath() {
         return configPath;
     }
@@ -42,6 +47,7 @@ public class MainController implements Initializable{
     private Clock clock;
     private List<File> listOfFiles;
     private static Mp3Player player;
+
 
 
 
@@ -88,8 +94,11 @@ public class MainController implements Initializable{
     private Text textInfoAlarmSong;
     @FXML
     private ToggleButton alarmToggle;
+    @FXML Parent root;
     @FXML
-    private Parent root;
+    Tab1Controller tab1Controller;
+    @FXML
+    Tab2Controller tab2Controller;
 
     public void alarmChoose(MouseEvent event){
         FileChooser fileChooser = new FileChooser();
@@ -132,8 +141,10 @@ public class MainController implements Initializable{
     }
 
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    @FXML public void initialize(URL location, ResourceBundle resources) {
+       tab1Controller.init(this);
+       tab2Controller.init(this);
+
         configPath = new ConfigPath();
         player = new Mp3Player(this);
 
@@ -319,5 +330,8 @@ public class MainController implements Initializable{
         }
         thread = new Thread(new mp3UpdateyThread());
         thread.start();
+    }
+    public void testDeleteMe(){
+        System.out.println("THIS IS WORKING: TEST OK");
     }
 }

@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<SplitPane fx:id="rootObj" dividerPositions="0.16504065040650406" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aplication.MainController">
+<SplitPane fx:id="rootObj" dividerPositions="0.16504065040650406" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
    <items>
       <AnchorPane prefHeight="720.0" prefWidth="231.0">
          <children>
@@ -60,75 +60,13 @@
             <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1062.0" prefWidth="1598.0" rotateGraphic="true" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab text="Lights">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <Button layoutX="164.0" layoutY="259.0" mnemonicParsing="false" text="Button" />
-                              <Button layoutX="164.0" layoutY="222.0" mnemonicParsing="false" text="Button" />
-                              <Button layoutX="164.0" layoutY="428.0" mnemonicParsing="false" text="Button" />
-                              <Button layoutX="164.0" layoutY="188.0" mnemonicParsing="false" text="Button" />
-                              <Button layoutX="164.0" layoutY="391.0" mnemonicParsing="false" text="Button" />
-                              <Button layoutX="164.0" layoutY="357.0" mnemonicParsing="false" text="Button" />
-                              <Button layoutX="164.0" layoutY="498.0" mnemonicParsing="false" text="Button" />
-                              <Button layoutX="164.0" layoutY="532.0" mnemonicParsing="false" text="Button" />
-                              <Button layoutX="164.0" layoutY="569.0" mnemonicParsing="false" text="Button" />
-                              <Text layoutX="58.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2. Floor" />
-                              <Text layoutX="58.0" layoutY="408.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. Floor" />
-                              <Text layoutX="58.0" layoutY="549.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Basement" />
-                              <Button layoutX="228.0" layoutY="532.0" mnemonicParsing="false" text="Button" />
-                              <Button layoutX="228.0" layoutY="569.0" mnemonicParsing="false" text="Button" />
-                              <Button layoutX="228.0" layoutY="498.0" mnemonicParsing="false" text="Button" />
-                              <Button layoutX="228.0" layoutY="356.0" mnemonicParsing="false" text="Button" />
-                              <Button layoutX="228.0" layoutY="390.0" mnemonicParsing="false" text="Button" />
-                              <Button layoutX="228.0" layoutY="427.0" mnemonicParsing="false" text="Button" />
-                              <Button layoutX="228.0" layoutY="188.0" mnemonicParsing="false" text="Button" />
-                              <Button layoutX="228.0" layoutY="259.0" mnemonicParsing="false" text="Button" />
-                              <Button layoutX="228.0" layoutY="222.0" mnemonicParsing="false" text="Button" />
-                              <ToggleButton layoutX="755.0" layoutY="789.0" mnemonicParsing="false" text="ToggleButton" />
-                              <ImageView fitHeight="589.0" fitWidth="648.0" layoutX="505.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@images/lightBulb.png" />
-                                 </image>
-                              </ImageView>
-                              <Button layoutX="37.0" layoutY="33.0" mnemonicParsing="false" text="Saved state 1" />
-                              <Button layoutX="141.0" layoutY="33.0" mnemonicParsing="false" text="Saved state 2" />
-                              <Button layoutX="242.0" layoutY="33.0" mnemonicParsing="false" text="Saved state 3" />
-                              <Button layoutX="1475.0" layoutY="33.0" mnemonicParsing="false" text="Turn off all" textFill="RED" />
-                              <Slider layoutX="664.0" layoutY="741.0" prefHeight="25.0" prefWidth="270.0" />
-                           </children></AnchorPane>
-                  </content>
+                     <content>
+                        <fx:include fx:id="tab1" source="Tab1.fxml" />
+                     </content>
                 </Tab>
                   <Tab text="Temperature">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="695.0" prefWidth="1032.0">
-                           <children>
-                              <Text layoutX="38.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Temperature basement" wrappingWidth="259.13671875">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                              <Text layoutX="38.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Temperature Living room" wrappingWidth="259.13671875">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                              <Text layoutX="38.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Temperature bedroom" wrappingWidth="259.13671875">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                              <Text layoutX="340.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current" wrappingWidth="259.13671875">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                              <Text layoutX="573.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Set" wrappingWidth="259.13671875">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </AnchorPane>
+                        <fx:include fx:id="tab2" source="Tab2.fxml" />
                      </content>
                   </Tab>
                 <Tab text="TV remotes">

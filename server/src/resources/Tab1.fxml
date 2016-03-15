@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="871.0" prefWidth="1575.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.tab.Tab1Controller">
+   <children>
+      <Slider layoutX="674.0" layoutY="751.0" prefHeight="25.0" prefWidth="270.0" />
+      <Button layoutX="1485.0" layoutY="43.0" mnemonicParsing="false" text="Turn off all" textFill="RED" />
+      <Button layoutX="252.0" layoutY="43.0" mnemonicParsing="false" text="Saved state 3" />
+      <Button layoutX="151.0" layoutY="43.0" mnemonicParsing="false" text="Saved state 2" />
+      <Button layoutX="47.0" layoutY="43.0" mnemonicParsing="false" text="Saved state 1" />
+      <ImageView fitHeight="589.0" fitWidth="648.0" layoutX="515.0" layoutY="161.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/lightBulb.png" />
+         </image>
+      </ImageView>
+      <ToggleButton layoutX="765.0" layoutY="799.0" mnemonicParsing="false" text="ToggleButton" />
+      <Button layoutX="238.0" layoutY="232.0" mnemonicParsing="false" text="Button" />
+      <Button layoutX="238.0" layoutY="269.0" mnemonicParsing="false" text="Button" />
+      <Button layoutX="238.0" layoutY="198.0" mnemonicParsing="false" text="Button" />
+      <Button layoutX="238.0" layoutY="437.0" mnemonicParsing="false" text="Button" />
+      <Button layoutX="238.0" layoutY="400.0" mnemonicParsing="false" text="Button" />
+      <Button layoutX="238.0" layoutY="366.0" mnemonicParsing="false" text="Button" />
+      <Button layoutX="238.0" layoutY="508.0" mnemonicParsing="false" text="Button" />
+      <Button layoutX="238.0" layoutY="579.0" mnemonicParsing="false" text="Button" />
+      <Button layoutX="238.0" layoutY="542.0" mnemonicParsing="false" text="Button" />
+      <Text layoutX="68.0" layoutY="559.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Basement" />
+      <Text layoutX="68.0" layoutY="418.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. Floor" />
+      <Text layoutX="68.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2. Floor" />
+      <Button layoutX="174.0" layoutY="579.0" mnemonicParsing="false" text="Button" />
+      <Button layoutX="174.0" layoutY="542.0" mnemonicParsing="false" text="Button" />
+      <Button layoutX="174.0" layoutY="508.0" mnemonicParsing="false" text="Button" />
+      <Button layoutX="174.0" layoutY="367.0" mnemonicParsing="false" text="Button" />
+      <Button layoutX="174.0" layoutY="401.0" mnemonicParsing="false" text="Button" />
+      <Button layoutX="174.0" layoutY="198.0" mnemonicParsing="false" text="Button" />
+      <Button layoutX="174.0" layoutY="438.0" mnemonicParsing="false" text="Button" />
+      <Button layoutX="174.0" layoutY="232.0" mnemonicParsing="false" text="Button" />
+      <Button layoutX="174.0" layoutY="269.0" mnemonicParsing="false" text="Button" />
+      <Button layoutX="346.0" layoutY="128.0" mnemonicParsing="false" onMouseClicked="#testControllerSetup" prefHeight="144.0" prefWidth="259.0" text="TEST CONTROLLERSETUP" />
+   </children>
+</AnchorPane>

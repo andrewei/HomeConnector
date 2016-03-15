@@ -1,11 +1,10 @@
 package network.serial;
 
-import aplication.MainController;
+import controller.MainController;
 import gnu.io.CommPort;
 import gnu.io.CommPortIdentifier;
 import gnu.io.SerialPort;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;

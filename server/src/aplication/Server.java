@@ -1,18 +1,16 @@
 package aplication;
 
+import controller.MainController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
-import java.io.File;
 
 public class Server extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../resources/main.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../resources/Main.fxml"));
         Parent root = (Parent)loader.load();
         MainController controller = (MainController)loader.getController();
         controller.setStage(primaryStage);
