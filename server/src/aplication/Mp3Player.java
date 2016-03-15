@@ -11,10 +11,10 @@ public class Mp3Player {
     private static MediaPlayer mediaPlayer;
     private static int event = 0;
     private double volume = .5;
-    private MainController main;
+    private MainController mainController;
 
     public Mp3Player(MainController main){
-        this.main = main;
+        this.mainController = main;
         //must have a file to initiate the mediaplayer
         Media media = new Media("file:///F:/mp3/mp3z/Xzibit-X.mp3");
         mediaPlayer = new MediaPlayer(media);
@@ -72,14 +72,16 @@ public class Mp3Player {
                         @Override
                         public void run() {
                             System.out.println("END OF FILE");
-                            main.btn_next_click(null);
+                            //TODO fix the line under
+                            //mainController.btn_next_click(null);
                         }
                     });
                     mediaPlayer.setOnError(new Runnable() {
                         @Override
                         public void run() {
                             System.out.println("ERROR WHEN PLAYNG FILE, SKIPS");
-                            main.btn_next_click(null);
+                            //TODO fix the line under
+                            //mainController.btn_next_click(null);
                         }
                     });
                     mediaPlayer.setVolume(0);

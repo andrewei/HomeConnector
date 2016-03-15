@@ -70,127 +70,23 @@
                      </content>
                   </Tab>
                 <Tab text="TV remotes">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <Button layoutX="14.0" layoutY="226.0" minHeight="150.0" minWidth="150.0" mnemonicParsing="false" text="Sony">
-                                 <font>
-                                    <Font size="27.0" />
-                                 </font></Button>
-                              <Button layoutX="14.0" layoutY="536.0" minHeight="150.0" minWidth="150.0" mnemonicParsing="false" text="Samsung" textFill="#4d4141">
-                                 <font>
-                                    <Font size="27.0" />
-                                 </font></Button>
-                              <Group layoutX="188.0" layoutY="144.0" scaleX="1.3" scaleY="1.3">
-                                 <children>
-                                    <Circle fill="#b9b9b9" layoutX="443.0" layoutY="309.0" radius="239.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="150.0">
-                                       <stroke>
-                                          <RadialGradient centerX="0.5" centerY="0.5333333333333333" radius="0.5">
-                                             <stops>
-                                                <Stop color="WHITE" />
-                                                <Stop color="#d70000" offset="1.0" />
-                                             </stops>
-                                          </RadialGradient>
-                                       </stroke>
-                                    </Circle>
-                                    <ImageView fx:id="btn_source" fitHeight="70.0" fitWidth="71.0" layoutX="259.0" layoutY="282.0" onMouseClicked="#btn_source_click" onMouseReleased="#resetColor" onTouchPressed="#btn_source_click" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@images/input.png" />
-                                       </image>
-                                    </ImageView>
-                                    <ImageView fx:id="btn_pwr" fitHeight="150.0" fitWidth="200.0" layoutX="374.0" layoutY="234.0" onMouseClicked="#btn_pwr_click" onMouseReleased="#resetColor" onTouchPressed="#btn_pwr_click" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@images/powerButton.png" />
-                                       </image>
-                                    </ImageView>
-                                    <ImageView fx:id="btn_Vup" fitHeight="100.0" fitWidth="87.0" layoutX="529.0" layoutY="174.0" onMouseClicked="#btn_vup_click" onMouseReleased="#resetColor" onTouchPressed="#btn_vup_click" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@images/volumeUp.png" />
-                                       </image>
-                                    </ImageView>
-                                    <ImageView fx:id="btn_vdown" fitHeight="88.0" fitWidth="128.0" layoutX="522.0" layoutY="378.0" onMouseClicked="#btn_vdown_click" onMouseReleased="#resetColor" onTouchPressed="#btn_vdown_click" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@images/volume%20down.png" />
-                                       </image>
-                                    </ImageView>
-                                 </children>
-                              </Group>
-                           </children>
-                        </AnchorPane>
-                  </content>
+                     <content>
+                        <fx:include fx:id="tab3" source="Tab3.fxml" />
+                     </content>
                 </Tab>
                   <Tab text="Door bell">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="661.0" prefWidth="1024.0">
-                           <children>
-                              <Text fx:id="textInfoDoorbellSong" layoutX="47.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No doorbell song selected" wrappingWidth="990.666015625" />
-                              <Button layoutX="47.0" layoutY="107.0" mnemonicParsing="false" onMouseClicked="#doorbellChoose" text="Choose doorbell song " />
-                           </children></AnchorPane>
+                        <fx:include fx:id="tab4" source="Tab4.fxml" />
                      </content>
                   </Tab>
                   <Tab text="Music">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1033.0" prefWidth="1325.0">
-                           <children>
-                              <Text layoutX="27.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Local network media player" wrappingWidth="449.47802734375">
-                                 <font>
-                                    <Font size="37.0" />
-                                 </font>
-                              </Text>
-                              <Text layoutX="13.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change to spotify?" wrappingWidth="174.47802734375" />
-                              <ListView fx:id="list_music" layoutX="27.0" layoutY="133.0" onMouseClicked="#playSong" prefHeight="742.0" prefWidth="1429.0" />
-                              <TextField layoutX="1366.0" layoutY="98.0" promptText="Search" />
-                              <Button layoutX="275.0" layoutY="888.0" mnemonicParsing="false" onMouseClicked="#btn_play" prefHeight="48.0" prefWidth="88.0" text="Play" />
-                              <Button layoutX="181.0" layoutY="888.0" mnemonicParsing="false" onMouseClicked="#btn_stop" prefHeight="48.0" prefWidth="88.0" text="Stop" />
-                              <Button layoutX="376.0" layoutY="888.0" mnemonicParsing="false" onMouseClicked="#btn_next_click" prefHeight="48.0" prefWidth="88.0" text="Next" />
-                              <Button layoutX="81.0" layoutY="888.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="88.0" text="Previous" />
-                              <Button layoutX="1099.0" layoutY="28.0" mnemonicParsing="false" onMouseClicked="#rootChoose" prefHeight="25.0" prefWidth="223.0" text="Set RootFolder and import" />
-                              <Slider fx:id="slide_vol" layoutX="1125.0" layoutY="897.0" prefHeight="32.0" prefWidth="331.0" />
-                              <Slider fx:id="slide_time" layoutX="27.0" layoutY="935.0" onMouseDragged="#setSongTime" prefHeight="58.0" prefWidth="1431.0" />
-                              <Text layoutX="13.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select speakers" wrappingWidth="174.47802734375" />
-                              <TextField fx:id="tf_currentSong" editable="false" layoutX="491.0" layoutY="888.0" prefHeight="49.0" prefWidth="615.0" promptText="&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;Det er musikken som teller&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;" />
-                              <Text fx:id="textInfoRootFolder" layoutX="1358.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No root folder selected" wrappingWidth="314.0" />
-                              <Button layoutX="1351.0" layoutY="28.0" mnemonicParsing="false" onMouseClicked="#rootImport" prefHeight="25.0" prefWidth="107.0" text="import" />
-                           </children></AnchorPane>
+                        <fx:include fx:id="tab5" source="Tab5.fxml" />
                      </content>
                   </Tab>
                   <Tab text="Alarm">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <TextField fx:id="alarmHour" alignment="CENTER" layoutX="125.0" layoutY="607.0" promptText="00">
-                                 <font>
-                                    <Font size="17.0" />
-                                 </font>
-                              </TextField>
-                              <Text layoutX="56.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Set alarm">
-                                 <font>
-                                    <Font size="82.0" />
-                                 </font>
-                              </Text>
-                              <Text layoutX="172.0" layoutY="575.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hour">
-                                 <font>
-                                    <Font size="53.0" />
-                                 </font>
-                              </Text>
-                              <Text layoutX="418.0" layoutY="574.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Minute">
-                                 <font>
-                                    <Font size="53.0" />
-                                 </font>
-                              </Text>
-                              <TextField fx:id="alarmMinute" alignment="CENTER" layoutX="396.0" layoutY="607.0" promptText="00">
-                                 <font>
-                                    <Font size="17.0" />
-                                 </font>
-                              </TextField>
-                              <ToggleButton fx:id="alarmToggle" layoutX="738.0" layoutY="527.0" mnemonicParsing="false" onMouseClicked="#setAlarm" prefHeight="113.0" prefWidth="239.0" text="On/Off">
-                                 <font>
-                                    <Font size="53.0" />
-                                 </font>
-                              </ToggleButton>
-                              <Button fx:id="alarmChsose" layoutX="125.0" layoutY="376.0" mnemonicParsing="false" onMouseClicked="#alarmChoose" text="Choose Alarm" />
-                              <Text fx:id="textInfoAlarmSong" layoutX="125.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Alarm selected" wrappingWidth="1046.13671875" />
-                           </children></AnchorPane>
+                        <fx:include fx:id="tab6" source="Tab6.fxml" />
                      </content>
                   </Tab>
               </tabs>

@@ -44,6 +44,5 @@
       <Button layoutX="174.0" layoutY="438.0" mnemonicParsing="false" text="Button" />
       <Button layoutX="174.0" layoutY="232.0" mnemonicParsing="false" text="Button" />
       <Button layoutX="174.0" layoutY="269.0" mnemonicParsing="false" text="Button" />
-      <Button layoutX="346.0" layoutY="128.0" mnemonicParsing="false" onMouseClicked="#testControllerSetup" prefHeight="144.0" prefWidth="259.0" text="TEST CONTROLLERSETUP" />
    </children>
 </AnchorPane>

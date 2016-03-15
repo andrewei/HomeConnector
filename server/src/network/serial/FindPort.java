@@ -10,19 +10,17 @@ import java.util.List;
 
 public class FindPort {
 
-    List availablePorts = new ArrayList();
+    private List availablePorts = new ArrayList();
 
     public FindPort(){
         makeList();
     }
 
     private void makeList() {
-
         Enumeration ports = CommPortIdentifier.getPortIdentifiers();
         if(ports == null){
             System.out.println("No connected devices trough seriall line");
         }
-
         while (ports.hasMoreElements()) {
             String currentOpenPort = ((CommPortIdentifier) ports.nextElement()).getName();
             System.out.println("AvailablePorts port: " + currentOpenPort);

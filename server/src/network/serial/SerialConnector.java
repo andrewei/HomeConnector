@@ -16,9 +16,7 @@ public class SerialConnector {
 
     private static int write;
     private static MainController mainController;
-    public int getWrite(){
-        return write;
-    }
+
     public void setWrite(int inn){
         this.write = inn;
     }
@@ -71,8 +69,7 @@ public class SerialConnector {
                     String line = (new String(buffer,0,len));
                     if(line.equals("1")){
                         System.out.println("doorBellClicked");
-                        mainController.playSong(mainController.getConfigPath().readKey("doorbellSong"));
-
+                        mainController.tab5Controller.playSong(mainController.configPath.readKey("doorbellSong"));
                     }
                 }
             }
@@ -113,22 +110,3 @@ public class SerialConnector {
         }
     }
 }
-
-/*
-
-            try
-            {
-                System.out.println("Ready to accept commands through console");
-                int c = 0;
-                while ( ( c = System.in.read()) > -1 )
-                {
-                    if(c != 10){                //Enter signal should not be sent. enter == 10 achi.
-                        this.out.write(c);
-                    }
-                }
-            }
-            catch ( IOException e )
-            {
-                e.printStackTrace();
-            }
- */

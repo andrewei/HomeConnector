@@ -48,7 +48,7 @@ public class Clock extends TimerTask{
     public void checkAlarm(int nowHour, int nowMinute){
         if (this.alarmHour == nowHour && this.alarmMinute == nowMinute && isAlarmSet){
             System.out.printf("ALARM");
-            mainController.playSong(mainController.getConfigPath().readKey("alarmSong"));
+            mainController.tab5Controller.playSong(mainController.configPath.readKey("alarmSong"));
             isAlarmSet = false;
         }
     }
