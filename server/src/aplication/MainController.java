@@ -1,5 +1,6 @@
 package aplication;
 
+import config.ConfigPath;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.beans.value.ChangeListener;
@@ -13,6 +14,7 @@ import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import network.serial.FindPort;
@@ -24,6 +26,11 @@ import java.util.*;
 
 public class MainController implements Initializable{
 
+    public ConfigPath getConfigPath() {
+        return configPath;
+    }
+
+    private ConfigPath configPath;
     public ListProperty<File> listProperty = new SimpleListProperty<>();
     public SerialConnector serialConnector;
 
@@ -35,6 +42,8 @@ public class MainController implements Initializable{
     private Clock clock;
     private List<File> listOfFiles;
     private static Mp3Player player;
+
+
 
     @FXML
     public Text str_date;
@@ -72,27 +81,35 @@ public class MainController implements Initializable{
     @FXML
     private TextField alarmMinute;
     @FXML
+    private Text textInfoRootFolder;
+    @FXML
+    private Text textInfoDoorbellSong;
+    @FXML
+    private Text textInfoAlarmSong;
+    @FXML
     private ToggleButton alarmToggle;
     @FXML
     private Parent root;
 
-    public void alarmChsose(MouseEvent event){
+    public void alarmChoose(MouseEvent event){
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Open Resource File");
+        fileChooser.setTitle("Choose alarm song");
         File file = fileChooser.showOpenDialog(myStage);
         if (file != null) {
-            System.out.println("File: " + file.getName());
-            clock.setAlarmsong(file);
+            configPath.storeSong("alarmSong", file);
+            String path = configPath.readKey("doorbellSong");
+            textInfoAlarmSong.setText(path);
         }
     }
-    public void doorbellChsose(MouseEvent event){
+    public void doorbellChoose(MouseEvent event){
         if(serialConnector != null){
             FileChooser fileChooser = new FileChooser();
-            fileChooser.setTitle("Open Resource File");
+            fileChooser.setTitle("Choose doorbell song");
             File file = fileChooser.showOpenDialog(myStage);
             if (file != null) {
-                System.out.println("File: " + file.getName());
-                serialConnector.setDoorBellSong(file);
+                configPath.storeSong("doorbellSong", file);
+                String path = configPath.readKey("doorbellSong");
+                textInfoDoorbellSong.setText(path);
             }
         }
         else{
@@ -100,14 +117,49 @@ public class MainController implements Initializable{
         }
     }
 
+    public void rootChoose(MouseEvent event){
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        directoryChooser.setTitle("Open Resource File");
+        File file = directoryChooser.showDialog(myStage);
+        if (file != null) {
+            configPath.storeDirectory("rootFolder", file);
+            initMp3Player();
+        }
+    }
+
+    public void rootImport(MouseEvent event){
+        initMp3Player();
+    }
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        configPath = new ConfigPath();
+        player = new Mp3Player(this);
+
+
+        String activeRootFolder = configPath.readKey("rootFolder");
+        if(activeRootFolder != null){
+            textInfoRootFolder.setText(activeRootFolder);
+        }
+        String activeDoorbellSong = configPath.readKey("doorbellSong");
+        if(activeDoorbellSong != null){
+            textInfoDoorbellSong.setText(activeDoorbellSong);
+        }
+        String activeAlarmSong = configPath.readKey("alarmSong");
+        if(activeAlarmSong != null){
+            textInfoAlarmSong.setText(activeAlarmSong);
+        }
+
+
+
+        slide_vol.adjustValue(50);
         initSerial();
         clockTimerObject = new Timer();
         clockTimerObject.schedule(clock = new Clock(this), 0, 1000);
         clock.setAlarm(16,0,true);
 
-        initMp3Player();
+        //initMp3Player();
         //setSound initial startvalue
         slide_vol.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
@@ -133,8 +185,6 @@ public class MainController implements Initializable{
         clock.setAlarm(Integer.parseInt(alarmHour.getText()), Integer.parseInt(alarmMinute.getText()), alarmToggle.isSelected());
     }
 
-
-
     public void setStage(Stage stage) {
         myStage = stage;
     }
@@ -157,13 +207,17 @@ public class MainController implements Initializable{
     }
 
     public void initMp3Player() {
-        LocalDatabase db = new LocalDatabase();
-        //listOfFiles = db.getFolderItems("\\\\FENRIZ-PC\\mp32");
-        listOfFiles = db.getFolderItems("f:\\mp3");
-        list_music.itemsProperty().bind(listProperty);
-        listProperty.set(FXCollections.observableArrayList(listOfFiles));
-        player = new Mp3Player(this);
-        slide_vol.adjustValue(50);
+
+        String activeRootFolder = configPath.readKey("rootFolder");
+        if(activeRootFolder != null){
+            textInfoRootFolder.setText(activeRootFolder);
+            LocalDatabase db = new LocalDatabase();
+            //listOfFiles = db.getFolderItems("\\\\FENRIZ-PC\\mp32");
+            //listOfFiles = db.getFolderItems("f:\\mp3");
+            listOfFiles = db.getFolderItems(activeRootFolder);
+            list_music.itemsProperty().bind(listProperty);
+            listProperty.set(FXCollections.observableArrayList(listOfFiles));
+        }
     }
 
     public void playSong(MouseEvent event){

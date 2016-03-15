@@ -43,19 +43,10 @@ public class Clock extends TimerTask{
 
     }
 
-    public void setAlarmsong(File alarmSong){
-        this.alarmSong = alarmSong;
-    }
-
     public void checkAlarm(int nowHour, int nowMinute){
         if (this.alarmHour == nowHour && this.alarmMinute == nowMinute && isAlarmSet){
             System.out.printf("ALARM");
-            if(alarmSong == null){
-                mainController.playSong("file:///F:/mp3/doorbell/1.mp3");
-            }
-            else {
-                mainController.playSong(alarmSong);
-            }
+            mainController.playSong(mainController.getConfigPath().readKey("alarmSong"));
             isAlarmSet = false;
         }
     }
