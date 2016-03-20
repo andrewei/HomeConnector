@@ -64,6 +64,7 @@ public class Mp3Player {
 
             public void run(){
                 try {
+
                     Thread.sleep(350);
                     System.out.println("playThread is running");
                     Media media = new Media(path.path);
@@ -73,7 +74,7 @@ public class Mp3Player {
                         public void run() {
                             System.out.println("END OF FILE");
                             //TODO fix the line under
-                            //mainController.btn_next_click(null);
+                            mainController.tab5Controller.btn_next_click(null);
                         }
                     });
                     mediaPlayer.setOnError(new Runnable() {
@@ -81,7 +82,7 @@ public class Mp3Player {
                         public void run() {
                             System.out.println("ERROR WHEN PLAYNG FILE, SKIPS");
                             //TODO fix the line under
-                            //mainController.btn_next_click(null);
+                            mainController.tab5Controller.btn_next_click(null);
                         }
                     });
                     mediaPlayer.setVolume(0);

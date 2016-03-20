@@ -1,12 +1,21 @@
 package controller;
 
+import aplication.ClientObject;
 import aplication.Clock;
 import aplication.Mp3Player;
 import config.ConfigPath;
 import controller.tab.*;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Slider;
+import javafx.scene.control.SplitPane;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
@@ -14,16 +23,68 @@ import javafx.stage.Stage;
 import network.serial.FindPort;
 import network.serial.SerialConnector;
 import network.tcpip.NetworkController;
+
 import java.net.URL;
-import java.util.*;
+import java.util.List;
+import java.util.ResourceBundle;
+import java.util.Timer;
 
 public class MainController implements Initializable {
 
     private ColorAdjust colorAdjust;
     private Timer clockTimerObject;
+    public ObservableList<ClientObject> observableSpeakersArray;
 
     @FXML private Slider slide_brightness;
     @FXML private SplitPane rootObj;
+    @FXML private TableView<ClientObject> tableSpeakers;
+    @FXML private TableColumn colName;
+    @FXML private TableColumn colIP;
+    @FXML private TableColumn colActive;
+
+    public void onAddItem(MouseEvent event) {
+    }
+    private void initTable(){
+
+        colName.setCellValueFactory(
+                new PropertyValueFactory<ClientObject,SimpleStringProperty>("name")
+        );
+        colIP.setCellValueFactory(
+                new PropertyValueFactory<ClientObject,SimpleStringProperty>("ip")
+        );
+        colActive.setCellValueFactory(
+                new PropertyValueFactory<ClientObject,SimpleStringProperty>("active")
+        );
+        colName.setCellFactory(TextFieldTableCell.forTableColumn());
+        colIP.setCellFactory(TextFieldTableCell.forTableColumn());
+        colActive.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        observableSpeakersArray = FXCollections.observableArrayList(); // create the data
+        tableSpeakers.setItems(observableSpeakersArray); // assign the data to the table
+    }
+
+    public void colNameCommit(TableColumn.CellEditEvent<ClientObject, String> t){
+        System.out.println("commit name");
+
+        (t.getTableView().getItems().get(
+                t.getTablePosition().getRow())
+        ).setName(t.getNewValue());
+
+
+    }
+
+    public void colIPCommit(){
+        System.out.println("commit ip");
+    }
+
+    public void colActiveCommit(TableColumn.CellEditEvent<ClientObject, String> t){
+        System.out.println("commit active");
+
+        (t.getTableView().getItems().get(
+                t.getTablePosition().getRow())
+        ).setActive(t.getNewValue());
+
+    }
 
     public static NetworkController networkController;
     public static SerialConnector serialConnector;
@@ -42,11 +103,12 @@ public class MainController implements Initializable {
     @FXML public Tab5Controller tab5Controller;
     @FXML public Tab6Controller tab6Controller;
 
-    @FXML public void initialize(URL location, ResourceBundle resources) {
 
+    @FXML public void initialize(URL location, ResourceBundle resources) {
+        initTable();
         configPath = new ConfigPath();
         player = new Mp3Player(this);
-        networkController = new NetworkController();
+        networkController = new NetworkController(this);
         initSerial();
         clockTimerObject = new Timer();
         clockTimerObject.schedule(clock = new Clock(this), 0, 1000);
