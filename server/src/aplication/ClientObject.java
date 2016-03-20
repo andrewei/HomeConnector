@@ -1,38 +1,38 @@
 package aplication;
 
-import network.tcpip.NetworkController;
-
-import java.net.InetAddress;
+import controller.MainController;
+import javafx.beans.property.SimpleStringProperty;
 
 public class ClientObject {
-    private NetworkController networkController;
-    private String name;
-    private String ip;
-    private int delay;
-    private boolean active;
+    private MainController mainController;
+    public SimpleStringProperty name = new SimpleStringProperty();
+    public SimpleStringProperty ip = new SimpleStringProperty();
+    public SimpleStringProperty active = new SimpleStringProperty();
 
-    public ClientObject(String name, String ip, int delay, boolean active, NetworkController networkController){
-        this.networkController = networkController;
-        this.name = name;
-        this.ip = ip;
+    private int delay;
+
+    public ClientObject(String name, String ip, int delay, String active, MainController mainController){
+        this.mainController = mainController;
+        this.name.set(name);
+        this.ip.set(ip);
+        this.active.set(active);
         this.delay = delay;
-        this.active = active;
     }
 
     public String getName() {
-        return name;
+        return name.get();
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name.set(name);
     }
 
     public String getIp() {
-        return ip;
+        return ip.get();
     }
 
     public void setIp(String ip) {
-        this.ip = ip;
+        this.ip.set(ip);
     }
 
     public int getDelay() {
@@ -43,14 +43,17 @@ public class ClientObject {
         this.delay = delay;
     }
 
-    public boolean isActive() {
-        return active;
+    public String getActive() {
+        return active.get();
     }
 
-    public void setActive(boolean active) {
-        this.active = active;
-        if(!active)
-            networkController.stopSong(this.ip);
-        //TODO if true, start playing along with rest of speakers
+    public void setActive(String active) {
+        this.active.set(active);
+        if(!active.equals("on"))
+            mainController.networkController.stopSong(this.ip.get());
+        else{
+            //TODO this needs refactoring, store lastSong somewere else
+            mainController.tab5Controller.playSong(mainController.networkController.getLastSong());
+        }
     }
 }

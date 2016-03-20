@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.geometry.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.*?>
 <SplitPane fx:id="rootObj" dividerPositions="0.16504065040650406" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
    <items>
       <AnchorPane prefHeight="720.0" prefWidth="231.0">
@@ -53,6 +50,15 @@
                </font>
             </Text>
             <ToggleButton layoutX="64.0" layoutY="926.0" mnemonicParsing="false" onMouseClicked="#btn_fullscreen" text="fullscreen" />
+            <TableView fx:id="tableSpeakers" editable="true" layoutX="62.0" layoutY="714.0" prefHeight="135.0" prefWidth="246.0">
+              <columns>
+                <TableColumn fx:id="colName" onEditCommit="#colNameCommit" prefWidth="75.0" text="Name" />
+                <TableColumn fx:id="colIP" onEditCommit="#colIPCommit" prefWidth="122.0" text="IP" />
+                  <TableColumn fx:id="colActive" onEditCommit="#colActiveCommit" prefWidth="48.0" text="Active" />
+              </columns>
+            </TableView>
+            <Text layoutX="62.0" layoutY="690.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Connected speakers" textAlignment="CENTER" wrappingWidth="246.0" />
+            <Button layoutX="62.0" layoutY="858.0" mnemonicParsing="false" onMouseClicked="#onAddItem" text="Add" />
          </children>
       </AnchorPane>
       <AnchorPane>
