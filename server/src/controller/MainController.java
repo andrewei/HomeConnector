@@ -36,7 +36,7 @@ public class MainController implements Initializable {
     @FXML public Text str_hour;
     @FXML public Text str_minute;
     @FXML public Tab1Controller tab1Controller;
-    @FXML public Tab2Controller tab2Controller;
+    @FXML public Tab2Controller1 tab2Controller;
     @FXML public Tab3Controller tab3Controller;
     @FXML public Tab4Controller tab4Controller;
     @FXML public Tab5Controller tab5Controller;

@@ -9,7 +9,7 @@ import java.util.ResourceBundle;
 /**
  * Created by andreas on 3/15/2016.
  */
-public class Tab2Controller implements Initializable {
+public class Tab2Controller1 implements Initializable {
 
     MainController mainController;
 
