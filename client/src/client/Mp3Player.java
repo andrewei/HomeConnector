@@ -66,9 +66,9 @@ public class Mp3Player {
 
             public void run() {
                 try {
-                    thread.sleep(350);
                     media = new Media(path.path);
                     mediaPlayer = new MediaPlayer(media);
+                    thread.sleep(400);
                     setVolume(volume);
                     mediaPlayer.play();
                 } catch (Exception e) {

@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
-<?import javafx.scene.canvas.*?>
 <?import javafx.scene.control.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<SplitPane fx:id="rootObj" dividerPositions="0.16504065040650406" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainController">
+<SplitPane fx:id="rootObj" dividerPositions="0.16504065040650406" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aplication.MainController">
    <items>
       <AnchorPane prefHeight="720.0" prefWidth="231.0">
          <children>
@@ -59,7 +57,7 @@
       </AnchorPane>
       <AnchorPane>
          <children>
-            <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1062.0" prefWidth="1598.0" tabClosingPolicy="UNAVAILABLE">
+            <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1062.0" prefWidth="1598.0" rotateGraphic="true" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab text="Lights">
                   <content>
@@ -187,7 +185,8 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="661.0" prefWidth="1024.0">
                            <children>
-                              <Text layoutX="47.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Here comes info about the doorbell. Change sounds +++" wrappingWidth="990.666015625" />
+                              <Text fx:id="textInfoDoorbellSong" layoutX="47.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No doorbell song selected" wrappingWidth="990.666015625" />
+                              <Button layoutX="47.0" layoutY="107.0" mnemonicParsing="false" onMouseClicked="#doorbellChoose" text="Choose doorbell song " />
                            </children></AnchorPane>
                      </content>
                   </Tab>
@@ -207,11 +206,13 @@
                               <Button layoutX="181.0" layoutY="888.0" mnemonicParsing="false" onMouseClicked="#btn_stop" prefHeight="48.0" prefWidth="88.0" text="Stop" />
                               <Button layoutX="376.0" layoutY="888.0" mnemonicParsing="false" onMouseClicked="#btn_next_click" prefHeight="48.0" prefWidth="88.0" text="Next" />
                               <Button layoutX="81.0" layoutY="888.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="88.0" text="Previous" />
-                              <Button layoutX="1470.0" layoutY="23.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Update data" />
+                              <Button layoutX="1099.0" layoutY="28.0" mnemonicParsing="false" onMouseClicked="#rootChoose" prefHeight="25.0" prefWidth="223.0" text="Set RootFolder and import" />
                               <Slider fx:id="slide_vol" layoutX="1125.0" layoutY="897.0" prefHeight="32.0" prefWidth="331.0" />
                               <Slider fx:id="slide_time" layoutX="27.0" layoutY="935.0" onMouseDragged="#setSongTime" prefHeight="58.0" prefWidth="1431.0" />
                               <Text layoutX="13.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select speakers" wrappingWidth="174.47802734375" />
                               <TextField fx:id="tf_currentSong" editable="false" layoutX="491.0" layoutY="888.0" prefHeight="49.0" prefWidth="615.0" promptText="&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;Det er musikken som teller&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;" />
+                              <Text fx:id="textInfoRootFolder" layoutX="1358.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No root folder selected" wrappingWidth="314.0" />
+                              <Button layoutX="1351.0" layoutY="28.0" mnemonicParsing="false" onMouseClicked="#rootImport" prefHeight="25.0" prefWidth="107.0" text="import" />
                            </children></AnchorPane>
                      </content>
                   </Tab>
@@ -219,11 +220,38 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <Text layoutX="57.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Here you can set alarms, music will play on the selected speacers in the house" wrappingWidth="625.13671875">
+                              <TextField fx:id="alarmHour" alignment="CENTER" layoutX="125.0" layoutY="607.0" promptText="00">
                                  <font>
-                                    <Font size="27.0" />
+                                    <Font size="17.0" />
+                                 </font>
+                              </TextField>
+                              <Text layoutX="56.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Set alarm">
+                                 <font>
+                                    <Font size="82.0" />
                                  </font>
                               </Text>
+                              <Text layoutX="172.0" layoutY="575.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hour">
+                                 <font>
+                                    <Font size="53.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="418.0" layoutY="574.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Minute">
+                                 <font>
+                                    <Font size="53.0" />
+                                 </font>
+                              </Text>
+                              <TextField fx:id="alarmMinute" alignment="CENTER" layoutX="396.0" layoutY="607.0" promptText="00">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </TextField>
+                              <ToggleButton fx:id="alarmToggle" layoutX="738.0" layoutY="527.0" mnemonicParsing="false" onMouseClicked="#setAlarm" prefHeight="113.0" prefWidth="239.0" text="On/Off">
+                                 <font>
+                                    <Font size="53.0" />
+                                 </font>
+                              </ToggleButton>
+                              <Button fx:id="alarmChsose" layoutX="125.0" layoutY="376.0" mnemonicParsing="false" onMouseClicked="#alarmChoose" text="Choose Alarm" />
+                              <Text fx:id="textInfoAlarmSong" layoutX="125.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Alarm selected" wrappingWidth="1046.13671875" />
                            </children></AnchorPane>
                      </content>
                   </Tab>
