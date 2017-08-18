@@ -16,7 +16,7 @@ public class Mp3Player {
     public Mp3Player(MainController main){
         this.mainController = main;
         //must have a file to initiate the mediaplayer
-        Media media = new Media("file:///F:/mp3/mp3z/Xzibit-X.mp3");
+        Media media = new Media("file:///D:/test.mp3");
         mediaPlayer = new MediaPlayer(media);
         mediaPlayer.setVolume(0);
     }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="661.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.tab.Tab4Controller">
+   <children>
+      <Text fx:id="textInfoDoorbellSong" layoutX="47.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No doorbell song selected" wrappingWidth="990.666015625" />
+      <Button layoutX="47.0" layoutY="107.0" mnemonicParsing="false" onMouseClicked="#doorbellChoose" text="Choose doorbell song " />
+   </children>
+</AnchorPane>

@@ -16,11 +16,10 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.input.TouchPoint;
 import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
-import network.tcpip.NetworkController;
+import network.tcpip.speakers.NetworkSpeakersController;
 import java.io.File;
 import java.net.URL;
 import java.util.List;
@@ -33,7 +32,7 @@ import java.util.ResourceBundle;
 public class Tab5Controller implements Initializable {
 
     private MainController mainController;
-    private NetworkController networkController;
+    private NetworkSpeakersController networkSpeakersController;
     private Mp3Player player;
     private ConfigPath configPath;
     private List<File> listOfFiles;
@@ -56,7 +55,7 @@ public class Tab5Controller implements Initializable {
         this.mainController = mainController;
         this.configPath = mainController.configPath;
         this.player = mainController.player;
-        this.networkController = mainController.networkController;
+        this.networkSpeakersController = mainController.networkSpeakersController;
         this.stage = mainController.myStage;
         slide_vol.adjustValue(50);
         String activeRootFolder = configPath.readKey("rootFolder");
@@ -68,10 +67,14 @@ public class Tab5Controller implements Initializable {
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 double volume = (double) newValue * .01;
                 System.out.println("new volume :" + volume);
-                networkController.setVolume(volume);
+                setVolume(volume);
             }
         });
         getMp3DataThread();
+    }
+
+    public void setVolume(double volume){
+        networkSpeakersController.setVolume(volume);
     }
 
     public void btn_next_click(MouseEvent event){
@@ -88,17 +91,17 @@ public class Tab5Controller implements Initializable {
 
     public void playSong(String file){
         player.play(file);
-        networkController.playNewSong(file);
+        networkSpeakersController.playNewSong(file);
     }
 
     public void btn_stop(MouseEvent event){
         player.stop();
-        networkController.stopSong();
+        networkSpeakersController.stopSong();
     }
 
     public void btn_play(MouseEvent event){
         player.play();
-        networkController.playSong();
+        networkSpeakersController.playSong();
     }
 
     public void rootImport(MouseEvent event){
@@ -133,11 +136,11 @@ public class Tab5Controller implements Initializable {
         selected = selected.replaceAll("\\\\", "/");
         System.out.println("clicked on " + selected);
         player.play(selected);
-        networkController.playNewSong(selected);
+        networkSpeakersController.playNewSong(selected);
     }
 
     public void setSongTime(MouseEvent e){
-        networkController.setCurrentTime(slide_time.getValue());
+        networkSpeakersController.setCurrentTime(slide_time.getValue());
         player.setCurrentTime((int) slide_time.getValue());
         System.out.println("Setting time : " + (int) slide_time.getValue());
     }
@@ -156,7 +159,8 @@ public class Tab5Controller implements Initializable {
                     }
                 }
                 catch (Exception e){
-                    System.out.println("Error in sending json object, fix error msg later");
+                    //TODO fix better error message
+                    System.out.println("Error in mp3UpdateyThread");
                 }
             }
         }

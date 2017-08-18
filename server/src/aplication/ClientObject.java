@@ -50,10 +50,10 @@ public class ClientObject {
     public void setActive(String active) {
         this.active.set(active);
         if(!active.equals("on"))
-            mainController.networkController.stopSong(this.ip.get());
+            mainController.networkSpeakersController.stopSong(this.ip.get());
         else{
             //TODO this needs refactoring, store lastSong somewere else
-            mainController.tab5Controller.playSong(mainController.networkController.getLastSong());
+            mainController.tab5Controller.playSong(mainController.networkSpeakersController.getLastSong());
         }
     }
 }

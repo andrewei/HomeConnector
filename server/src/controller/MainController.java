@@ -22,7 +22,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import network.serial.FindPort;
 import network.serial.SerialConnector;
-import network.tcpip.NetworkController;
+import network.tcpip.remote.NetworkRemoteController;
+import network.tcpip.speakers.NetworkSpeakersController;
 
 import java.net.URL;
 import java.util.List;
@@ -86,7 +87,8 @@ public class MainController implements Initializable {
 
     }
 
-    public static NetworkController networkController;
+    public static NetworkSpeakersController networkSpeakersController;
+    public static NetworkRemoteController networkRemoteController;
     public static SerialConnector serialConnector;
     public static ConfigPath configPath;
     public static Mp3Player player;
@@ -108,7 +110,8 @@ public class MainController implements Initializable {
         initTable();
         configPath = new ConfigPath();
         player = new Mp3Player(this);
-        networkController = new NetworkController(this);
+        networkSpeakersController = new NetworkSpeakersController(this);
+        networkRemoteController = new NetworkRemoteController(this);
         initSerial();
         clockTimerObject = new Timer();
         clockTimerObject.schedule(clock = new Clock(this), 0, 1000);

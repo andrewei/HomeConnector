@@ -14,10 +14,12 @@ public ConfigPath(){
     properties = new Properties();
 }
 
+    String configPath = "C:/Users/weise/Desktop/git/HomeConnector/server/src/config/configPath.properties";
+
     public String readKey(String key){
 
         try {
-            inputStream = new FileInputStream("f:/git/homeConnector/server/src/config/configPath.properties");
+            inputStream = new FileInputStream(configPath);
             properties.load(inputStream);
             String value = properties.getProperty(key);
             System.out.println("Writing out wanted attribute: " + key + " = " + value);
@@ -33,7 +35,7 @@ public ConfigPath(){
 
     public void storeSong(String key, File file){
         try {
-            outputStream = new FileOutputStream("f:/git/homeConnector/server/src/config/configPath.properties");
+            outputStream = new FileOutputStream(configPath);
             String toBeStored = "file:///" + file;//list_music.getSelectionModel().getSelectedItem();
             toBeStored = toBeStored.replaceAll(" ", "%20");
             toBeStored = toBeStored.replaceAll("\\\\", "/");
@@ -51,7 +53,7 @@ public ConfigPath(){
 
     public void storeDirectory(String key, File file){
         try {
-            outputStream = new FileOutputStream("f:/git/homeConnector/server/src/config/configPath.properties");
+            outputStream = new FileOutputStream(configPath);
             System.out.println("Writing out values to be stored: " + file);
             properties.setProperty(key, "" + file);
             properties.store(outputStream, null);

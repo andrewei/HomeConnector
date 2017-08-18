@@ -1,26 +1,25 @@
-package network.tcpip;
+package network.tcpip.speakers;
 
 import org.json.simple.JSONObject;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+
+import java.io.*;
 import java.net.InetAddress;
+import java.net.ServerSocket;
 import java.net.Socket;
 
 
 /**
  * Created by andreas on 1/15/2016.
  */
-public class Network {
-
-    Thread thread;
+public class NetworkSpeakers {
+    Thread playThreadInstace;
 
     public void sendJSON(JSONObject inn, String ip, int delay)  {
-
+        Thread thread;
         class playThread implements Runnable {
-
             public void run(){
                 try{
-                    thread.sleep(delay);
+                    playThreadInstace.sleep(delay);
                     Socket socket = null;
                     ObjectOutputStream oos = null;
                     ObjectInputStream ois = null;
@@ -31,11 +30,12 @@ public class Network {
                     oos.close();
                 }
                 catch (Exception e){
-                    System.out.println("Error in sending json object, fix error msg latewr");
+                    //TODO fix better error message
+                    System.out.println("Error in sending json object");
                 }
             }
         }
-        Thread thread = new Thread(new playThread());
-        thread.start();
+        playThreadInstace = new Thread(new playThread());
+        playThreadInstace.start();
     }
 }
