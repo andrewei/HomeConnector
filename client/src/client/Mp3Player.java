@@ -1,6 +1,5 @@
 package client;
 
-import javafx.scene.input.MouseEvent;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
@@ -9,30 +8,23 @@ import javafx.util.Duration;
  * Created by andreas on 1/10/2016.
  */
 public class Mp3Player {
-
-    Thread thread;
-    static MediaPlayer mediaPlayer;
-    static Media media;
-    static int event = 0;
+    MediaPlayer mediaPlayer;
+    Media media;
     double volume = .5;
-
-    public Mp3Player() {
-        //must have a file to initiate the mediaplayer
-
-    }
-
-    class Path {
-        public String path;
-    }
 
     public void stop() {
         mediaPlayer.stop();
     }
 
     public void play() {
-
         if (mediaPlayer != null) {
             mediaPlayer.play();
+        }
+    }
+
+    public void pause() {
+        if (mediaPlayer != null) {
+            mediaPlayer.pause();
         }
     }
 
@@ -43,58 +35,17 @@ public class Mp3Player {
         }
     }
 
-    public void setCurrentTime(int time){
-        mediaPlayer.seek(new Duration(time));
+    public void setCurrentTime(int time) {
+        mediaPlayer.seek(Duration.millis(time));
     }
 
     public void play(String songPath) {
-
-        if (mediaPlayer == null) {
-            Media media = new Media(songPath);
-            mediaPlayer = new MediaPlayer(media);
+        if(mediaPlayer != null){
+            mediaPlayer.stop();
         }
-
-        final Path path = new Path();
-        path.path = songPath;
-
-        if (thread != null) {
-            System.out.println("Resetting thread");
-            event = 1;
-        }
-
-        class playThread implements Runnable {
-
-            public void run() {
-                try {
-                    media = new Media(path.path);
-                    mediaPlayer = new MediaPlayer(media);
-                    thread.sleep(400);
-                    setVolume(volume);
-                    mediaPlayer.play();
-                } catch (Exception e) {
-                    System.out.println("Cant play song : " + path.path);
-                    //e.printStackTrace();
-                }
-
-                while (true) {
-                    try {
-                        thread.sleep(1);
-                        if (event == 1) {
-                            System.out.println("Path = " + path.path);
-                            mediaPlayer.stop();
-                            event = 0;
-                            return;
-                        }
-                    } catch (InterruptedException e) {
-
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-        thread = new Thread(new playThread());
-        thread.start();
+        media = new Media(songPath);
+        mediaPlayer = new MediaPlayer(media);
+        setVolume(volume);
+        mediaPlayer.play();
     }
 }
-
-

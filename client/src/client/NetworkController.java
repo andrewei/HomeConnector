@@ -18,27 +18,27 @@ public class NetworkController {
         switch (actionSwitch) {
             case PLAY_NEWSONG:
                 songLink = (String) jsonObject.get("SONG");
-                player.play(songLink);
                 System.out.println("Song to be played " + songLink);
+                player.play(songLink);
                 break;
             case PLAY_SONG:
-                player.play();
                 System.out.println("PLAY");
+                player.play();
                 break;
             case STOP_SONG:
-                player.stop();
                 System.out.println("STOP");
+                player.stop();
                 break;
             case SET_VOLUME:
                 volume = (Double) jsonObject.get("VOLUME");
-                player.setVolume(volume);
                 System.out.println("Setting volume to " + volume);
+                player.setVolume(volume);
                 break;
             case SET_CURRENT_TIME:
                 double time = (Double)jsonObject.get("TIME");
                 System.out.println("time: " + (int)time);
                 player.setCurrentTime((int)time);
-                System.out.println("Setting current time to " + volume);
+                break;
             default:
                 System.out.println("NetworkController in default case");
                 break;

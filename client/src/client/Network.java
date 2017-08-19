@@ -20,7 +20,6 @@ public class Network {
         class networkTread implements Runnable {
             @Override
             public void run() {
-                //create the socket server object
                 int port = 9876;
                 ServerSocket server = null;
                 try {
@@ -28,27 +27,21 @@ public class Network {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                JSONObject jsonInput;
                 JSONParser parser = new JSONParser();
                 Object obj;
-                String message;
                 Socket socket;
                 ObjectInputStream ois;
-                //keep listens indefinitely until receives 'exit' call or program terminates
                 while (true) {
                     try {
                         System.out.println("Waiting for client request");
                         socket = server.accept();
                         ois = new ObjectInputStream(socket.getInputStream());
-                        message = (String) ois.readObject();
-                        obj = parser.parse(message);
-                        jsonInput = (JSONObject) obj;
-                        controller.receive(jsonInput);
+                        obj = parser.parse((String) ois.readObject());
+                        controller.receive((JSONObject) obj);
                     } catch (Exception e) {
-                        System.out.println("error when recieving file");
+                        System.out.println("Error when recieving file");
                         e.printStackTrace();
                     }
-                    continue;
                 }
             }
         }
