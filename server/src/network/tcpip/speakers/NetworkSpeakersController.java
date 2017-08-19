@@ -32,7 +32,7 @@ public class NetworkSpeakersController {
             ClientObject obj = new ClientObject("Server", InetAddress.getByName("localhost").getHostAddress(), 1, "on", mainController);
             observableSpeakersArray.add(obj);
             observableSpeakersArray.add(new ClientObject("Stasjonear", "192.168.0.106", 1, "off", mainController ));
-            observableSpeakersArray.add(new ClientObject("PC LINE",    "192.168.10.171",   1, "off", mainController));
+            observableSpeakersArray.add(new ClientObject("Raspberry Pi",    "192.168.0.100",   1, "off", mainController));
         }
         catch (UnknownHostException e) {
             e.printStackTrace();
@@ -92,6 +92,15 @@ public class NetworkSpeakersController {
         JSONObject jsonOutput = new JSONObject();
         jsonOutput.put("ACTION", ActionConstants.SET_CURRENT_TIME);
         jsonOutput.put("TIME", time);
+        for (int i = 0; i < observableSpeakersArray.size(); i++){
+            if(observableSpeakersArray.get(i).getActive().equals("on"))
+                network.sendJSON(jsonOutput, observableSpeakersArray.get(i).getIp(), observableSpeakersArray.get(i).getDelay());
+        }
+    }
+
+    public void pauseSong() {
+        JSONObject jsonOutput = new JSONObject();
+        jsonOutput.put("ACTION", ActionConstants.PAUSE_SONG);
         for (int i = 0; i < observableSpeakersArray.size(); i++){
             if(observableSpeakersArray.get(i).getActive().equals("on"))
                 network.sendJSON(jsonOutput, observableSpeakersArray.get(i).getIp(), observableSpeakersArray.get(i).getDelay());

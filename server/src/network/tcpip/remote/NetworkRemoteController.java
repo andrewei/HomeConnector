@@ -53,6 +53,6 @@ public class NetworkRemoteController {
     public void setVolume(JSONObject jsonObject) {
         double volume = Double.parseDouble(jsonObject.get("VOLUME").toString());
         System.out.println("SETTING VOLUME");
-        mainController.tab5Controller.setVolume(volume);
+        mainController.tab5Controller.setVolumeAndUpdateSlider(volume);
     }
 }

@@ -29,6 +29,10 @@ public class NetworkController {
                 System.out.println("STOP");
                 player.stop();
                 break;
+            case PAUSE_SONG:
+                System.out.println("STOP");
+                player.pause();
+                break;
             case SET_VOLUME:
                 volume = (Double) jsonObject.get("VOLUME");
                 System.out.println("Setting volume to " + volume);

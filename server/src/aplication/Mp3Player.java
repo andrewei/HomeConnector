@@ -7,11 +7,9 @@ import javafx.util.Duration;
 
 public class Mp3Player {
 
-    private Thread thread;
-    private static MediaPlayer mediaPlayer;
     private static int event = 0;
-    private double volume = .5;
     private MainController mainController;
+    Media media;
 
     public Mp3Player(MainController main){
         this.mainController = main;
@@ -21,20 +19,11 @@ public class Mp3Player {
         mediaPlayer.setVolume(0);
     }
 
-    class Path{
-        public String path;
-    }
-
     public double getCurrentTime(){
         Duration test =  mediaPlayer.getCurrentTime();
         //System.out.println("currentTime: " + test.toString());
         return test.toMillis();
     }
-
-    public void setCurrentTime(int time){
-        mediaPlayer.seek(new Duration(time));
-    }
-
 
     public double getTotalDuration(){
         Duration test =  mediaPlayer.getTotalDuration();
@@ -42,72 +31,48 @@ public class Mp3Player {
         return test.toMillis();
     }
 
+    MediaPlayer mediaPlayer;
 
-    public void stop(){
+    double volume = 0;
+
+    public void stop() {
         mediaPlayer.stop();
     }
-    public void play(){
-        mediaPlayer.play();
+
+    public void play() {
+        if (mediaPlayer != null) {
+            mediaPlayer.play();
+        }
     }
 
-    public void play(String songPath){
+    public boolean isPlaying(){
+        return mediaPlayer.getStatus().equals(MediaPlayer.Status.PLAYING);
+    }
 
-        final Path path = new Path();
-        path.path = songPath;
-
-        if(thread != null){
-            System.out.println("Resetting thread");
-            event = 1;
+    public void pause() {
+        if (mediaPlayer != null) {
+            mediaPlayer.pause();
         }
+    }
 
-        class playThread implements Runnable {
-
-            public void run(){
-                try {
-
-                    Thread.sleep(350);
-                    System.out.println("playThread is running");
-                    Media media = new Media(path.path);
-                    mediaPlayer = new MediaPlayer(media);
-                    mediaPlayer.setOnEndOfMedia(new Runnable() {
-                        @Override
-                        public void run() {
-                            System.out.println("END OF FILE");
-                            //TODO fix the line under
-                            mainController.tab5Controller.btn_next_click(null);
-                        }
-                    });
-                    mediaPlayer.setOnError(new Runnable() {
-                        @Override
-                        public void run() {
-                            System.out.println("ERROR WHEN PLAYNG FILE, SKIPS");
-                            //TODO fix the line under
-                            mainController.tab5Controller.btn_next_click(null);
-                        }
-                    });
-                    mediaPlayer.setVolume(0);
-                    mediaPlayer.play();
-                } catch (Exception e) {
-                    System.out.println("Cant play song : " + path.path);
-                    //e.printStackTrace();
-                }
-
-                while(true){
-                    try {
-                        Thread.sleep(1);
-                        if(event == 1){
-                            System.out.println("Path = " + path.path);
-                            mediaPlayer.stop();
-                            event = 0;
-                            return;
-                        }
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
+    public void setVolume(double volume) {
+        if (mediaPlayer != null) {
+            mediaPlayer.setVolume(volume);
+            this.volume = volume;
         }
-        thread = new Thread(new playThread());
-        thread.start();
+    }
+
+    public void setCurrentTime(int time) {
+        mediaPlayer.seek(Duration.millis(time));
+    }
+
+    public void play(String songPath) {
+        if(mediaPlayer != null){
+            mediaPlayer.stop();
+        }
+        media = new Media(songPath);
+        mediaPlayer = new MediaPlayer(media);
+        setVolume(volume);
+        mediaPlayer.play();
     }
 }

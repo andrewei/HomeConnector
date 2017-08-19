@@ -39,6 +39,7 @@ public class Tab5Controller implements Initializable {
     private ListProperty<File> listProperty = new SimpleListProperty<>();
     private Thread thread;
     private Stage stage;
+    private static boolean isPlaying;
 
     @FXML private Button btn_stop;
     @FXML private Button btn_play;
@@ -71,14 +72,21 @@ public class Tab5Controller implements Initializable {
             }
         });
         getMp3DataThread();
+        isPlaying = false;
     }
 
-    public void setVolume(double volume){
+    private void setVolume(double volume){
         networkSpeakersController.setVolume(volume);
+    }
+
+    public void setVolumeAndUpdateSlider(double volume){
+        slide_vol.setValue(volume*slide_vol.getMax());
+        //setVolume(volume);
     }
 
     public void btn_next_click(MouseEvent event){
         Random random = new Random();
+        btn_play.setText("Pause");
         int randInt = random.nextInt(listProperty.getSize());
         File file = listProperty.get(randInt);
         playSong(file);
@@ -96,12 +104,23 @@ public class Tab5Controller implements Initializable {
 
     public void btn_stop(MouseEvent event){
         player.stop();
+        btn_play.setText("Play");
         networkSpeakersController.stopSong();
     }
 
     public void btn_play(MouseEvent event){
-        player.play();
-        networkSpeakersController.playSong();
+        if(player != null){
+            if(!player.isPlaying()){
+                player.play();
+                networkSpeakersController.playSong();
+                btn_play.setText("Pause");
+            }
+            else{
+                player.pause();
+                networkSpeakersController.pauseSong();
+                btn_play.setText("Play");
+            }
+        }
     }
 
     public void rootImport(MouseEvent event){
@@ -135,6 +154,7 @@ public class Tab5Controller implements Initializable {
         selected = selected.replaceAll(" ", "%20");
         selected = selected.replaceAll("\\\\", "/");
         System.out.println("clicked on " + selected);
+        btn_play.setText("Pause");
         player.play(selected);
         networkSpeakersController.playNewSong(selected);
     }
