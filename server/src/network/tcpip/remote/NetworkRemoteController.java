@@ -44,6 +44,9 @@ public class NetworkRemoteController {
             case SET_VOLUME:
                 setVolume(jsonObject);
                 break;
+            case PAUSE_SONG:
+                mainController.tab5Controller.btn_play(null);
+                break;
             default:
                 System.out.println("NetworkController in default case");
                 break;
