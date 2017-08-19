@@ -9,6 +9,8 @@ import javafx.beans.property.SimpleListProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -20,6 +22,7 @@ import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import network.tcpip.speakers.NetworkSpeakersController;
+
 import java.io.File;
 import java.net.URL;
 import java.util.List;
@@ -40,7 +43,9 @@ public class Tab5Controller implements Initializable {
     private Thread thread;
     private Stage stage;
     private static boolean isPlaying;
+    private ObservableList<File> observableList;
 
+    @FXML private TextField textSearchFilter;
     @FXML private Button btn_stop;
     @FXML private Button btn_play;
     @FXML private Text textInfoRootFolder;
@@ -73,7 +78,37 @@ public class Tab5Controller implements Initializable {
         });
         getMp3DataThread();
         isPlaying = false;
+
+        textSearchFilter.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable,
+                                String oldValue, String newValue) {
+                search(oldValue, newValue);
+            }
+        });
     }
+
+
+    public void search( String oldVal, String newVal) {
+        if(oldVal == newVal){
+            System.out.println("same value in search, returning");
+            return;
+        }
+        if(newVal.length() == 0){
+            observableList.clear();
+            observableList.setAll(listOfFiles);
+        }
+        else {
+            System.out.println("OldValue: " + oldVal + " newValue: " + newVal );
+            observableList.clear();
+            for (int i = 0; i < listOfFiles.size(); i++){
+                if(listOfFiles.get(i).toString().toLowerCase().contains(newVal.toLowerCase())){
+                    observableList.add(listOfFiles.get(i));
+                }
+            }
+        }
+    }
+
 
     private void setVolume(double volume){
         networkSpeakersController.setVolume(volume);
@@ -144,7 +179,8 @@ public class Tab5Controller implements Initializable {
             LocalDatabase db = new LocalDatabase();
             listOfFiles = db.getFolderItems(activeRootFolder);
             list_music.itemsProperty().bind(listProperty);
-            listProperty.set(FXCollections.observableArrayList(listOfFiles));
+            observableList = FXCollections.observableArrayList(listOfFiles);
+            listProperty.set(observableList);
         }
     }
 

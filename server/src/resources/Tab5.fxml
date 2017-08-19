@@ -17,7 +17,7 @@
       </Text>
       <Text layoutX="13.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change to spotify?" wrappingWidth="174.47802734375" />
       <ListView fx:id="list_music" layoutX="27.0" layoutY="133.0" onMouseClicked="#playSong" prefHeight="742.0" prefWidth="1429.0" />
-      <TextField layoutX="1366.0" layoutY="98.0" promptText="Search" />
+      <TextField fx:id="textSearchFilter" layoutX="1366.0" layoutY="98.0" promptText="Search" />
       <Button fx:id="btn_play" layoutX="275.0" layoutY="888.0" mnemonicParsing="false" onMouseClicked="#btn_play" prefHeight="48.0" prefWidth="88.0" text="Play" />
       <Button layoutX="181.0" layoutY="888.0" mnemonicParsing="false" onMouseClicked="#btn_stop" prefHeight="48.0" prefWidth="88.0" text="Stop" />
       <Button layoutX="376.0" layoutY="888.0" mnemonicParsing="false" onMouseClicked="#btn_next_click" prefHeight="48.0" prefWidth="88.0" text="Next" />
