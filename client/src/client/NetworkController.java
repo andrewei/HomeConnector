@@ -9,6 +9,8 @@ public class NetworkController {
 
     String songLink;
     Double volume;
+    String startTime;
+    long startTimeLong;
 
     static Mp3Player player = new Mp3Player();
 
@@ -18,20 +20,23 @@ public class NetworkController {
         switch (actionSwitch) {
             case PLAY_NEWSONG:
                 songLink = (String) jsonObject.get("SONG");
+                startTime = (String) jsonObject.get("STARTTIME");
                 System.out.println("Song to be played " + songLink);
-                player.play(songLink);
+                player.play(songLink, Long.valueOf(startTime));
                 break;
             case PLAY_SONG:
+                startTime = (String) jsonObject.get("STARTTIME");
                 System.out.println("PLAY");
-                player.play();
+                player.play(Long.valueOf(startTime));
                 break;
             case STOP_SONG:
                 System.out.println("STOP");
                 player.stop();
                 break;
             case PAUSE_SONG:
-                System.out.println("STOP");
-                player.pause();
+                System.out.println("PAUSE");
+                startTime = (String) jsonObject.get("STARTTIME");
+                player.pause(Long.valueOf(startTime));
                 break;
             case SET_VOLUME:
                 volume = (Double) jsonObject.get("VOLUME");
@@ -40,8 +45,9 @@ public class NetworkController {
                 break;
             case SET_CURRENT_TIME:
                 double time = (Double)jsonObject.get("TIME");
+                startTime = (String) jsonObject.get("STARTTIME");
                 System.out.println("time: " + (int)time);
-                player.setCurrentTime((int)time);
+                player.setCurrentTime((int)time, Long.valueOf(startTime));
                 break;
             default:
                 System.out.println("NetworkController in default case");

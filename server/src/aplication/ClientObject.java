@@ -11,12 +11,11 @@ public class ClientObject {
 
     private int delay;
 
-    public ClientObject(String name, String ip, int delay, String active, MainController mainController){
+    public ClientObject(String name, String ip, String active, MainController mainController){
         this.mainController = mainController;
         this.name.set(name);
         this.ip.set(ip);
         this.active.set(active);
-        this.delay = delay;
     }
 
     public String getName() {

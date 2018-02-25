@@ -109,7 +109,6 @@ public class Tab5Controller implements Initializable {
         }
     }
 
-
     private void setVolume(double volume){
         networkSpeakersController.setVolume(volume);
     }
@@ -185,7 +184,7 @@ public class Tab5Controller implements Initializable {
     }
 
     public void playSong(File file){
-        String selected = "file:///" + file;//list_music.getSelectionModel().getSelectedItem();
+        String selected = "file:///" + file;
         tf_currentSong.setText(file.getName());
         selected = selected.replaceAll(" ", "%20");
         selected = selected.replaceAll("\\\\", "/");

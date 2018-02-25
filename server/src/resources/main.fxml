@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.*?>
-<SplitPane fx:id="rootObj" dividerPositions="0.16504065040650406" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<SplitPane fx:id="rootObj" dividerPositions="0.16504065040650406" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
    <items>
       <AnchorPane prefHeight="720.0" prefWidth="231.0">
          <children>
@@ -58,7 +67,8 @@
               </columns>
             </TableView>
             <Text layoutX="62.0" layoutY="690.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Connected speakers" textAlignment="CENTER" wrappingWidth="246.0" />
-            <Button layoutX="62.0" layoutY="858.0" mnemonicParsing="false" onMouseClicked="#onAddItem" text="Add" />
+            <Button layoutX="62.0" layoutY="858.0" mnemonicParsing="false" onAction="#addSpeaker" onMouseClicked="#onAddItem" text="Add" />
+            <Button layoutX="120.0" layoutY="858.0" mnemonicParsing="false" onAction="#removeSelected" onMouseClicked="#onAddItem" text="Remove selected" />
          </children>
       </AnchorPane>
       <AnchorPane>

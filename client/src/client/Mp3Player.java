@@ -16,14 +16,18 @@ public class Mp3Player {
         mediaPlayer.stop();
     }
 
-    public void play() {
+    public void play(long startTime) {
         if (mediaPlayer != null) {
+            System.out.println("WIll START IN: " + (startTime  - System.currentTimeMillis()) + "ms");
+            while(System.currentTimeMillis() < startTime) {}
             mediaPlayer.play();
         }
     }
 
-    public void pause() {
+    public void pause(long startTime) {
         if (mediaPlayer != null) {
+            System.out.println("WIll START IN: " + (startTime  - System.currentTimeMillis()) + "ms");
+            while(System.currentTimeMillis() < startTime) {}
             mediaPlayer.pause();
         }
     }
@@ -35,17 +39,21 @@ public class Mp3Player {
         }
     }
 
-    public void setCurrentTime(int time) {
+    public void setCurrentTime(int time, long startTime) {
+        System.out.println("WIll START IN: " + (startTime  - System.currentTimeMillis()) + "ms");
+        while(System.currentTimeMillis() < startTime) {}
         mediaPlayer.seek(Duration.millis(time));
     }
 
-    public void play(String songPath) {
+    public void play(String songPath, Long startTime) {
         if(mediaPlayer != null){
             mediaPlayer.stop();
         }
         media = new Media(songPath);
         mediaPlayer = new MediaPlayer(media);
         setVolume(volume);
+        System.out.println("WIll START IN: " + (startTime  - System.currentTimeMillis()) + "ms");
+        while(System.currentTimeMillis() < startTime) {}
         mediaPlayer.play();
     }
 }

@@ -9,12 +9,22 @@ public class ConfigPath {
     FileInputStream inputStream;
     private static Properties properties;
     FileOutputStream outputStream;
+    String configPath;
+
 
 public ConfigPath(){
     properties = new Properties();
+    //dirty way of finding config location path
+    File currentDir = new File (".");
+    String basePath = "";
+    try {
+        basePath = currentDir.getCanonicalPath();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    configPath = basePath +  "/src/config/configPath.properties";
 }
 
-    String configPath = "C:/Users/weise/Desktop/git/HomeConnector/server/src/config/configPath.properties";
 
     public String readKey(String key){
 

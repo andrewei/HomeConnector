@@ -8,15 +8,14 @@ import controller.tab.*;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Slider;
-import javafx.scene.control.SplitPane;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.effect.ColorAdjust;
+import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -25,7 +24,10 @@ import network.serial.SerialConnector;
 import network.tcpip.remote.NetworkRemoteController;
 import network.tcpip.speakers.NetworkSpeakersController;
 
+import java.io.IOException;
+import java.net.InetAddress;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Timer;
@@ -66,25 +68,23 @@ public class MainController implements Initializable {
 
     public void colNameCommit(TableColumn.CellEditEvent<ClientObject, String> t){
         System.out.println("commit name");
-
         (t.getTableView().getItems().get(
                 t.getTablePosition().getRow())
         ).setName(t.getNewValue());
-
-
     }
 
-    public void colIPCommit(){
+    public void colIPCommit(TableColumn.CellEditEvent<ClientObject, String> t){
         System.out.println("commit ip");
+        (t.getTableView().getItems().get(
+                t.getTablePosition().getRow())
+                ).setIp(t.getNewValue());
     }
 
     public void colActiveCommit(TableColumn.CellEditEvent<ClientObject, String> t){
         System.out.println("commit active");
-
         (t.getTableView().getItems().get(
                 t.getTablePosition().getRow())
-        ).setActive(t.getNewValue());
-
+                ).setActive(t.getNewValue());
     }
 
     public static NetworkSpeakersController networkSpeakersController;
@@ -130,6 +130,16 @@ public class MainController implements Initializable {
         tab4Controller.init(this);
         tab5Controller.init(this);
         tab6Controller.init(this);
+
+        try {
+            ClientObject obj = new ClientObject("Server", InetAddress.getByName("localhost").getHostAddress(),"on", this);
+            observableSpeakersArray.add(obj);
+            observableSpeakersArray.add(new ClientObject("Stasjonear", "192.168.0.109", "on", this));
+            observableSpeakersArray.add(new ClientObject("Extern_1",    "192.168.0.111", "off", this));
+        }
+        catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
     }
 
     public void initSerial() {
@@ -164,5 +174,20 @@ public class MainController implements Initializable {
 
     public void testDeleteMe(){
         System.out.println("THIS IS WORKING: TEST OK");
+    }
+
+    public void addSpeaker(ActionEvent event) {
+        observableSpeakersArray.add(new ClientObject("New", "192.168.0.XXX", "off", this));
+    }
+
+    public void removeSelected(ActionEvent event) {
+        tableSpeakers.getSelectionModel();
+        if(tableSpeakers.getSelectionModel().getSelectedItem() != null)
+        {
+            TableView.TableViewSelectionModel selectionModel = tableSpeakers.getSelectionModel();
+            ObservableList selectedCells = selectionModel.getSelectedCells();
+            TablePosition tablePosition = (TablePosition) selectedCells.get(0);
+            observableSpeakersArray.remove(tablePosition.getRow());
+        }
     }
 }

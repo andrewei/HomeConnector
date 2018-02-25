@@ -14,12 +14,11 @@ import java.net.Socket;
 public class NetworkSpeakers {
     Thread playThreadInstace;
 
-    public void sendJSON(JSONObject inn, String ip, int delay)  {
+    public void sendJSON(JSONObject inn, String ip)  {
         Thread thread;
         class playThread implements Runnable {
             public void run(){
                 try{
-                    playThreadInstace.sleep(delay);
                     Socket socket = null;
                     ObjectOutputStream oos = null;
                     ObjectInputStream ois = null;
