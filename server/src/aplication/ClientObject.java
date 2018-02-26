@@ -5,11 +5,9 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class ClientObject {
     private MainController mainController;
-    public SimpleStringProperty name = new SimpleStringProperty();
-    public SimpleStringProperty ip = new SimpleStringProperty();
-    public SimpleStringProperty active = new SimpleStringProperty();
-
-    private int delay;
+    private SimpleStringProperty name = new SimpleStringProperty();
+    private SimpleStringProperty ip = new SimpleStringProperty();
+    private SimpleStringProperty active = new SimpleStringProperty();
 
     public ClientObject(String name, String ip, String active, MainController mainController){
         this.mainController = mainController;
@@ -32,14 +30,6 @@ public class ClientObject {
 
     public void setIp(String ip) {
         this.ip.set(ip);
-    }
-
-    public int getDelay() {
-        return delay;
-    }
-
-    public void setDelay(int delay) {
-        this.delay = delay;
     }
 
     public String getActive() {

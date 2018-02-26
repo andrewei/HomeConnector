@@ -17,9 +17,6 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-/**
- * Created by andreas on 3/15/2016.
- */
 public class Tab6Controller implements Initializable {
 
     private MainController mainController;

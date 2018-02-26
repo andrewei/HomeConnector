@@ -29,9 +29,6 @@ import java.util.List;
 import java.util.Random;
 import java.util.ResourceBundle;
 
-/**
- * Created by andreas on 3/15/2016.
- */
 public class Tab5Controller implements Initializable {
 
     private MainController mainController;
@@ -46,7 +43,6 @@ public class Tab5Controller implements Initializable {
     private ObservableList<File> observableList;
 
     @FXML private TextField textSearchFilter;
-    @FXML private Button btn_stop;
     @FXML private Button btn_play;
     @FXML private Text textInfoRootFolder;
     @FXML private ListView list_music;
@@ -68,26 +64,15 @@ public class Tab5Controller implements Initializable {
         if(activeRootFolder != null){
             textInfoRootFolder.setText(activeRootFolder);
         }
-        slide_vol.valueProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                double volume = (double) newValue * .01;
-                System.out.println("new volume :" + volume);
-                setVolume(volume);
-            }
+        slide_vol.valueProperty().addListener((observable, oldValue, newValue) -> {
+            double volume = (double) newValue * .01;
+            System.out.println("new volume :" + volume);
+            setVolume(volume);
         });
         getMp3DataThread();
         isPlaying = false;
-
-        textSearchFilter.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable,
-                                String oldValue, String newValue) {
-                search(oldValue, newValue);
-            }
-        });
+        textSearchFilter.textProperty().addListener((observable, oldValue, newValue) -> search(oldValue, newValue));
     }
-
 
     public void search( String oldVal, String newVal) {
         if(oldVal == newVal){
@@ -214,8 +199,8 @@ public class Tab5Controller implements Initializable {
                     }
                 }
                 catch (Exception e){
-                    //TODO fix better error message
                     System.out.println("Error in mp3UpdateyThread");
+                    System.out.println(e.getStackTrace());
                 }
             }
         }

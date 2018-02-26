@@ -1,18 +1,9 @@
 package network.tcpip.speakers;
 
-import aplication.ClientObject;
 import controller.MainController;
-import javafx.collections.ObservableList;
 import network.tcpip.ActionConstants;
 import org.json.simple.JSONObject;
 
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-
-/**
- * Created by andreas on 1/16/2016.
- */
 public class NetworkSpeakersController {
     public String getLastSong() {
         return lastSong;
@@ -57,7 +48,7 @@ public class NetworkSpeakersController {
         }
     }
 
-    //used to stop a song from playing on inactivated speacker.
+    //used to stop a song from playing on inactivated speaker.
     public void stopSong(String ip){
         JSONObject jsonOutput = new JSONObject();
         jsonOutput.put("ACTION", ActionConstants.STOP_SONG);

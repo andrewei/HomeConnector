@@ -1,6 +1,5 @@
 package network.serial;
 
-import com.sun.xml.internal.bind.v2.TODO;
 import gnu.io.CommPortIdentifier;
 
 import java.util.ArrayList;

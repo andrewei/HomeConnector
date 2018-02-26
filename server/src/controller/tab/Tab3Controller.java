@@ -50,7 +50,6 @@ public class Tab3Controller implements Initializable {
     }
 
     public void resetColor(MouseEvent event){
-        System.out.println("Is this running");
         //ImageView obj = (ImageView) event.getSource();
         //obj.setStyle("-fx-text-fill: #000000;");
     }

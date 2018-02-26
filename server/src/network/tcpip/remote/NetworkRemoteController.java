@@ -3,11 +3,9 @@ package network.tcpip.remote;
 import controller.MainController;
 import network.tcpip.ActionEnum;
 import org.json.simple.JSONObject;
+
 import java.io.IOException;
 
-/**
- * Created by weise on 17/08/2017.
- */
 public class NetworkRemoteController {
     MainController mainController;
 

@@ -3,14 +3,12 @@ package config;
 import java.io.*;
 import java.util.Properties;
 
-
 public class ConfigPath {
 
     FileInputStream inputStream;
     private static Properties properties;
     FileOutputStream outputStream;
     String configPath;
-
 
 public ConfigPath(){
     properties = new Properties();
@@ -24,7 +22,6 @@ public ConfigPath(){
     }
     configPath = basePath +  "/src/config/configPath.properties";
 }
-
 
     public String readKey(String key){
 
@@ -60,7 +57,6 @@ public ConfigPath(){
         }
     }
 
-
     public void storeDirectory(String key, File file){
         try {
             outputStream = new FileOutputStream(configPath);
@@ -74,6 +70,5 @@ public ConfigPath(){
             e.printStackTrace();
         }
     }
-
 
 }

@@ -6,9 +6,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * Created by andreas on 1/10/2016.
- */
 public class LocalDatabase {
 
     List<File> resultList;
