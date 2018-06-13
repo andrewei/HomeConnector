@@ -36,7 +36,13 @@ public class LocalDatabase {
         for (File file : fList) {
             if (file.isFile()) {
                 String testAudio = "" + file;
-                if(testAudio.contains(".mp3") || testAudio.contains(".wav")){
+                if(testAudio.contains(".mp3") ||
+                        testAudio.contains(".MP3") ||
+                        testAudio.contains(".mp4") ||
+                        testAudio.contains(".MP4") ||
+                        testAudio.contains(".wav") ||
+                        testAudio.contains(".WAV")
+                        ){
                     resultList.add(file);
                 }
                 else{
