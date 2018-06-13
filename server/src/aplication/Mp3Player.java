@@ -17,6 +17,7 @@ public class Mp3Player {
         Media media = new Media("file:///D:/test.mp3");
         mediaPlayer = new MediaPlayer(media);
         mediaPlayer.setVolume(0);
+        setListeners();
     }
 
     public double getCurrentTime(){
@@ -67,12 +68,31 @@ public class Mp3Player {
     }
 
     public void play(String songPath) {
-        if(mediaPlayer != null){
+        if (mediaPlayer != null) {
             mediaPlayer.stop();
         }
         media = new Media(songPath);
         mediaPlayer = new MediaPlayer(media);
+        setListeners();
         setVolume(volume);
         mediaPlayer.play();
     }
+
+    private void setListeners() {
+        mediaPlayer.setOnEndOfMedia(new Runnable() {
+            public void run() {
+                System.out.println("End of media file");
+                mainController.tab5Controller.btn_next_click(null);
+            }
+        });
+
+        mediaPlayer.setOnError(new Runnable() {
+            public void run() {
+                System.out.println("Error when playing file, skipping");
+                mainController.tab5Controller.btn_next_click(null);
+            }
+        });
+    }
+
 }
+

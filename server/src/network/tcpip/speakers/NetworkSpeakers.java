@@ -105,6 +105,9 @@ public class NetworkSpeakers {
                         System.out.println("Waiting for client request");
                         socket = server.accept();
                         if(!socket.isConnected()) {
+                            if(socket != null) {
+                                socket.close();
+                            }
                             return;
                         }
                         br = new BufferedReader(new InputStreamReader(socket.getInputStream()));

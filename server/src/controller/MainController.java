@@ -47,6 +47,7 @@ public class MainController implements Initializable {
 
     public void onAddItem(MouseEvent event) {
     }
+
     private void initTable(){
 
         colName.setCellValueFactory(
@@ -134,8 +135,6 @@ public class MainController implements Initializable {
         try {
             ClientObject obj = new ClientObject("Server", InetAddress.getByName("localhost").getHostAddress(),"on", this);
             observableSpeakersArray.add(obj);
-            observableSpeakersArray.add(new ClientObject("Stasjonear", "192.168.0.109", "on", this));
-            observableSpeakersArray.add(new ClientObject("Extern_1",    "192.168.0.111", "off", this));
         }
         catch (UnknownHostException e) {
             e.printStackTrace();
@@ -177,7 +176,6 @@ public class MainController implements Initializable {
     }
 
     public void addSpeaker(ActionEvent event) {
-        //observableSpeakersArray.add(new ClientObject("New", "192.168.0.XXX", "off", this));
         networkSpeakersController.ping();
     }
 
