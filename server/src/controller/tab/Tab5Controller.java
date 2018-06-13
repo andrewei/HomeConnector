@@ -173,6 +173,8 @@ public class Tab5Controller implements Initializable {
         tf_currentSong.setText(file.getName());
         selected = selected.replaceAll(" ", "%20");
         selected = selected.replaceAll("\\\\", "/");
+        selected = selected.replaceAll("\\[", "%5B");
+        selected = selected.replaceAll("\\]", "%5D");
         System.out.println("clicked on " + selected);
         btn_play.setText("Pause");
         player.play(selected);
