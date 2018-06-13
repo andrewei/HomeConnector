@@ -25,9 +25,7 @@ import network.tcpip.speakers.NetworkSpeakersController;
 
 import java.io.File;
 import java.net.URL;
-import java.util.List;
-import java.util.Random;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class Tab5Controller implements Initializable {
 
@@ -41,6 +39,7 @@ public class Tab5Controller implements Initializable {
     private Stage stage;
     private static boolean isPlaying;
     private ObservableList<File> observableList;
+    private Stack<File> history;
 
     @FXML private TextField textSearchFilter;
     @FXML private Button btn_play;
@@ -72,6 +71,7 @@ public class Tab5Controller implements Initializable {
         getMp3DataThread();
         isPlaying = false;
         textSearchFilter.textProperty().addListener((observable, oldValue, newValue) -> search(oldValue, newValue));
+        this.history = new Stack<>();
     }
 
     public void search( String oldVal, String newVal) {
@@ -114,6 +114,15 @@ public class Tab5Controller implements Initializable {
     public void playSong(MouseEvent event){
         File file = (File)list_music.getSelectionModel().getSelectedItem();
         playSong(file);
+    }
+
+    public void btn_previous(MouseEvent event) {
+        if(!history.isEmpty() && player.getCurrentTime() < 1000) {
+            history.pop();
+        }
+        if(!history.isEmpty()) {
+            playSong(history.pop());
+        }
     }
 
     public void playSong(String file){
@@ -169,6 +178,7 @@ public class Tab5Controller implements Initializable {
     }
 
     public void playSong(File file){
+        history.push(file);
         String selected = "file:///" + file;
         tf_currentSong.setText(file.getName());
         selected = selected.replaceAll(" ", "%20");

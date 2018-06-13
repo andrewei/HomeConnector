@@ -71,26 +71,28 @@ public class Mp3Player {
         if (mediaPlayer != null) {
             mediaPlayer.stop();
         }
+        try {
         media = new Media(songPath);
         mediaPlayer = new MediaPlayer(media);
         setListeners();
         setVolume(volume);
         mediaPlayer.play();
+        }
+        catch (Exception e) {
+            System.out.println("Exception in play, could not play song, skipping");
+            mainController.tab5Controller.btn_next_click(null);
+        }
     }
 
     private void setListeners() {
-        mediaPlayer.setOnEndOfMedia(new Runnable() {
-            public void run() {
-                System.out.println("End of media file");
-                mainController.tab5Controller.btn_next_click(null);
-            }
+        mediaPlayer.setOnEndOfMedia(() -> {
+            System.out.println("End of media file");
+            mainController.tab5Controller.btn_next_click(null);
         });
 
-        mediaPlayer.setOnError(new Runnable() {
-            public void run() {
-                System.out.println("Error when playing file, skipping");
-                mainController.tab5Controller.btn_next_click(null);
-            }
+        mediaPlayer.setOnError(() -> {
+            System.out.println("Error when playing file, skipping");
+            mainController.tab5Controller.btn_next_click(null);
         });
     }
 
