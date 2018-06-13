@@ -67,8 +67,8 @@
               </columns>
             </TableView>
             <Text layoutX="62.0" layoutY="690.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Connected speakers" textAlignment="CENTER" wrappingWidth="246.0" />
-            <Button layoutX="62.0" layoutY="858.0" mnemonicParsing="false" onAction="#addSpeaker" onMouseClicked="#onAddItem" text="Add" />
-            <Button layoutX="120.0" layoutY="858.0" mnemonicParsing="false" onAction="#removeSelected" onMouseClicked="#onAddItem" text="Remove selected" />
+            <Button layoutX="62.0" layoutY="858.0" mnemonicParsing="false" onAction="#addSpeaker" onMouseClicked="#onAddItem" text="Search and add" />
+            <Button layoutX="175.0" layoutY="858.0" mnemonicParsing="false" onAction="#removeSelected" onMouseClicked="#onAddItem" text="Remove selected" />
          </children>
       </AnchorPane>
       <AnchorPane>

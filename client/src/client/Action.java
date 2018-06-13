@@ -12,4 +12,5 @@ public enum Action {
     SET_VOLUME,
     SET_CURRENT_TIME,
     GET_VOLUME,
+    PING
 }

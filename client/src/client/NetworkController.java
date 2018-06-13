@@ -14,7 +14,7 @@ public class NetworkController {
 
     static Mp3Player player = new Mp3Player();
 
-    public void receive(JSONObject jsonObject) {
+    public boolean receive(JSONObject jsonObject) {
         Action actionSwitch = Action.valueOf((String) jsonObject.get("ACTION"));
 
         switch (actionSwitch) {
@@ -49,9 +49,12 @@ public class NetworkController {
                 System.out.println("time: " + (int)time);
                 player.setCurrentTime((int)time, Long.valueOf(startTime));
                 break;
+            case PING:
+                return true;
             default:
                 System.out.println("NetworkController in default case");
                 break;
         }
+        return false;
     }
 }

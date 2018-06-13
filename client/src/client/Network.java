@@ -2,13 +2,12 @@ package client;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import sun.nio.ByteBuffered;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.ObjectInputStream;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.charset.Charset;
 
 /**
  * Created by andreas on 1/15/2016.
@@ -31,22 +30,38 @@ public class Network {
                 }
                 JSONParser parser = new JSONParser();
                 Object obj;
-                Socket socket;
-                ObjectInputStream ois;
+                Socket socket = null;
+                BufferedReader br;
+                OutputStream out = null;
                 while (true) {
                     try {
                         System.out.println("Waiting for client request");
                         socket = server.accept();
-                        BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                        br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                         String jsonString = br.readLine();
                         //The stripping is to support both Java JSONObject and json from c#
                         String s2 = jsonString.substring(jsonString.indexOf("{"));
                         System.out.println("json" + s2);
                         obj = parser.parse(s2);
-                        controller.receive((JSONObject) obj);
+                        if(controller.receive((JSONObject) obj)) {
+                            socket = new Socket(socket.getInetAddress(), 8555);
+                            String ping = socket.getLocalAddress().toString();
+                            out = socket.getOutputStream();
+                            out.write(ping.getBytes(Charset.forName("UTF-8")));
+                            out.flush();
+                        }
                     } catch (Exception e) {
                         System.out.println("Error when recieving file");
                         e.printStackTrace();
+                    }
+                    finally {
+                        try {
+                            if(socket != null) {
+                                socket.close();
+                            }
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             }

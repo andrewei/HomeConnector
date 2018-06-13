@@ -177,7 +177,8 @@ public class MainController implements Initializable {
     }
 
     public void addSpeaker(ActionEvent event) {
-        observableSpeakersArray.add(new ClientObject("New", "192.168.0.XXX", "off", this));
+        //observableSpeakersArray.add(new ClientObject("New", "192.168.0.XXX", "off", this));
+        networkSpeakersController.ping();
     }
 
     public void removeSelected(ActionEvent event) {
