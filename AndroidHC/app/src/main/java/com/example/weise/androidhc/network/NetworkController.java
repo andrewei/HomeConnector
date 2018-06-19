@@ -8,6 +8,12 @@ import org.json.JSONObject;
  */
 
 public class NetworkController {
+    private static String ip;
+
+    public NetworkController(String ip) {
+        this.ip = ip;
+        Network.setIp(ip);
+    }
 
     public void playSong() {
         JSONObject jsonObject = new JSONObject();

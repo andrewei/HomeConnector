@@ -13,11 +13,16 @@ import java.net.Socket;
 public class Network {
     private static Socket s;
     private static PrintWriter pw;
-    String message = "";
-    private static String ip = "192.168.0.101";
+    private String message = "";
+    private static String ip = "";
+
+    public static void setIp(String server_ip) {
+        ip = server_ip;
+    }
 
     public Network(String message){
         this.message = message;
+        this.ip = ip;
         TcpTask tcpTask = new TcpTask();
         tcpTask.execute();
     }
