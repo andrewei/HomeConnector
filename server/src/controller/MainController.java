@@ -113,7 +113,7 @@ public class MainController implements Initializable {
         player = new Mp3Player(this);
         networkSpeakersController = new NetworkSpeakersController(this);
         networkRemoteController = new NetworkRemoteController(this);
-        initSerial();
+        //initSerial();
         clockTimerObject = new Timer();
         clockTimerObject.schedule(clock = new Clock(this), 0, 1000);
 
