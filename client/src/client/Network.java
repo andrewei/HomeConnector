@@ -14,7 +14,7 @@ import java.nio.charset.Charset;
  */
 public class Network {
     Thread thread;
-    NetworkController controller = new NetworkController();
+    NetworkController controller = new NetworkController(this);
 
     public void recive() throws IOException, ClassNotFoundException, InterruptedException {
 
@@ -43,13 +43,9 @@ public class Network {
                         String s2 = jsonString.substring(jsonString.indexOf("{"));
                         System.out.println("json" + s2);
                         obj = parser.parse(s2);
-                        if(controller.receive((JSONObject) obj)) {
-                            socket = new Socket(socket.getInetAddress(), 8555);
-                            String ping = socket.getLocalAddress().toString();
-                            out = socket.getOutputStream();
-                            out.write(ping.getBytes(Charset.forName("UTF-8")));
-                            out.flush();
-                        }
+                        String serverIP = socket.getInetAddress().toString().substring(1);
+                        String localIP = socket.getLocalAddress().toString().substring(1);
+                        controller.receive((JSONObject) obj, serverIP, localIP);
                     } catch (Exception e) {
                         System.out.println("Error when recieving file");
                         e.printStackTrace();
@@ -69,49 +65,43 @@ public class Network {
         thread = new Thread(new networkTread());
         thread.start();
     }
-}
 
-
-/*
-      class networkTread implements Runnable {
-            @Override
-            public void run() {
-                int port = 9876;
-                ServerSocket server = null;
-                try {
-                    server = new ServerSocket(port);
-                } catch (IOException e) {
-                    e.printStackTrace();
+    public void sendJSON(JSONObject inn, String ip)  {
+        class sendSocket implements Runnable {
+            public void run(){
+                Socket socket = null;
+                try{
+                    ObjectOutputStream oos = null;
+                    socket = new Socket(ip, 8555);
+                    //write to socket using ObjectOutputStream
+                    oos = new ObjectOutputStream(socket.getOutputStream());
+                    oos.writeObject(inn.toString());
+                    oos.close();
                 }
-                JSONParser parser = new JSONParser();
-                Object obj;
-                Socket socket;
-                //ObjectInputStream ois;
-                DataInputStream ois;
-                while (true) {
+                catch (Exception e){
                     try {
-                        System.out.println("Waiting for client request");
-                        //socket = server.accept();
-                        //BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                        //String content = "";
-                        //while(br.ready()){
-                            //content += br.readLine();
-                        //}
-                        //System.out.println(content);
-                        String content = "{\"ACTION\" : \"PLAY_NEWSONG\", \"SONG\" : \"D:/test.mp3\"}";
-                        JSONParser p = new JSONParser();
-                        JSONObject json = (JSONObject) parser.parse(content);
-                        controller.receive(json);
-                        //controller.receive((JSONObject) obj);
-                    } catch (Exception e) {
-                        System.out.println("Error when recieving file");
-                        e.printStackTrace();
+                        if(socket != null) {
+                            socket.close();
+                        }
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
                     }
+                    //TODO fix better error message
+                    //System.out.println("Error in sending json object");
                 }
             }
         }
-        thread = new Thread(new networkTread());
+        Thread thread = new Thread(new sendSocket());
         thread.start();
     }
- */
+}
 
+
+
+/*
+                        socket = new Socket(socket.getInetAddress(), 8555);
+                        String ping = socket.getLocalAddress().toString();
+                        out = socket.getOutputStream();
+                        out.write(ping.getBytes(Charset.forName("UTF-8")));
+                        out.flush();
+*/

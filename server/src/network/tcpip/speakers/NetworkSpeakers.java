@@ -11,7 +11,11 @@ import java.util.ArrayList;
 
 public class NetworkSpeakers {
     Thread playThreadInstace;
-    ArrayList<String> connectedSpeakers = new ArrayList<>();
+    NetworkRecieveController recieveController;
+
+    public NetworkSpeakers(NetworkRecieveController recieveController) {
+        this.recieveController = recieveController;
+    }
 
     public void sendJSON(JSONObject inn, String ip)  {
         class playThread implements Runnable {
@@ -44,8 +48,7 @@ public class NetworkSpeakers {
     }
 
 
-    public ArrayList<String> ping(JSONObject inn, final String baseIp)  {
-        connectedSpeakers.clear();
+    public void ping(JSONObject inn, final String baseIp)  {
         class pingThread implements Runnable {
 
             @Override
@@ -54,33 +57,14 @@ public class NetworkSpeakers {
                     String ip = baseIp + String.valueOf(i);
                     sendJSON(inn, ip);
                 }
-                hearPing();
-                try {
-                    Thread.sleep(4000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
             }
         }
         Thread thread = new Thread(new pingThread());
         thread.start();
-        try {
-            thread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.println("in ping : size = " + connectedSpeakers.size());
-        return connectedSpeakers;
     }
 
-    private void hearPing() {
-        Thread thread;
+    public void recive() throws IOException, ClassNotFoundException, InterruptedException {
         class networkTread implements Runnable {
-            private ArrayList<String> connectedSpeakers;
-
-            public networkTread(ArrayList<String> connectedSpeakers) {
-                this.connectedSpeakers = connectedSpeakers;
-            }
 
             @Override
             public void run() {
@@ -88,7 +72,6 @@ public class NetworkSpeakers {
                 ServerSocket server = null;
                 try {
                     server = new ServerSocket(port);
-                    server.setSoTimeout(1000);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -97,29 +80,18 @@ public class NetworkSpeakers {
                 Socket socket = null;
                 BufferedReader br;
                 OutputStream out = null;
-                long t = System.currentTimeMillis();
-                long end = t+3000;
-                while (System.currentTimeMillis() < end) {
+                while (true) {
                     try {
-                        socket = null;
                         System.out.println("Waiting for client request");
                         socket = server.accept();
-                        if(!socket.isConnected()) {
-                            if(socket != null) {
-                                socket.close();
-                            }
-                            return;
-                        }
                         br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                        String message = br.readLine();
-                        message = message.substring(1);
-                        System.out.println("Message : " + message);
-                        connectedSpeakers.add(message);
-
-                    } catch (SocketTimeoutException e) {
-                        System.out.println("No additional speakers found during time frame");
-                    }
-                    catch (Exception e) {
+                        String jsonString = br.readLine();
+                        //The stripping is to support both Java JSONObject and json from c#
+                        String s2 = jsonString.substring(jsonString.indexOf("{"));
+                        System.out.println("json" + s2);
+                        obj = parser.parse(s2);
+                        recieveController.receive((JSONObject) obj);
+                    } catch (Exception e) {
                         System.out.println("Error when recieving file");
                         e.printStackTrace();
                     }
@@ -135,7 +107,7 @@ public class NetworkSpeakers {
                 }
             }
         }
-        thread = new Thread(new networkTread(connectedSpeakers));
+        Thread thread = new Thread(new networkTread());
         thread.start();
     }
 }

@@ -11,6 +11,5 @@ public enum Action {
     STOP_SONG,
     SET_VOLUME,
     SET_CURRENT_TIME,
-    GET_VOLUME,
     PING
 }

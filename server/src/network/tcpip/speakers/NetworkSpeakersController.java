@@ -5,6 +5,7 @@ import controller.MainController;
 import network.tcpip.ActionConstants;
 import org.json.simple.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class NetworkSpeakersController {
@@ -13,12 +14,24 @@ public class NetworkSpeakersController {
     }
     private String lastSong;
     private MainController mainController;
-    private static NetworkSpeakers network = new NetworkSpeakers();
+    private NetworkRecieveController networkRecieveController;
+    private static NetworkSpeakers network;
     private int delay = 2000;
     private long lastSetTime = 1000000;
 
     public NetworkSpeakersController(MainController mainController)  {
         this.mainController = mainController;
+        networkRecieveController = new NetworkRecieveController(mainController);
+        network = new NetworkSpeakers(networkRecieveController);
+        try {
+            network.recive();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public void playNewSong(String path){
@@ -93,13 +106,9 @@ public class NetworkSpeakersController {
     }
 
     public void ping() {
+        mainController.observableSpeakersArray.clear();
         JSONObject jsonOutput = new JSONObject();
         jsonOutput.put("ACTION", ActionConstants.PING);
-        ArrayList<String> connectedSpeakers = network.ping(jsonOutput, "192.168.0.");
-        mainController.observableSpeakersArray.clear();
-        for (int i = 0; i < connectedSpeakers.size(); i++) {
-            mainController.observableSpeakersArray.add( new ClientObject( "" + i, connectedSpeakers.get(i), "on", mainController));
-        }
-
+        network.ping(jsonOutput, "192.168.0.");
     }
 }
