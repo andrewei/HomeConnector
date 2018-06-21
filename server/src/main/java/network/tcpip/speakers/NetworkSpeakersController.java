@@ -109,6 +109,6 @@ public class NetworkSpeakersController {
         mainController.observableSpeakersArray.clear();
         JSONObject jsonOutput = new JSONObject();
         jsonOutput.put("ACTION", ActionConstants.PING);
-        network.ping(jsonOutput, "192.168.0.");
+        network.ping(jsonOutput, "192.168.1.");
     }
 }

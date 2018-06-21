@@ -1,4 +1,4 @@
-package Lights;
+package lights;
 
 
 import controller.MainController;

@@ -20,7 +20,7 @@ public ConfigPath(){
     } catch (IOException e) {
         e.printStackTrace();
     }
-    configPath = basePath +  "/src/config/configPath.properties";
+    configPath = basePath +  "/src/main/java/config/configPath.properties";
 }
 
     public String readKey(String key){

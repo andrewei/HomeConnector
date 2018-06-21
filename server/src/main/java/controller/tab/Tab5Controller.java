@@ -6,11 +6,8 @@ import config.ConfigPath;
 import controller.MainController;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -21,6 +18,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
+import network.tcpip.SMBJAuthenticator;
 import network.tcpip.speakers.NetworkSpeakersController;
 
 import java.io.File;
@@ -31,7 +29,7 @@ public class Tab5Controller implements Initializable {
 
     private MainController mainController;
     private NetworkSpeakersController networkSpeakersController;
-    private Mp3Player player;
+    public Mp3Player player;
     private ConfigPath configPath;
     private List<File> listOfFiles;
     private ListProperty<File> listProperty = new SimpleListProperty<>();

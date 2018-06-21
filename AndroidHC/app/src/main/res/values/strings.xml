@@ -1,8 +1,9 @@
 <resources>
-    <string name="app_name">AndroidHC</string>
-    <string name="button_play">Play/Pause</string>
-    <string name="button_stop">Stop</string>
-    <string name="button_next">Next</string>
-    <string name="enter_ip_addresss">Enter IP Addresss</string>
-    <string name="server_ip_addresss">Server IP Addresss</string>
+<string name="app_name">AndroidHC</string>
+<string name="button_play">Play/Pause</string>
+<string name="button_stop">Stop</string>
+<string name="button_next">Next</string>
+<string name="enter_ip_addresss">Enter IP Addresss</string>
+<string name="server_ip_addresss">Server IP Addresss</string>
+<string name="search_song">Search for song</string>
 </resources>
