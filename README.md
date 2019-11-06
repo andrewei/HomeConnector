@@ -3,7 +3,7 @@
 HomeConnector is a smart house system developed by one developer. 
 The project was/is made mainly for learning/testing out different technologies.
 The code is not tested, and it is partly very hacky, but if the stars align correctly
-and it works it can be really cool :) 
+and it works it can be really cool :)
 
 The system's main functionality is to synchronically play music from a local server to multiple clients
 in the local network. The system also supports video, but it is limited to mp4 at the moment. 
