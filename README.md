@@ -5,16 +5,19 @@ The project was/is made mainly for learning/testing out different technologies.
 The code is not tested, and it is partly very hacky, but if the stars align correctly
 and it works it can be really cool :) 
 
-The system's main functionality is to synchronically play playing music from a local server to multiple clients
+The system's main functionality is to synchronically play music from a local server to multiple clients
 in the local network. The system also supports video, but it is limited to mp4 at the moment. 
 
-## Other functionalities that are (partly) implemented are:
+## Functionalities that are (partly) implemented are:
+- Synchronised music player
+- Synchronise video player
+- Multiple speakers (clients)
 - Alarm
 - Doorbell
 - Android remote app (for the music player)
 - Client health monitor (restart/update clients)
-- TV-remotes.
-- Automatically find speakers
+- TV-remote (Sony TV).
+- Automatically find speakers (System finds clients on the local network)
 
 
 ## The system consists of:
