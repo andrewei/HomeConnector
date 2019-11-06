@@ -1,2 +1,0 @@
-Puttet filer i på c i en av javapath standard lokasjonene, 
-prøvde å legge til en javapath, men ga opp
