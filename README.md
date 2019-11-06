@@ -10,7 +10,7 @@ in the local network. The system also supports video, but it is limited to mp4 a
 
 ## Functionalities that are (partly) implemented are:
 - Synchronised music player
-- Synchronise video player
+- Synchronised video player
 - Multiple speakers (clients)
 - Alarm
 - Doorbell
