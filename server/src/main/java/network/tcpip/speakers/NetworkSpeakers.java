@@ -6,8 +6,6 @@ import org.json.simple.parser.JSONParser;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.SocketTimeoutException;
-import java.util.ArrayList;
 
 public class NetworkSpeakers {
     Thread playThreadInstace;

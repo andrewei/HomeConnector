@@ -1,8 +1,6 @@
 package network.tcpip;
 
 import com.hierynomus.msdtyp.AccessMask;
-import com.hierynomus.msfscc.fileinformation.FileIdBothDirectoryInformation;
-import com.hierynomus.msfscc.fileinformation.FileStandardInformation;
 import com.hierynomus.mssmb2.SMB2CreateDisposition;
 import com.hierynomus.mssmb2.SMB2ShareAccess;
 import com.hierynomus.smbj.SMBClient;
@@ -12,9 +10,11 @@ import com.hierynomus.smbj.connection.Connection;
 import com.hierynomus.smbj.session.Session;
 import com.hierynomus.smbj.share.DiskShare;
 import controller.MainController;
-import sun.applet.Main;
 
-import java.io.*;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.EnumSet;
 import java.util.concurrent.TimeUnit;
 

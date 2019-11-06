@@ -1,9 +1,9 @@
 package network.tcpip.speakers;
+
 import aplication.ClientObject;
 import controller.MainController;
 import network.tcpip.Action;
 import org.json.simple.JSONObject;
-import sun.applet.Main;
 
 public class NetworkRecieveController {
     MainController mainController;

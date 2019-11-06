@@ -2,19 +2,20 @@ package client;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import sun.nio.ByteBuffered;
 
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.nio.charset.Charset;
 
-/**
- * Created by andreas on 1/15/2016.
- */
 public class Network {
-    Thread thread;
-    NetworkController controller = new NetworkController(this);
+    private MainController main;
+    private Thread thread;
+    private NetworkController controller;
+
+    public Network(MainController main) {
+        this.main = main;
+        this.controller = new NetworkController(main);
+    }
 
     public void recive() throws IOException, ClassNotFoundException, InterruptedException {
 
@@ -95,13 +96,3 @@ public class Network {
         thread.start();
     }
 }
-
-
-
-/*
-                        socket = new Socket(socket.getInetAddress(), 8555);
-                        String ping = socket.getLocalAddress().toString();
-                        out = socket.getOutputStream();
-                        out.write(ping.getBytes(Charset.forName("UTF-8")));
-                        out.flush();
-*/

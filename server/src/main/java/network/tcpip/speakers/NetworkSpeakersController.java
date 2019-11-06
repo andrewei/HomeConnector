@@ -1,12 +1,10 @@
 package network.tcpip.speakers;
 
-import aplication.ClientObject;
 import controller.MainController;
 import network.tcpip.ActionConstants;
 import org.json.simple.JSONObject;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class NetworkSpeakersController {
     public String getLastSong() {
@@ -109,6 +107,6 @@ public class NetworkSpeakersController {
         mainController.observableSpeakersArray.clear();
         JSONObject jsonOutput = new JSONObject();
         jsonOutput.put("ACTION", ActionConstants.PING);
-        network.ping(jsonOutput, "192.168.1.");
+        network.ping(jsonOutput, "192.168.0.");
     }
 }

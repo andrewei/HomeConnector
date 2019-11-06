@@ -1,22 +1,19 @@
 package client;
 
 import org.json.simple.JSONObject;
-import sun.nio.ch.Net;
 
-/**
- * Created by andreas on 1/16/2016.
- */
 public class NetworkController {
 
-    private Network network;
     private String songLink;
     private Double volume;
     private String startTime;
+    private MainController main;
+    private Mp3Player player;
 
-    public NetworkController(Network network) {
-        this.network = network;
+    public NetworkController(MainController main) {
+        this.main = main;
+        player = new Mp3Player(main);
     }
-    static Mp3Player player = new Mp3Player();
 
     public void receive(JSONObject jsonObject, String serverIP, String localIP) {
         Action actionSwitch = Action.valueOf((String) jsonObject.get("ACTION"));
@@ -58,8 +55,10 @@ public class NetworkController {
                 jsonOutput.put("ACTION", ActionConstants.PONG);
                 jsonOutput.put("IP", localIP);
                 System.out.println("Sending pong");
-                network.sendJSON(jsonOutput, serverIP);
+                main.network.sendJSON(jsonOutput, serverIP);
                 break;
+            case REBOOT:
+                System.out.println("Reboot not implemented");
             default:
                 System.out.println("NetworkController in default case");
                 break;

@@ -21,24 +21,26 @@ public class Tab4Controller implements Initializable {
     private ConfigPath configPath;
     private Stage stage;
 
-    @FXML private Text textInfoDoorbellSong;
+    @FXML
+    private Text textInfoDoorbellSong;
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {}
+    public void initialize(URL location, ResourceBundle resources) {
+    }
 
-    public void init(MainController mainController){
+    public void init(MainController mainController) {
         this.mainController = mainController;
         this.serialConnector = mainController.serialConnector;
         this.configPath = mainController.configPath;
         this.stage = mainController.myStage;
         String activeDoorbellSong = configPath.readKey("doorbellSong");
-        if(activeDoorbellSong != null){
+        if (activeDoorbellSong != null) {
             textInfoDoorbellSong.setText(activeDoorbellSong);
         }
     }
 
-    public void doorbellChoose(MouseEvent event){
-        if(serialConnector != null){
+    public void doorbellChoose(MouseEvent event) {
+        if (serialConnector != null) {
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Choose doorbell song");
             File file = fileChooser.showOpenDialog(stage);
@@ -47,8 +49,7 @@ public class Tab4Controller implements Initializable {
                 String path = configPath.readKey("doorbellSong");
                 textInfoDoorbellSong.setText(path);
             }
-        }
-        else{
+        } else {
             System.out.println("Serial connector is null, is the doorbell connected?");
         }
     }

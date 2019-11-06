@@ -7,13 +7,14 @@ import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.TimerTask;
 
-public class Clock extends TimerTask{
+public class Clock extends TimerTask {
 
     private MainController mainController;
     private boolean isAlarmSet;
     private int alarmHour;
     private int alarmMinute;
     private File alarmSong;
+
     public Clock(MainController mainController) {
         this.alarmSong = null;
         this.mainController = mainController;
@@ -30,30 +31,30 @@ public class Clock extends TimerTask{
         int hour = rightNow.get(Calendar.HOUR_OF_DAY);
         int minute = rightNow.get(Calendar.MINUTE);
 
-        if (hour < 10){
+        if (hour < 10) {
             mainController.str_hour.setText("0" + hour);
-        } else{
+        } else {
             mainController.str_hour.setText("" + hour);
         }
 
-        if(minute < 10){
+        if (minute < 10) {
             mainController.str_minute.setText("0" + minute);
-        } else{
+        } else {
             mainController.str_minute.setText("" + minute);
         }
-        checkAlarm(hour,minute);
+        checkAlarm(hour, minute);
 
     }
 
-    public void checkAlarm(int nowHour, int nowMinute){
-        if (this.alarmHour == nowHour && this.alarmMinute == nowMinute && isAlarmSet){
+    public void checkAlarm(int nowHour, int nowMinute) {
+        if (this.alarmHour == nowHour && this.alarmMinute == nowMinute && isAlarmSet) {
             System.out.printf("ALARM");
             mainController.tab5Controller.playSong(mainController.configPath.readKey("alarmSong"));
             isAlarmSet = false;
         }
     }
 
-    public void setAlarm(int hour, int minute, boolean setAlarm){
+    public void setAlarm(int hour, int minute, boolean setAlarm) {
         this.alarmHour = hour;
         this.alarmMinute = minute;
         this.isAlarmSet = setAlarm;

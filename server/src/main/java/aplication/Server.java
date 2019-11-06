@@ -11,8 +11,8 @@ public class Server extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Main.fxml"));
-        Parent root = (Parent)loader.load();
-        MainController controller = (MainController)loader.getController();
+        Parent root = (Parent) loader.load();
+        MainController controller = (MainController) loader.getController();
         controller.setStage(primaryStage);
         primaryStage.setTitle("Home connector");
         Scene scene = new Scene(root, 1920, 1080);
@@ -21,6 +21,7 @@ public class Server extends Application {
 
 
     }
+
     public static void main(String[] args) {
         launch(args);
     }

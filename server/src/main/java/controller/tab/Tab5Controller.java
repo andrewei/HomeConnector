@@ -18,12 +18,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
-import network.tcpip.SMBJAuthenticator;
 import network.tcpip.speakers.NetworkSpeakersController;
 
 import java.io.File;
 import java.net.URL;
-import java.util.*;
+import java.util.List;
+import java.util.Random;
+import java.util.ResourceBundle;
+import java.util.Stack;
 
 public class Tab5Controller implements Initializable {
 
@@ -39,18 +41,26 @@ public class Tab5Controller implements Initializable {
     private ObservableList<File> observableList;
     private Stack<File> history;
 
-    @FXML private TextField textSearchFilter;
-    @FXML private Button btn_play;
-    @FXML private Text textInfoRootFolder;
-    @FXML private ListView list_music;
-    @FXML private Slider slide_vol;
-    @FXML private Slider slide_time;
-    @FXML private TextField tf_currentSong;
+    @FXML
+    private TextField textSearchFilter;
+    @FXML
+    private Button btn_play;
+    @FXML
+    private Text textInfoRootFolder;
+    @FXML
+    private ListView list_music;
+    @FXML
+    private Slider slide_vol;
+    @FXML
+    private Slider slide_time;
+    @FXML
+    private TextField tf_currentSong;
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {}
+    public void initialize(URL location, ResourceBundle resources) {
+    }
 
-    public void init(MainController mainController){
+    public void init(MainController mainController) {
         this.mainController = mainController;
         this.configPath = mainController.configPath;
         this.player = mainController.player;
@@ -58,7 +68,7 @@ public class Tab5Controller implements Initializable {
         this.stage = mainController.myStage;
         slide_vol.adjustValue(50);
         String activeRootFolder = configPath.readKey("rootFolder");
-        if(activeRootFolder != null){
+        if (activeRootFolder != null) {
             textInfoRootFolder.setText(activeRootFolder);
         }
         slide_vol.valueProperty().addListener((observable, oldValue, newValue) -> {
@@ -72,36 +82,35 @@ public class Tab5Controller implements Initializable {
         this.history = new Stack<>();
     }
 
-    public void search( String oldVal, String newVal) {
-        if(oldVal == newVal){
+    public void search(String oldVal, String newVal) {
+        if (oldVal == newVal) {
             System.out.println("same value in search, returning");
             return;
         }
-        if(newVal.length() == 0){
+        if (newVal.length() == 0) {
             observableList.clear();
             observableList.setAll(listOfFiles);
-        }
-        else {
-            System.out.println("OldValue: " + oldVal + " newValue: " + newVal );
+        } else {
+            System.out.println("OldValue: " + oldVal + " newValue: " + newVal);
             observableList.clear();
-            for (int i = 0; i < listOfFiles.size(); i++){
-                if(listOfFiles.get(i).toString().toLowerCase().contains(newVal.toLowerCase())){
+            for (int i = 0; i < listOfFiles.size(); i++) {
+                if (listOfFiles.get(i).toString().toLowerCase().contains(newVal.toLowerCase())) {
                     observableList.add(listOfFiles.get(i));
                 }
             }
         }
     }
 
-    private void setVolume(double volume){
+    private void setVolume(double volume) {
         networkSpeakersController.setVolume(volume);
     }
 
-    public void setVolumeAndUpdateSlider(double volume){
-        slide_vol.setValue(volume*slide_vol.getMax());
+    public void setVolumeAndUpdateSlider(double volume) {
+        slide_vol.setValue(volume * slide_vol.getMax());
         //setVolume(volume);
     }
 
-    public void btn_next_click(MouseEvent event){
+    public void btn_next_click(MouseEvent event) {
         Random random = new Random();
         btn_play.setText("Pause");
         int randInt = random.nextInt(listProperty.getSize());
@@ -109,51 +118,51 @@ public class Tab5Controller implements Initializable {
         playSong(file);
     }
 
-    public void playSong(MouseEvent event){
-        File file = (File)list_music.getSelectionModel().getSelectedItem();
+    public void playSong(MouseEvent event) {
+        File file = (File) list_music.getSelectionModel().getSelectedItem();
         playSong(file);
     }
 
     public void btn_previous(MouseEvent event) {
-        if(!history.isEmpty() && player.getCurrentTime() < 1000) {
+        if (!history.isEmpty() && player.getCurrentTime() < 1000) {
             history.pop();
         }
-        if(!history.isEmpty()) {
+        if (!history.isEmpty()) {
             playSong(history.pop());
         }
     }
 
-    public void playSong(String file){
+    public void playSong(String file) {
         player.play(file);
         networkSpeakersController.playNewSong(file);
     }
 
-    public void btn_stop(MouseEvent event){
+    public void btn_stop(MouseEvent event) {
         player.stop();
         btn_play.setText("Play");
         networkSpeakersController.stopSong();
     }
 
-    public void btn_play(MouseEvent event){
-        if(player != null){
-            if(!player.isPlaying()){
+    public void btn_play(MouseEvent event) {
+        if (player != null) {
+            if (!player.isPlaying()) {
                 player.play();
                 networkSpeakersController.playSong();
                 btn_play.setText("Pause");
-            }
-            else{
+            } else {
                 player.pause();
+                networkSpeakersController.setCurrentTime(slide_time.getValue());
                 networkSpeakersController.pauseSong();
                 btn_play.setText("Play");
             }
         }
     }
 
-    public void rootImport(MouseEvent event){
+    public void rootImport(MouseEvent event) {
         initMp3Player();
     }
 
-    public void rootChoose(MouseEvent event){
+    public void rootChoose(MouseEvent event) {
         DirectoryChooser directoryChooser = new DirectoryChooser();
         directoryChooser.setTitle("Open Resource File");
         File file = directoryChooser.showDialog(stage);
@@ -165,7 +174,7 @@ public class Tab5Controller implements Initializable {
 
     public void initMp3Player() {
         String activeRootFolder = configPath.readKey("rootFolder");
-        if(activeRootFolder != null){
+        if (activeRootFolder != null) {
             textInfoRootFolder.setText(activeRootFolder);
             LocalDatabase db = new LocalDatabase();
             listOfFiles = db.getFolderItems(activeRootFolder);
@@ -175,7 +184,7 @@ public class Tab5Controller implements Initializable {
         }
     }
 
-    public void playSong(File file){
+    public void playSong(File file) {
         history.push(file);
         String selected = "file:///" + file;
         tf_currentSong.setText(file.getName());
@@ -189,7 +198,8 @@ public class Tab5Controller implements Initializable {
         networkSpeakersController.playNewSong(selected);
     }
 
-    public void setSongTime(MouseEvent e){
+    public void setSongTime(MouseEvent e) {
+        //Add async with timer to avoid to many requests
         networkSpeakersController.setCurrentTime(slide_time.getValue());
         player.setCurrentTime((int) slide_time.getValue());
         System.out.println("Setting time : " + (int) slide_time.getValue());
@@ -199,16 +209,15 @@ public class Tab5Controller implements Initializable {
 
         class mp3UpdateyThread implements Runnable {
 
-            public void run(){
-                try{
-                    while(true){
+            public void run() {
+                try {
+                    while (true) {
                         thread.sleep(100);
                         slide_time.setMin(0);
                         slide_time.setMax(player.getTotalDuration());
                         slide_time.setValue(player.getCurrentTime());
                     }
-                }
-                catch (Exception e){
+                } catch (Exception e) {
                     System.out.println("Error in mp3UpdateyThread");
                     System.out.println(e.getStackTrace());
                 }

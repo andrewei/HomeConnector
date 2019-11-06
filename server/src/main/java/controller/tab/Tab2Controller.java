@@ -11,8 +11,10 @@ public class Tab2Controller implements Initializable {
     private MainController mainController;
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {}
-    public void init(MainController mainController){
+    public void initialize(URL location, ResourceBundle resources) {
+    }
+
+    public void init(MainController mainController) {
         this.mainController = mainController;
     }
 }

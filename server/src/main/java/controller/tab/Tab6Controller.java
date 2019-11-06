@@ -25,15 +25,20 @@ public class Tab6Controller implements Initializable {
     private Stage stage;
     private Clock clock;
 
-    @FXML private Text textInfoAlarmSong;
-    @FXML private TextField alarmHour;
-    @FXML private TextField alarmMinute;
-    @FXML private ToggleButton alarmToggle;
+    @FXML
+    private Text textInfoAlarmSong;
+    @FXML
+    private TextField alarmHour;
+    @FXML
+    private TextField alarmMinute;
+    @FXML
+    private ToggleButton alarmToggle;
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {}
+    public void initialize(URL location, ResourceBundle resources) {
+    }
 
-    public void init(MainController mainController){
+    public void init(MainController mainController) {
         this.mainController = mainController;
         this.serialConnector = mainController.serialConnector;
         this.configPath = mainController.configPath;
@@ -41,12 +46,12 @@ public class Tab6Controller implements Initializable {
         this.clock = mainController.clock;
 
         String activeAlarmSong = configPath.readKey("alarmSong");
-        if(activeAlarmSong != null){
+        if (activeAlarmSong != null) {
             textInfoAlarmSong.setText(activeAlarmSong);
         }
     }
 
-    public void alarmChoose(MouseEvent event){
+    public void alarmChoose(MouseEvent event) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choose alarm song");
         File file = fileChooser.showOpenDialog(stage);
@@ -57,13 +62,19 @@ public class Tab6Controller implements Initializable {
         }
     }
 
-    public void setAlarm(MouseEvent event){
+    public void setAlarm(MouseEvent event) {
         System.out.println("SetAlarm is running and it is " + alarmToggle.isSelected());
         int hour, minute;
-        if(alarmHour.getText().length() == 0){hour = 0;}
-        else{hour = Integer.parseInt(alarmHour.getText());}
-        if(alarmMinute.getText().length() == 0){minute = 0;}
-        else{minute = Integer.parseInt(alarmMinute.getText());}
+        if (alarmHour.getText().length() == 0) {
+            hour = 0;
+        } else {
+            hour = Integer.parseInt(alarmHour.getText());
+        }
+        if (alarmMinute.getText().length() == 0) {
+            minute = 0;
+        } else {
+            minute = Integer.parseInt(alarmMinute.getText());
+        }
         clock.setAlarm(hour, minute, alarmToggle.isSelected());
     }
 }

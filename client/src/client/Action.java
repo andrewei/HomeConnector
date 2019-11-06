@@ -1,9 +1,5 @@
 package client;
 
-/**
- * Created by andreas on 1/16/2016.
- */
-
 public enum Action {
     PLAY_SONG,
     PLAY_NEWSONG,
@@ -11,5 +7,6 @@ public enum Action {
     STOP_SONG,
     SET_VOLUME,
     SET_CURRENT_TIME,
-    PING
+    PING,
+    REBOOT
 }

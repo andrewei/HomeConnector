@@ -10,9 +10,13 @@ public class Client extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Home connector Music Client");
-        primaryStage.setScene(new Scene(root, 300, 10));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("main.fxml"));
+        Parent root = (Parent) loader.load();
+        MainController controller = (MainController) loader.getController();
+        controller.setStage(primaryStage);
+        primaryStage.setTitle("client");
+        primaryStage.setScene(new Scene(root, 600, 500));
+        primaryStage.setFullScreen(true);
         primaryStage.show();
     }
 

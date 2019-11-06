@@ -4,13 +4,15 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
-/**
- * Created by andreas on 1/10/2016.
- */
 public class Mp3Player {
-    MediaPlayer mediaPlayer;
-    Media media;
-    double volume = .5;
+    private MediaPlayer mediaPlayer;
+    private Media media;
+    private double volume = .5;
+    private MainController main;
+
+    public Mp3Player(MainController main) {
+        this.main = main;
+    }
 
     public void stop() {
         mediaPlayer.stop();
@@ -51,6 +53,8 @@ public class Mp3Player {
         }
         media = new Media(songPath);
         mediaPlayer = new MediaPlayer(media);
+        if(main.mediaView != null)
+            main.mediaView.setMediaPlayer(mediaPlayer);
         setVolume(volume);
         System.out.println("WIll START IN: " + (startTime  - System.currentTimeMillis()) + "ms");
         while(System.currentTimeMillis() < startTime) {}

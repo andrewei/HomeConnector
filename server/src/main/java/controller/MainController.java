@@ -15,7 +15,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.effect.ColorAdjust;
-import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -24,7 +23,6 @@ import network.serial.SerialConnector;
 import network.tcpip.remote.NetworkRemoteController;
 import network.tcpip.speakers.NetworkSpeakersController;
 
-import java.io.IOException;
 import java.net.InetAddress;
 import java.net.URL;
 import java.net.UnknownHostException;
@@ -38,26 +36,32 @@ public class MainController implements Initializable {
     private Timer clockTimerObject;
     public ObservableList<ClientObject> observableSpeakersArray;
 
-    @FXML private Slider slide_brightness;
-    @FXML private SplitPane rootObj;
-    @FXML private TableView<ClientObject> tableSpeakers;
-    @FXML private TableColumn colName;
-    @FXML private TableColumn colIP;
-    @FXML private TableColumn colActive;
+    @FXML
+    private Slider slide_brightness;
+    @FXML
+    private SplitPane rootObj;
+    @FXML
+    private TableView<ClientObject> tableSpeakers;
+    @FXML
+    private TableColumn colName;
+    @FXML
+    private TableColumn colIP;
+    @FXML
+    private TableColumn colActive;
 
     public void onAddItem(MouseEvent event) {
     }
 
-    private void initTable(){
+    private void initTable() {
 
         colName.setCellValueFactory(
-                new PropertyValueFactory<ClientObject,SimpleStringProperty>("name")
+                new PropertyValueFactory<ClientObject, SimpleStringProperty>("name")
         );
         colIP.setCellValueFactory(
-                new PropertyValueFactory<ClientObject,SimpleStringProperty>("ip")
+                new PropertyValueFactory<ClientObject, SimpleStringProperty>("ip")
         );
         colActive.setCellValueFactory(
-                new PropertyValueFactory<ClientObject,SimpleStringProperty>("active")
+                new PropertyValueFactory<ClientObject, SimpleStringProperty>("active")
         );
         colName.setCellFactory(TextFieldTableCell.forTableColumn());
         colIP.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -67,25 +71,25 @@ public class MainController implements Initializable {
         tableSpeakers.setItems(observableSpeakersArray); // assign the data to the table
     }
 
-    public void colNameCommit(TableColumn.CellEditEvent<ClientObject, String> t){
+    public void colNameCommit(TableColumn.CellEditEvent<ClientObject, String> t) {
         System.out.println("commit name");
         (t.getTableView().getItems().get(
                 t.getTablePosition().getRow())
         ).setName(t.getNewValue());
     }
 
-    public void colIPCommit(TableColumn.CellEditEvent<ClientObject, String> t){
+    public void colIPCommit(TableColumn.CellEditEvent<ClientObject, String> t) {
         System.out.println("commit ip");
         (t.getTableView().getItems().get(
                 t.getTablePosition().getRow())
-                ).setIp(t.getNewValue());
+        ).setIp(t.getNewValue());
     }
 
-    public void colActiveCommit(TableColumn.CellEditEvent<ClientObject, String> t){
+    public void colActiveCommit(TableColumn.CellEditEvent<ClientObject, String> t) {
         System.out.println("commit active");
         (t.getTableView().getItems().get(
                 t.getTablePosition().getRow())
-                ).setActive(t.getNewValue());
+        ).setActive(t.getNewValue());
     }
 
     public static NetworkSpeakersController networkSpeakersController;
@@ -96,18 +100,30 @@ public class MainController implements Initializable {
     public static Clock clock;
     public static Stage myStage;
 
-    @FXML public Text str_date;
-    @FXML public Text str_hour;
-    @FXML public Text str_minute;
-    @FXML public Tab1Controller tab1Controller;
-    @FXML public Tab2Controller tab2Controller;
-    @FXML public Tab3Controller tab3Controller;
-    @FXML public Tab4Controller tab4Controller;
-    @FXML public Tab5Controller tab5Controller;
-    @FXML public Tab6Controller tab6Controller;
+    @FXML
+    public Text str_date;
+    @FXML
+    public Text str_hour;
+    @FXML
+    public Text str_minute;
+    @FXML
+    public Tab1Controller tab1Controller;
+    @FXML
+    public Tab2Controller tab2Controller;
+    @FXML
+    public Tab3Controller tab3Controller;
+    @FXML
+    public Tab4Controller tab4Controller;
+    @FXML
+    public Tab5Controller tab5Controller;
+    @FXML
+    public Tab6Controller tab6Controller;
+    @FXML
+    public Tab7Controller tab7Controller;
 
 
-    @FXML public void initialize(URL location, ResourceBundle resources) {
+    @FXML
+    public void initialize(URL location, ResourceBundle resources) {
         initTable();
         configPath = new ConfigPath();
         player = new Mp3Player(this);
@@ -131,12 +147,12 @@ public class MainController implements Initializable {
         tab4Controller.init(this);
         tab5Controller.init(this);
         tab6Controller.init(this);
+        tab7Controller.init(this);
 
         try {
-            ClientObject obj = new ClientObject("Server", InetAddress.getByName("localhost").getHostAddress(),"on", this);
+            ClientObject obj = new ClientObject("Server", InetAddress.getByName("localhost").getHostAddress(), "on", this);
             observableSpeakersArray.add(obj);
-        }
-        catch (UnknownHostException e) {
+        } catch (UnknownHostException e) {
             e.printStackTrace();
         }
     }
@@ -145,7 +161,7 @@ public class MainController implements Initializable {
         try {
             FindPort findPort = new FindPort();
             List availablePorts = findPort.availablePorts();
-            for(int i = 0; i < availablePorts.size(); i++){
+            for (int i = 0; i < availablePorts.size(); i++) {
                 serialConnector = new SerialConnector(this);
                 serialConnector.connect("" + availablePorts.get(i));
             }
@@ -155,10 +171,10 @@ public class MainController implements Initializable {
         }
     }
 
-    public void btn_fullscreen(MouseEvent event){
-        if(myStage.isFullScreen())
+    public void btn_fullscreen(MouseEvent event) {
+        if (myStage.isFullScreen())
             myStage.setFullScreen(false);
-        else{
+        else {
             myStage.setFullScreen(true);
         }
     }
@@ -167,11 +183,11 @@ public class MainController implements Initializable {
         myStage = stage;
     }
 
-    public void setBrightness(MouseEvent event){
+    public void setBrightness(MouseEvent event) {
         colorAdjust.setBrightness(slide_brightness.getValue());
     }
 
-    public void testDeleteMe(){
+    public void testDeleteMe() {
         System.out.println("THIS IS WORKING: TEST OK");
     }
 
@@ -181,8 +197,7 @@ public class MainController implements Initializable {
 
     public void removeSelected(ActionEvent event) {
         tableSpeakers.getSelectionModel();
-        if(tableSpeakers.getSelectionModel().getSelectedItem() != null)
-        {
+        if (tableSpeakers.getSelectionModel().getSelectedItem() != null) {
             TableView.TableViewSelectionModel selectionModel = tableSpeakers.getSelectionModel();
             ObservableList selectedCells = selectionModel.getSelectedCells();
             TablePosition tablePosition = (TablePosition) selectedCells.get(0);
