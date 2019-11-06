@@ -41,11 +41,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void connectNetwork(){
-        if(preferences.contains("ipServer")) {
-            String ip = preferences.getString("ipServer", "xxx.xxx.xxx.xxx");
+        //if(preferences.contains("ipServer")) {
+            // String ip = preferences.getString("ipServer", "xxx.xxx.xxx.xxx");
+            String ip = "192.168.0.104";
             editTextIpAddress.setText(ip);
             networkController = new NetworkController(ip);
-        }
+        // }
     }
 
     private void initEditText() {
