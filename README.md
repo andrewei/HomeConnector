@@ -29,6 +29,6 @@ To use the system as a music/video player, there is only need to set up a server
 is defined in the GUI in the Server.
 
 ## Note: 
-The clients use the current time to synchronise, each client needs to be frequently synced via NTP.
-There is currently no samba authentication functionality for the clients, so if you have username/password
-on the music server all the clients needs to login before working.
+- The clients use the current time to synchronise, each client needs to be frequently synced via NTP.
+- There is currently no samba authentication functionality for the clients, so if you have username/password
+on the music server, all the clients need to login before working.
