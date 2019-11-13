@@ -1,5 +1,6 @@
 @ECHO off
 :while
+    net use \\FENRIZ-PC /user:INSERT-USERNAME INSERT-PASSWORD
     echo checking for config updates...
     for /f "tokens=1,2 delims==" %%G in (config.txt) do set %%G=%%H
     set localVersion=%version%
