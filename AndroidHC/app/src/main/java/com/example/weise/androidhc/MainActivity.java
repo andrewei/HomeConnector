@@ -16,8 +16,6 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.weise.androidhc.R;
-import com.example.weise.androidhc.network.Network;
 import com.example.weise.androidhc.network.NetworkController;
 
 public class MainActivity extends AppCompatActivity {
@@ -35,40 +33,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
         editor = preferences.edit();
+        editTextIpAddress = (EditText) findViewById(R.id.editText_enter_ip);
         initSeekbar();
-        initEditText();
-        connectNetwork();
     }
 
     private void connectNetwork(){
-        //if(preferences.contains("ipServer")) {
-            // String ip = preferences.getString("ipServer", "xxx.xxx.xxx.xxx");
-            String ip = "192.168.0.104";
+        if(preferences.contains("ipServer")) {
+            String ip = preferences.getString("ipServer", "");
             editTextIpAddress.setText(ip);
             networkController = new NetworkController(ip);
-        // }
-    }
-
-    private void initEditText() {
-        editTextIpAddress = (EditText) findViewById(R.id.editText_enter_ip);
-        editTextIpAddress.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-                if(i== EditorInfo.IME_ACTION_DONE){
-                    //deselect editText and hide keyboard and get ip value
-                    Toast.makeText(getApplicationContext(),"Ip changed",Toast.LENGTH_SHORT).show();
-                    View view = findViewById(R.id.mainLayout);
-                    view.requestFocus();
-                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-                    String ip = (String) textView.getText().toString();
-                    editor.putString("ipServer", ip);
-                    editor.apply();
-                    connectNetwork();
-                }
-                return false;
-            }
-        });
+        }
     }
 
     private void initSeekbar(){
@@ -78,7 +52,9 @@ public class MainActivity extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 double volume = (double) seekBar.getProgress() / seekBar.getMax();
                 double transformedVolume = Math.pow(volume, 2.5);
-                networkController.setVolume(transformedVolume);
+                if(networkController != null) {
+                    networkController.setVolume(transformedVolume);
+                }
             }
 
             @Override
@@ -94,17 +70,45 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void play(View view) {
-        networkController.playSong();
-        Toast.makeText(this, "Play Song", Toast.LENGTH_SHORT).show();
+        if(networkController != null) {
+            networkController.playSong();
+            Toast.makeText(this, "Play Song", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(
+                    this, "NetworkController not initialised",
+                    Toast.LENGTH_SHORT
+            ).show();
+        }
     }
 
     public void stop(View view) {
-        networkController.stopSong();
-        Toast.makeText(this, "Stop Song", Toast.LENGTH_SHORT).show();
+        if(networkController != null) {
+            networkController.stopSong();
+            Toast.makeText(this, "Stop Song", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(
+                    this, "NetworkController not initialised",
+                    Toast.LENGTH_SHORT
+            ).show();
+        }
     }
 
     public void next(View view) {
-        networkController.nextSong();
-        Toast.makeText(this, "Next Song", Toast.LENGTH_SHORT).show();
+        if(networkController != null) {
+            networkController.nextSong();
+            Toast.makeText(this, "Next Song", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(
+                    this, "NetworkController not initialised",
+                    Toast.LENGTH_SHORT
+            ).show();
+        }
+    }
+
+    public void connect(View view) {
+        String ip = editTextIpAddress.getText().toString();
+        editor.putString("ipServer", ip);
+        editor.apply();
+        connectNetwork();
     }
 }
