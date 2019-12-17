@@ -8,7 +8,7 @@ and it works it can be really cool :)
 The system's main functionality is to synchronically play music from a local server to multiple clients
 in the local network. The system also supports video, but it is limited to mp4 at the moment. 
 
-## Functionalities that are (partly) implemented are:
+## Functionalities of the system are:
 - Synchronised music player
 - Synchronised video player
 - Multiple speakers (clients)
@@ -33,6 +33,4 @@ is defined in the GUI in the Server.
 
 ## Note: 
 - The clients use the current time to synchronise, each client needs to be frequently synced via NTP.
-- There is currently no samba authentication functionality for the clients, so if you have username/password
-on the music server, all the clients need to log in before working.
 - This project has no license at the moment. It will probably become an open-source project later when it is in a sharable state. Just contact me if you are interested in the project.
