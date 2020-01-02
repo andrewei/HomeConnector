@@ -69,6 +69,13 @@ public class NetworkSpeakersController {
         network.sendJSON(jsonOutput, ip);
     }
 
+    public void setVolume(Double volume, String ip){
+        JSONObject jsonOutput = new JSONObject();
+        jsonOutput.put("ACTION", ActionConstants.SET_VOLUME);
+        jsonOutput.put("VOLUME", volume);
+        network.sendJSON(jsonOutput, ip);
+    }
+
     public void setVolume(Double volume){
         JSONObject jsonOutput = new JSONObject();
         jsonOutput.put("ACTION", ActionConstants.SET_VOLUME);

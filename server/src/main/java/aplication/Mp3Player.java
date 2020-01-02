@@ -58,7 +58,7 @@ public class Mp3Player {
         }
     }
 
-    public void setCurrentTime(int time) {
+    public void setCurrentTime(double time) {
         mediaPlayer.seek(Duration.millis(time));
     }
 
@@ -72,19 +72,19 @@ public class Mp3Player {
             mediaPlayer.play();
         } catch (Exception e) {
             System.out.println("Exception in play, could not play song, skipping");
-            mainController.tab5Controller.btn_next_click(null);
+            mainController.musicController.btn_next_click(null);
         }
     }
 
     private void setListeners() {
         mediaPlayer.setOnEndOfMedia(() -> {
             System.out.println("End of media file");
-            mainController.tab5Controller.btn_next_click(null);
+            mainController.musicController.btn_next_click(null);
         });
 
         mediaPlayer.setOnError(() -> {
             System.out.println("Error when playing file, skipping");
-            mainController.tab5Controller.btn_next_click(null);
+            mainController.musicController.btn_next_click(null);
         });
     }
 
@@ -92,8 +92,8 @@ public class Mp3Player {
         media = new Media(songpath);
         mediaPlayer = new MediaPlayer(media);
         setListeners();
-        if (mainController.tab7Controller.mediaView != null)
-            mainController.tab7Controller.mediaView.setMediaPlayer(mediaPlayer);
+        if (mainController.videoController.mediaView != null)
+            mainController.videoController.mediaView.setMediaPlayer(mediaPlayer);
     }
 }
 

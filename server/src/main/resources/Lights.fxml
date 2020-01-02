@@ -5,7 +5,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="871.0" prefWidth="1575.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.tab.Tab1Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="871.0" prefWidth="1575.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.tab.LightsController">
    <children>
       <Slider layoutX="674.0" layoutY="751.0" prefHeight="25.0" prefWidth="270.0" />
       <Button layoutX="1485.0" layoutY="43.0" mnemonicParsing="false" text="Turn off all" textFill="RED" />

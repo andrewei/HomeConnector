@@ -45,7 +45,7 @@ public class NetworkRemote {
                         System.out.println(message);
                         remoteController.receive(obj);
                     } catch (Exception e) {
-                        System.out.println("error when recieving file");
+                        System.out.println("Error when recieving file");
                         e.printStackTrace();
                     }
                     continue;

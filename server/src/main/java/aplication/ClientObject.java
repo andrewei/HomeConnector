@@ -42,7 +42,11 @@ public class ClientObject {
             mainController.networkSpeakersController.stopSong(this.ip.get());
         else{
             //TODO this needs refactoring, store lastSong somewere else
-            mainController.tab5Controller.playSong(mainController.networkSpeakersController.getLastSong());
+            mainController.musicController.playSong(mainController.networkSpeakersController.getLastSong());
         }
+    }
+
+    public void setVolume(String volume) {
+        mainController.networkSpeakersController.setVolume(Double.parseDouble(volume), this.ip.get());
     }
 }

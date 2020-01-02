@@ -3,7 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
-<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="661.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.tab.Tab4Controller">
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="661.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.tab.DoorBellController">
    <children>
       <Text fx:id="textInfoDoorbellSong" layoutX="47.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No doorbell song selected" wrappingWidth="990.666015625" />
       <Button layoutX="47.0" layoutY="107.0" mnemonicParsing="false" onMouseClicked="#doorbellChoose" text="Choose doorbell song " />

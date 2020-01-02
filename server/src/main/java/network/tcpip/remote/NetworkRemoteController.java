@@ -31,19 +31,19 @@ public class NetworkRemoteController {
 
         switch (actionSwitch) {
             case PLAY_SONG:
-                mainController.tab5Controller.btn_play(null);
+                mainController.musicController.btn_play(null);
                 break;
             case STOP_SONG:
-                mainController.tab5Controller.btn_stop(null);
+                mainController.musicController.btn_stop(null);
                 break;
             case PLAY_NEXTSONG:
-                mainController.tab5Controller.btn_next_click(null);
+                mainController.musicController.btn_next_click(null);
                 break;
             case SET_VOLUME:
                 setVolume(jsonObject);
                 break;
             case PAUSE_SONG:
-                mainController.tab5Controller.btn_play(null);
+                mainController.musicController.btn_play(null);
                 break;
             default:
                 System.out.println("NetworkController in default case");
@@ -54,6 +54,6 @@ public class NetworkRemoteController {
     public void setVolume(JSONObject jsonObject) {
         double volume = Double.parseDouble(jsonObject.get("VOLUME").toString());
         System.out.println("SETTING VOLUME");
-        mainController.tab5Controller.setVolumeAndUpdateSlider(volume);
+        mainController.musicController.setVolumeAndUpdateSlider(volume);
     }
 }

@@ -69,7 +69,7 @@ public class SerialConnector {
                     String line = (new String(buffer,0,len));
                     if(line.equals("1")){
                         System.out.println("doorBellClicked");
-                        mainController.tab5Controller.playSong(mainController.configPath.readKey("doorbellSong"));
+                        mainController.musicController.playSong(mainController.configPath.readKey("doorbellSong"));
                     }
                 }
             }

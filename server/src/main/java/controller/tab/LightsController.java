@@ -6,7 +6,7 @@ import javafx.fxml.Initializable;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Tab2Controller implements Initializable {
+public class LightsController implements Initializable {
 
     private MainController mainController;
 

@@ -48,6 +48,8 @@ public class MainController implements Initializable {
     private TableColumn colIP;
     @FXML
     private TableColumn colActive;
+    @FXML
+    private TableColumn colVolume;
 
     public void onAddItem(MouseEvent event) {
     }
@@ -63,9 +65,13 @@ public class MainController implements Initializable {
         colActive.setCellValueFactory(
                 new PropertyValueFactory<ClientObject, SimpleStringProperty>("active")
         );
+        colVolume.setCellValueFactory(
+                new PropertyValueFactory<ClientObject, SimpleStringProperty>("volume")
+        );
         colName.setCellFactory(TextFieldTableCell.forTableColumn());
         colIP.setCellFactory(TextFieldTableCell.forTableColumn());
         colActive.setCellFactory(TextFieldTableCell.forTableColumn());
+        colVolume.setCellFactory(TextFieldTableCell.forTableColumn());
 
         observableSpeakersArray = FXCollections.observableArrayList(); // create the data
         tableSpeakers.setItems(observableSpeakersArray); // assign the data to the table
@@ -92,6 +98,13 @@ public class MainController implements Initializable {
         ).setActive(t.getNewValue());
     }
 
+    public void colVolumeCommit(TableColumn.CellEditEvent<ClientObject, String> t) {
+        System.out.println("commit active");
+        (t.getTableView().getItems().get(
+                t.getTablePosition().getRow())
+        ).setVolume(t.getNewValue());
+    }
+
     public static NetworkSpeakersController networkSpeakersController;
     public static NetworkRemoteController networkRemoteController;
     public static SerialConnector serialConnector;
@@ -107,19 +120,19 @@ public class MainController implements Initializable {
     @FXML
     public Text str_minute;
     @FXML
-    public Tab1Controller tab1Controller;
+    public LightsController lightsController;
     @FXML
-    public Tab2Controller tab2Controller;
+    public TemperatureController temperatureController;
     @FXML
-    public Tab3Controller tab3Controller;
+    public RemotesController remotesController;
     @FXML
-    public Tab4Controller tab4Controller;
+    public DoorBellController doorBellController;
     @FXML
-    public Tab5Controller tab5Controller;
+    public MusicController musicController;
     @FXML
-    public Tab6Controller tab6Controller;
+    public AlarmController alarmController;
     @FXML
-    public Tab7Controller tab7Controller;
+    public VideoController videoController;
 
 
     @FXML
@@ -141,13 +154,13 @@ public class MainController implements Initializable {
         colorAdjust.setContrast(0);
         rootObj.setEffect(colorAdjust);
 
-        tab1Controller.init(this);
-        tab2Controller.init(this);
-        tab3Controller.init(this);
-        tab4Controller.init(this);
-        tab5Controller.init(this);
-        tab6Controller.init(this);
-        tab7Controller.init(this);
+        lightsController.init(this);
+        temperatureController.init(this);
+        remotesController.init(this);
+        doorBellController.init(this);
+        musicController.init(this);
+        alarmController.init(this);
+        videoController.init(this);
 
         try {
             ClientObject obj = new ClientObject("Server", InetAddress.getByName("localhost").getHostAddress(), "on", this);

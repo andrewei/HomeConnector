@@ -8,7 +8,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
-<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="830.0" prefWidth="1257.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.tab.Tab3Controller">
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="830.0" prefWidth="1257.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.tab.RemotesController">
    <children>
       <Button layoutX="14.0" layoutY="226.0" minHeight="150.0" minWidth="150.0" mnemonicParsing="false" text="Sony">
          <font>

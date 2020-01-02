@@ -82,7 +82,7 @@ public class SMBJAuthenticator {
                         }
                     }
                 }
-                controller.tab5Controller.playSong("file:///D:/git/HomeConnector/server/temp");
+                controller.musicController.playSong("file:///D:/git/HomeConnector/server/temp");
             }
         } catch (IOException e) {
             e.printStackTrace();

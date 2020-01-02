@@ -25,20 +25,29 @@ public class LocalDatabase {
         File[] fList = folder.listFiles();
         for (File file : fList) {
             if (file.isFile()) {
-                String testAudio = "" + file;
+                String testAudio = file.toString().toLowerCase();
                 String format = "";
                 if (file.length() >= 3) {
-                    format = testAudio.substring(testAudio.length() - 3).toLowerCase();
+                    format = testAudio.substring(testAudio.length() - 3);
                 }
                 if (
                     format.equals("mp3") ||
                     format.equals("mp4") ||
                     format.equals("wav")
                 ) {
-                    resultList.add(file);
-                } else {
-                    System.out.println("file removed : " + file);
+                    if(
+                        //TODO Clients can't handle æ ø å at the moment, fix this, works in server player.
+                        //TODO remove almanzo, dont ask ...
+                        testAudio.indexOf('æ') == -1 &&
+                        testAudio.indexOf('ø') == -1 &&
+                        testAudio.indexOf('å') == -1 &&
+                        !testAudio.contains("almanzo")
+                    ) {
+                        resultList.add(file);
+                        continue;
+                    }
                 }
+                System.out.println("file removed : " + file);
             } else if (file.isDirectory()) {
                 try {
                     iterateAddAll(file.getCanonicalPath());

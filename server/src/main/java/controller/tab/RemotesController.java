@@ -10,7 +10,7 @@ import network.serial.SerialConnector;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Tab3Controller implements Initializable {
+public class RemotesController implements Initializable {
 
     private SerialConnector serialConnector;
     private MainController mainController;

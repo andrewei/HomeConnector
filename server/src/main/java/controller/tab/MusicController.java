@@ -14,6 +14,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
@@ -27,7 +29,7 @@ import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.Stack;
 
-public class Tab5Controller implements Initializable {
+public class MusicController implements Initializable {
 
     private MainController mainController;
     private NetworkSpeakersController networkSpeakersController;
@@ -35,11 +37,14 @@ public class Tab5Controller implements Initializable {
     private ConfigPath configPath;
     private List<File> listOfFiles;
     private ListProperty<File> listProperty = new SimpleListProperty<>();
+    private ListProperty<File> queueProperty = new SimpleListProperty<>();
     private Thread thread;
     private Stage stage;
     private static boolean isPlaying;
     private ObservableList<File> observableList;
+    private ObservableList<File> observableQueue;
     private Stack<File> history;
+    private Stack<File> queue;
 
     @FXML
     private TextField textSearchFilter;
@@ -50,11 +55,15 @@ public class Tab5Controller implements Initializable {
     @FXML
     private ListView list_music;
     @FXML
+    private ListView list_queue;
+    @FXML
     private Slider slide_vol;
     @FXML
     private Slider slide_time;
     @FXML
     private TextField tf_currentSong;
+    @FXML
+    private Text text_songs_added;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -80,6 +89,7 @@ public class Tab5Controller implements Initializable {
         isPlaying = false;
         textSearchFilter.textProperty().addListener((observable, oldValue, newValue) -> search(oldValue, newValue));
         this.history = new Stack<>();
+        this.queue = new Stack<>();
     }
 
     public void search(String oldVal, String newVal) {
@@ -113,14 +123,23 @@ public class Tab5Controller implements Initializable {
     public void btn_next_click(MouseEvent event) {
         Random random = new Random();
         btn_play.setText("Pause");
-        int randInt = random.nextInt(listProperty.getSize());
-        File file = listProperty.get(randInt);
+        File file;
+        if(!queue.isEmpty()) {
+            file = queue.firstElement();
+            queue.remove(file);
+            observableQueue.remove(file);
+        } else {
+            int randInt = random.nextInt(listProperty.getSize());
+            file = listProperty.get(randInt);
+        }
         playSong(file);
     }
 
     public void playSong(MouseEvent event) {
-        File file = (File) list_music.getSelectionModel().getSelectedItem();
-        playSong(file);
+        if (event.getClickCount() == 2) {
+            File file = (File) list_music.getSelectionModel().getSelectedItem();
+            playSong(file);
+        }
     }
 
     public void btn_previous(MouseEvent event) {
@@ -151,6 +170,7 @@ public class Tab5Controller implements Initializable {
                 btn_play.setText("Pause");
             } else {
                 player.pause();
+                player.setCurrentTime(slide_time.getValue());
                 networkSpeakersController.setCurrentTime(slide_time.getValue());
                 networkSpeakersController.pauseSong();
                 btn_play.setText("Play");
@@ -178,9 +198,13 @@ public class Tab5Controller implements Initializable {
             textInfoRootFolder.setText(activeRootFolder);
             LocalDatabase db = new LocalDatabase();
             listOfFiles = db.getFolderItems(activeRootFolder);
+            text_songs_added.setText("" + listOfFiles.size());
             list_music.itemsProperty().bind(listProperty);
+            list_queue.itemsProperty().bind(queueProperty);
+            observableQueue = FXCollections.observableArrayList(queue);
             observableList = FXCollections.observableArrayList(listOfFiles);
             listProperty.set(observableList);
+            queueProperty.set(observableQueue);
         }
     }
 
@@ -194,14 +218,14 @@ public class Tab5Controller implements Initializable {
         selected = selected.replaceAll("\\]", "%5D");
         System.out.println("clicked on " + selected);
         btn_play.setText("Pause");
-        player.play(selected);
         networkSpeakersController.playNewSong(selected);
+        player.play(selected);
     }
 
     public void setSongTime(MouseEvent e) {
         //Add async with timer to avoid to many requests
         networkSpeakersController.setCurrentTime(slide_time.getValue());
-        player.setCurrentTime((int) slide_time.getValue());
+        player.setCurrentTime(slide_time.getValue());
         System.out.println("Setting time : " + (int) slide_time.getValue());
     }
 
@@ -225,5 +249,41 @@ public class Tab5Controller implements Initializable {
         }
         thread = new Thread(new mp3UpdateyThread());
         thread.start();
+    }
+
+    public void onListViewKeyPress(KeyEvent e) {
+        System.out.println("Keypress: " + e.getCode());
+        if(e.getCode() == KeyCode.Q) {
+            File file = (File) list_music.getSelectionModel().getSelectedItem();
+            if(queue.contains(file)) {
+                queue.remove(file);
+            } else {
+                queue.push(file);
+            }
+        } else if (e.getCode() == KeyCode.C) {
+            queue.clear();
+        }
+        observableQueue.clear();
+        observableQueue.setAll(queue);
+        System.out.println("queue");
+        System.out.println(queue);
+    }
+
+    public void onQueueKeyPress(KeyEvent e) {
+        System.out.println("Keypress: " + e.getCode());
+        if(e.getCode() == KeyCode.Q) {
+            File file = (File) list_queue.getSelectionModel().getSelectedItem();
+            if(queue.contains(file)) {
+                queue.remove(file);
+            } else {
+                queue.push(file);
+            }
+        } else if (e.getCode() == KeyCode.C) {
+            queue.clear();
+        }
+        observableQueue.clear();
+        observableQueue.setAll(queue);
+        System.out.println("queue");
+        System.out.println(queue);
     }
 }

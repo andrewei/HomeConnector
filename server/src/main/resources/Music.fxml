@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.*?>
-<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1033.0" prefWidth="1325.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.tab.Tab5Controller">
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1033.0" prefWidth="1325.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.tab.MusicController">
    <children>
       <Text layoutX="27.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Local network media player" wrappingWidth="449.47802734375">
          <font>
             <Font size="37.0" />
          </font>
       </Text>
-      <Text layoutX="13.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change to spotify?" wrappingWidth="174.47802734375" />
-      <ListView fx:id="list_music" layoutX="27.0" layoutY="133.0" onMouseClicked="#playSong" prefHeight="742.0" prefWidth="1429.0" />
+      <ListView fx:id="list_music" layoutX="27.0" layoutY="133.0" onKeyPressed="#onListViewKeyPress" onMouseClicked="#playSong" prefHeight="542.0" prefWidth="1287.0" />
       <TextField fx:id="textSearchFilter" layoutX="1366.0" layoutY="98.0" promptText="Search" />
       <Button fx:id="btn_play" layoutX="275.0" layoutY="888.0" mnemonicParsing="false" onMouseClicked="#btn_play" prefHeight="48.0" prefWidth="88.0" text="Play" />
       <Button layoutX="181.0" layoutY="888.0" mnemonicParsing="false" onMouseClicked="#btn_stop" prefHeight="48.0" prefWidth="88.0" text="Stop" />
@@ -20,9 +24,16 @@
       <Button layoutX="1099.0" layoutY="28.0" mnemonicParsing="false" onMouseClicked="#rootChoose" prefHeight="25.0" prefWidth="223.0" text="Set RootFolder and import" />
       <Slider fx:id="slide_vol" layoutX="1125.0" layoutY="897.0" prefHeight="32.0" prefWidth="331.0" />
       <Slider fx:id="slide_time" layoutX="27.0" layoutY="935.0" onMouseClicked="#setSongTime" onMouseDragged="#setSongTime" prefHeight="58.0" prefWidth="1431.0" />
-      <Text layoutX="13.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select speakers" wrappingWidth="174.47802734375" />
       <TextField fx:id="tf_currentSong" editable="false" layoutX="491.0" layoutY="888.0" prefHeight="49.0" prefWidth="615.0" promptText="&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;Det er musikken som teller&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;" />
       <Text fx:id="textInfoRootFolder" layoutX="1358.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No root folder selected" wrappingWidth="314.0" />
       <Button layoutX="1351.0" layoutY="28.0" mnemonicParsing="false" onMouseClicked="#rootImport" prefHeight="25.0" prefWidth="107.0" text="import" />
+      <ListView fx:id="list_queue" layoutX="26.0" layoutY="711.0" onKeyPressed="#onQueueKeyPress" onMouseClicked="#playSong" prefHeight="164.0" prefWidth="1287.0" />
+      <Text layoutX="27.0" layoutY="705.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Queue" wrappingWidth="449.47802734375">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+      <Text layoutX="1180.0" layoutY="686.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Songs added: " wrappingWidth="88.00001311302185" />
+      <Text fx:id="text_songs_added" layoutX="1259.0" layoutY="686.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="RIGHT" wrappingWidth="51.0000205039978" />
    </children>
 </AnchorPane>

@@ -4,7 +4,7 @@ import controller.MainController;
 import javafx.fxml.FXML;
 import javafx.scene.media.MediaView;
 
-public class Tab7Controller {
+public class VideoController {
     @FXML
     public MediaView mediaView;
     private MainController mainController;

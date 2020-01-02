@@ -17,7 +17,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Tab6Controller implements Initializable {
+public class AlarmController implements Initializable {
 
     private MainController mainController;
     private SerialConnector serialConnector;

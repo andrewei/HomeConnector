@@ -14,7 +14,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Tab4Controller implements Initializable {
+public class DoorBellController implements Initializable {
 
     private MainController mainController;
     private SerialConnector serialConnector;
