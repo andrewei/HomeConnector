@@ -32,5 +32,6 @@ To use the system as a music/video player, there is only need to set up a server
 is defined in the GUI in the Server.
 
 ## Note: 
-- The clients use the current time to synchronise, each client needs to be frequently synced via NTP.
+- The clients use the current time to synchronise, each client needs to be synced via NTP. I recommend setting up a local
+NTP server and sync the clients frequently to keep them in sync.
 - This project has no license at the moment. It will probably become an open-source project later when it is in a sharable state. Just contact me if you are interested in the project.
