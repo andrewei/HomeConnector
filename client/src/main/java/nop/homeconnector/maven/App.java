@@ -1,4 +1,4 @@
-package client;
+package nop.homeconnector.maven;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -6,11 +6,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Client extends Application {
+public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("main.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/nop/homeconnector/main.fxml"));
         Parent root = (Parent) loader.load();
         MainController controller = (MainController) loader.getController();
         controller.setStage(primaryStage);

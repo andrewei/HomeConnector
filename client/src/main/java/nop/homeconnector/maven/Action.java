@@ -1,4 +1,4 @@
-package client;
+package nop.homeconnector.maven;
 
 public enum Action {
     PLAY_SONG,

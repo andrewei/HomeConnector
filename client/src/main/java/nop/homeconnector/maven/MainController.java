@@ -1,4 +1,4 @@
-package client;
+package nop.homeconnector.maven;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

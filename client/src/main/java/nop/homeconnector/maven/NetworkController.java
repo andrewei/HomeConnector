@@ -1,4 +1,4 @@
-package client;
+package nop.homeconnector.maven;
 
 import org.json.simple.JSONObject;
 

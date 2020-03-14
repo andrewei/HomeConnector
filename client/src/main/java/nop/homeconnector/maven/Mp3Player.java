@@ -1,4 +1,4 @@
-package client;
+package nop.homeconnector.maven;
 
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
