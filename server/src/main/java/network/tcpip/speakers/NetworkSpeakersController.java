@@ -5,6 +5,11 @@ import network.tcpip.ActionConstants;
 import org.json.simple.JSONObject;
 
 import java.io.IOException;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.SocketException;
+import java.net.UnknownHostException;
+import java.util.Arrays;
 
 public class NetworkSpeakersController {
     public String getLastSong() {
@@ -16,11 +21,13 @@ public class NetworkSpeakersController {
     private static NetworkSpeakers network;
     private int delay = 2000;
     private long lastSetTime = 1000000;
+    private String hostBaseIP;
 
     public NetworkSpeakersController(MainController mainController)  {
         this.mainController = mainController;
         networkRecieveController = new NetworkRecieveController(mainController);
         network = new NetworkSpeakers(networkRecieveController);
+        hostBaseIP = getHostBaseIP();
         try {
             network.recive();
         } catch (IOException e) {
@@ -30,6 +37,20 @@ public class NetworkSpeakersController {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public String getHostBaseIP() {
+        try(final DatagramSocket socket = new DatagramSocket()){
+            socket.connect(InetAddress.getByName("8.8.8.8"), 10002);
+            System.out.println(socket.getLocalAddress().getHostAddress());
+            String[] addressArray = socket.getLocalAddress().getHostAddress().split("\\.");
+            System.out.println(Arrays.toString(addressArray));
+            String[] addressBaseArray = Arrays.copyOf(addressArray, addressArray.length-1);
+            return String.join(".", addressBaseArray);
+        } catch (UnknownHostException | SocketException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 
     public void playNewSong(String path){
@@ -114,6 +135,6 @@ public class NetworkSpeakersController {
         mainController.observableSpeakersArray.clear();
         JSONObject jsonOutput = new JSONObject();
         jsonOutput.put("ACTION", ActionConstants.PING);
-        network.ping(jsonOutput, "192.168.0.");
+        network.ping(jsonOutput, hostBaseIP);
     }
 }
