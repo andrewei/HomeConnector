@@ -3,13 +3,9 @@ package network.tcpip.speakers;
 import controller.MainController;
 import network.tcpip.ActionConstants;
 import org.json.simple.JSONObject;
+import utils.UtilsNetwork;
 
 import java.io.IOException;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
-import java.net.SocketException;
-import java.net.UnknownHostException;
-import java.util.Arrays;
 
 public class NetworkSpeakersController {
     public String getLastSong() {
@@ -27,7 +23,7 @@ public class NetworkSpeakersController {
         this.mainController = mainController;
         networkRecieveController = new NetworkRecieveController(mainController);
         network = new NetworkSpeakers(networkRecieveController);
-        hostBaseIP = getHostBaseIP();
+        hostBaseIP = UtilsNetwork.getHostIP(true);
         try {
             network.recive();
         } catch (IOException e) {
@@ -37,20 +33,6 @@ public class NetworkSpeakersController {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-    }
-
-    public String getHostBaseIP() {
-        try(final DatagramSocket socket = new DatagramSocket()){
-            socket.connect(InetAddress.getByName("8.8.8.8"), 10002);
-            System.out.println(socket.getLocalAddress().getHostAddress());
-            String[] addressArray = socket.getLocalAddress().getHostAddress().split("\\.");
-            System.out.println(Arrays.toString(addressArray));
-            String[] addressBaseArray = Arrays.copyOf(addressArray, addressArray.length-1);
-            return String.join(".", addressBaseArray);
-        } catch (UnknownHostException | SocketException e) {
-            e.printStackTrace();
-        }
-        return "";
     }
 
     public void playNewSong(String path){

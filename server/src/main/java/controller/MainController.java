@@ -22,6 +22,7 @@ import network.serial.FindPort;
 import network.serial.SerialConnector;
 import network.tcpip.remote.NetworkRemoteController;
 import network.tcpip.speakers.NetworkSpeakersController;
+import utils.UtilsNetwork;
 
 import java.net.InetAddress;
 import java.net.URL;
@@ -50,11 +51,15 @@ public class MainController implements Initializable {
     private TableColumn colActive;
     @FXML
     private TableColumn colVolume;
+    @FXML
+    private Text textServerIP;
 
     public void onAddItem(MouseEvent event) {
     }
 
     private void initTable() {
+
+        textServerIP.setText("Server IP : " + UtilsNetwork.getHostIP(false));
 
         colName.setCellValueFactory(
                 new PropertyValueFactory<ClientObject, SimpleStringProperty>("name")

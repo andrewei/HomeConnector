@@ -59,7 +59,7 @@
                </font>
             </Text>
             <ToggleButton layoutX="64.0" layoutY="926.0" mnemonicParsing="false" onMouseClicked="#btn_fullscreen" text="fullscreen" />
-            <TableView fx:id="tableSpeakers" editable="true" layoutX="62.0" layoutY="714.0" prefHeight="135.0" prefWidth="246.0">
+            <TableView fx:id="tableSpeakers" editable="true" layoutX="61.0" layoutY="687.0" prefHeight="135.0" prefWidth="246.0">
               <columns>
                 <TableColumn fx:id="colName" onEditCommit="#colNameCommit" prefWidth="41.0" text="Name" />
                 <TableColumn fx:id="colIP" onEditCommit="#colIPCommit" prefWidth="93.0" text="IP" />
@@ -67,9 +67,10 @@
                   <TableColumn fx:id="colVolume" onEditCommit="#colVolumeCommit" prefWidth="76.0" text="Volume" />
               </columns>
             </TableView>
-            <Text layoutX="62.0" layoutY="690.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Connected speakers" textAlignment="CENTER" wrappingWidth="246.0" />
-            <Button layoutX="62.0" layoutY="858.0" mnemonicParsing="false" onAction="#addSpeaker" onMouseClicked="#onAddItem" text="Search and add" />
-            <Button layoutX="175.0" layoutY="858.0" mnemonicParsing="false" onAction="#removeSelected" onMouseClicked="#onAddItem" text="Remove selected" />
+            <Text layoutX="61.0" layoutY="677.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Connected speakers" textAlignment="CENTER" wrappingWidth="246.0" />
+            <Button layoutX="61.0" layoutY="831.0" mnemonicParsing="false" onAction="#addSpeaker" onMouseClicked="#onAddItem" text="Search and add" />
+            <Button layoutX="174.0" layoutY="831.0" mnemonicParsing="false" onAction="#removeSelected" onMouseClicked="#onAddItem" text="Remove selected" />
+            <Text fx:id="textServerIP" layoutX="61.0" layoutY="893.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Server IP: Undefined" textAlignment="CENTER" wrappingWidth="246.0" />
          </children>
       </AnchorPane>
       <AnchorPane>
