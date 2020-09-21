@@ -37,7 +37,8 @@ public class NetworkSpeakers {
                         e1.printStackTrace();
                     }
                     //TODO fix better error message
-                    //System.out.println("Error in sending json object");
+                    System.out.println("Error in sending json object");
+                    e.printStackTrace();
                 }
             }
         }

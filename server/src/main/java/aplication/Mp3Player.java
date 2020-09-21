@@ -79,11 +79,13 @@ public class Mp3Player {
     private void setListeners() {
         mediaPlayer.setOnEndOfMedia(() -> {
             System.out.println("End of media file");
+            System.out.println(mediaPlayer.getError());
             mainController.musicController.btn_next_click(null);
         });
 
         mediaPlayer.setOnError(() -> {
             System.out.println("Error when playing file, skipping");
+            System.out.println(mediaPlayer.getError());
             mainController.musicController.btn_next_click(null);
         });
     }
