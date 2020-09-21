@@ -16,17 +16,17 @@
          </font>
       </Text>
       <ListView fx:id="list_music" layoutX="27.0" layoutY="133.0" onKeyPressed="#onListViewKeyPress" onMouseClicked="#playSong" prefHeight="542.0" prefWidth="1287.0" />
-      <TextField fx:id="textSearchFilter" layoutX="1366.0" layoutY="98.0" promptText="Search" />
+      <TextField fx:id="textSearchFilter" layoutX="1165.0" layoutY="98.0" promptText="Search" />
       <Button fx:id="btn_play" layoutX="275.0" layoutY="888.0" mnemonicParsing="false" onMouseClicked="#btn_play" prefHeight="48.0" prefWidth="88.0" text="Play" />
       <Button layoutX="181.0" layoutY="888.0" mnemonicParsing="false" onMouseClicked="#btn_stop" prefHeight="48.0" prefWidth="88.0" text="Stop" />
       <Button layoutX="376.0" layoutY="888.0" mnemonicParsing="false" onMouseClicked="#btn_next_click" prefHeight="48.0" prefWidth="88.0" text="Next" />
       <Button layoutX="81.0" layoutY="888.0" mnemonicParsing="false" onMouseClicked="#btn_previous" prefHeight="48.0" prefWidth="88.0" text="Previous" />
-      <Button layoutX="1099.0" layoutY="28.0" mnemonicParsing="false" onMouseClicked="#rootChoose" prefHeight="25.0" prefWidth="223.0" text="Set RootFolder and import" />
+      <Button layoutX="1000.0" layoutY="41.0" mnemonicParsing="false" onMouseClicked="#rootChoose" prefHeight="25.0" prefWidth="165.0" text="Set RootFolder and import" />
       <Slider fx:id="slide_vol" layoutX="1125.0" layoutY="897.0" prefHeight="32.0" prefWidth="331.0" />
       <Slider fx:id="slide_time" layoutX="27.0" layoutY="935.0" onMouseClicked="#setSongTime" onMouseDragged="#setSongTime" prefHeight="58.0" prefWidth="1431.0" />
       <TextField fx:id="tf_currentSong" editable="false" layoutX="491.0" layoutY="888.0" prefHeight="49.0" prefWidth="615.0" promptText="&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;Det er musikken som teller&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;" />
-      <Text fx:id="textInfoRootFolder" layoutX="1358.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No root folder selected" wrappingWidth="314.0" />
-      <Button layoutX="1351.0" layoutY="28.0" mnemonicParsing="false" onMouseClicked="#rootImport" prefHeight="25.0" prefWidth="107.0" text="import" />
+      <Text fx:id="textInfoRootFolder" layoutX="1012.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No root folder selected" wrappingWidth="306.5" />
+      <Button layoutX="1172.0" layoutY="41.0" mnemonicParsing="false" onMouseClicked="#rootImport" prefHeight="25.0" prefWidth="61.0" text="Import" />
       <ListView fx:id="list_queue" layoutX="26.0" layoutY="711.0" onKeyPressed="#onQueueKeyPress" onMouseClicked="#playSong" prefHeight="164.0" prefWidth="1287.0" />
       <Text layoutX="27.0" layoutY="705.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Queue" wrappingWidth="449.47802734375">
          <font>
@@ -35,5 +35,6 @@
       </Text>
       <Text layoutX="1180.0" layoutY="686.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Songs added: " wrappingWidth="88.00001311302185" />
       <Text fx:id="text_songs_added" layoutX="1259.0" layoutY="686.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="RIGHT" wrappingWidth="51.0000205039978" />
+      <Button layoutX="1240.0" layoutY="41.0" mnemonicParsing="false" onMouseClicked="#clearPlayList" prefHeight="25.0" prefWidth="70.0" text="Clear" />
    </children>
 </AnchorPane>

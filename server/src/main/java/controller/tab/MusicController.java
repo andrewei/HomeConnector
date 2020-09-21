@@ -192,6 +192,15 @@ public class MusicController implements Initializable {
         }
     }
 
+    public void clearPlayList(MouseEvent event) {
+        observableList.clear();
+        listOfFiles.clear();
+        listProperty.clear();
+        queue.clear();
+        observableQueue.clear();
+        text_songs_added.setText("0");
+    }
+
     public void initMp3Player() {
         String activeRootFolder = configPath.readKey("rootFolder");
         if (activeRootFolder != null) {
