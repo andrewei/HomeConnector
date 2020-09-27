@@ -53,7 +53,7 @@ public class NetworkSpeakers {
             @Override
             public void run() {
                 for(int i = 1; i < 265; i++) {
-                    String ip = baseIp + String.valueOf(i);
+                    String ip = baseIp + "." + String.valueOf(i);
                     sendJSON(inn, ip);
                 }
             }
