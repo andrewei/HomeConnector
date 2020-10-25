@@ -1,5 +1,5 @@
 out/
 target/
 .idea/
-src/config/configPath.properties
+src/main/java/config/configPath.properties
 server.iml
