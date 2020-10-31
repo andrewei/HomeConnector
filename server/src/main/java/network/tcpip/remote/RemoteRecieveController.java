@@ -1,20 +1,23 @@
 package network.tcpip.remote;
 
 import controller.MainController;
-import network.tcpip.ActionEnum;
+import network.tcpip.helpers.RemoteReceiveActionEnum;
+import network.tcpip.helpers.IReceiveController;
+import network.tcpip.core.NetworkReceive;
 import org.json.simple.JSONObject;
 
 import java.io.IOException;
 
-public class NetworkRemoteController {
+public class RemoteRecieveController implements IReceiveController {
     MainController mainController;
+    NetworkReceive networkRemote;
 
-    public NetworkRemoteController(MainController mainController){
+    public RemoteRecieveController(MainController mainController){
         this.mainController = mainController;
+        this.networkRemote = new NetworkReceive();
 
-        NetworkRemote networkRemote = new NetworkRemote();
         try {
-            networkRemote.receive(this);
+            networkRemote.receive(this, 9870);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -24,10 +27,8 @@ public class NetworkRemoteController {
         }
     }
 
-
-
     public void receive(JSONObject jsonObject) {
-        ActionEnum actionSwitch = ActionEnum.valueOf((String) jsonObject.get("ACTION"));
+        RemoteReceiveActionEnum actionSwitch = RemoteReceiveActionEnum.valueOf((String) jsonObject.get("ACTION"));
 
         switch (actionSwitch) {
             case PLAY_SONG:
@@ -40,7 +41,8 @@ public class NetworkRemoteController {
                 mainController.musicController.btn_next_click(null);
                 break;
             case SET_VOLUME:
-                setVolume(jsonObject);
+                double volume = Double.parseDouble(jsonObject.get("VOLUME").toString());
+                mainController.musicController.setVolumeAndUpdateSlider(volume);
                 break;
             case PAUSE_SONG:
                 mainController.musicController.btn_play(null);
@@ -49,11 +51,5 @@ public class NetworkRemoteController {
                 System.out.println("NetworkController in default case");
                 break;
         }
-    }
-
-    public void setVolume(JSONObject jsonObject) {
-        double volume = Double.parseDouble(jsonObject.get("VOLUME").toString());
-        System.out.println("SETTING VOLUME");
-        mainController.musicController.setVolumeAndUpdateSlider(volume);
     }
 }

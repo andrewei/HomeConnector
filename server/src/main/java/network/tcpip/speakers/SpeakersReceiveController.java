@@ -2,18 +2,19 @@ package network.tcpip.speakers;
 
 import aplication.ClientObject;
 import controller.MainController;
-import network.tcpip.Action;
+import network.tcpip.helpers.IReceiveController;
+import network.tcpip.helpers.SpeakerReceiveActionEnum;
 import org.json.simple.JSONObject;
 
-public class NetworkRecieveController {
+public class SpeakersReceiveController implements IReceiveController {
     MainController mainController;
 
-    public NetworkRecieveController(MainController mainController) {
+    public SpeakersReceiveController(MainController mainController) {
         this.mainController = mainController;
     }
 
     public void receive(JSONObject jsonObject) {
-        Action actionSwitch = Action.valueOf((String) jsonObject.get("ACTION"));
+        SpeakerReceiveActionEnum actionSwitch = SpeakerReceiveActionEnum.valueOf((String) jsonObject.get("ACTION"));
 
         switch (actionSwitch) {
             case PONG:

@@ -20,7 +20,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
-import network.tcpip.speakers.NetworkSpeakersController;
+import network.tcpip.speakers.SpeakersController;
 
 import java.io.File;
 import java.net.URL;
@@ -32,7 +32,7 @@ import java.util.Stack;
 public class MusicController implements Initializable {
 
     private MainController mainController;
-    private NetworkSpeakersController networkSpeakersController;
+    private SpeakersController networkSpeakersController;
     public Mp3Player player;
     private ConfigPath configPath;
     private List<File> listOfFiles;

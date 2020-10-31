@@ -1,5 +1,6 @@
-package network.tcpip.remote;
+package network.tcpip.core;
 
+import network.tcpip.helpers.IReceiveController;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
@@ -9,12 +10,9 @@ import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-/**
- * Created by weise on 17/08/2017.
- */
-public class NetworkRemote {
+public class NetworkReceive {
 
-    public void receive(NetworkRemoteController remoteController) throws IOException, ClassNotFoundException, InterruptedException {
+    public void receive(IReceiveController controller, int port) throws IOException, ClassNotFoundException, InterruptedException {
         Thread receiveThreadInstance;
 
         class networkTread implements Runnable {
@@ -24,8 +22,6 @@ public class NetworkRemote {
 
             @Override
             public void run() {
-                //create the socket server object
-                int port = 9870;
                 ServerSocket server = null;
                 try {
                     server = new ServerSocket(port);
@@ -33,7 +29,7 @@ public class NetworkRemote {
                     e.printStackTrace();
                 }
                 String message;
-                Socket socket;
+                Socket socket = null;
                 while (true) {
                     try {
                         System.out.println("Waiting for client request");
@@ -41,14 +37,23 @@ public class NetworkRemote {
                         isr = new InputStreamReader(socket.getInputStream());
                         br = new BufferedReader(isr);
                         message = br.readLine();
+                        message = message.substring(message.indexOf("{"));
+                        System.out.println("obj received");
                         JSONObject obj = (JSONObject) parser.parse(message);
                         System.out.println(message);
-                        remoteController.receive(obj);
+                        controller.receive(obj);
                     } catch (Exception e) {
                         System.out.println("Error when recieving file");
                         e.printStackTrace();
+                    } finally {
+                        try {
+                            if (socket != null) {
+                                socket.close();
+                            }
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
-                    continue;
                 }
             }
         }

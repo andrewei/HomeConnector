@@ -1,6 +1,6 @@
-package network.tcpip;
+package network.tcpip.helpers;
 
-public enum ActionEnum {
+public enum RemoteReceiveActionEnum {
     PLAY_SONG,
     PLAY_NEXTSONG,
     PAUSE_SONG,
